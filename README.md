@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Muhammad Taha — Portfolio
 
-## Getting Started
+Personal portfolio for **Muhammad Taha** (operating as **BoltTaha**), a Forward
+Deployed Software Engineer building production AI systems, backend
+infrastructure, and workflow automation.
 
-First, run the development server:
+**Live:** [muhammadtaha.app](https://muhammadtaha.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Stack
+
+- [Next.js 14](https://nextjs.org) (App Router) + TypeScript (strict)
+- [Tailwind CSS](https://tailwindcss.com) with a custom editorial design system
+  (Fraunces / Source Serif 4 / JetBrains Mono via `next/font/google`)
+- [Web3Forms](https://web3forms.com) for the contact form (no backend needed)
+- Deployed on [Vercel](https://vercel.com)
+
+## Project structure
+
+```
+app/
+  page.tsx          Homepage — assembles all sections below
+  about/page.tsx     About page
+  contact/page.tsx   Contact page
+  layout.tsx         Root layout, fonts, metadata, JSON-LD
+  sitemap.ts          Sitemap
+  robots.ts           robots.txt
+components/          One component per section (Hero, ProjectsList, Experience,
+                       StackChips, TrustRow, Testimonials, Nav, Footer, ContactForm/Modal)
+data/                Typed content — edit these to update copy without touching
+                       component code (projects.ts, stack.ts, experience.ts, testimonials.ts)
+design/              Original static HTML mockup, kept for reference
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Getting started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+cp .env.example .env.local   # then add your Web3Forms access key
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+### Environment variables
 
-To learn more about Next.js, take a look at the following resources:
+| Variable | Purpose |
+|---|---|
+| `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` | Public access key from [web3forms.com](https://web3forms.com), used by the contact form. Safe to expose client-side. |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the dev server |
+| `npm run build` | Production build |
+| `npm start` | Serve the production build |
+| `npm run lint` | Run ESLint |
 
-## Deploy on Vercel
+## Editing content
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Project entries, stack chips, experience, and testimonials all live in
+`data/*.ts` as typed arrays — add, remove, or edit an entry there and it
+flows through automatically, no component changes needed.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+Deployed on Vercel, connected to this repo's `main` branch — every push
+triggers a new deployment. `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` must also be set
+in the Vercel project's Environment Variables for the contact form to work in
+production.
+
+## Contact
+
+- [muhammadtaha.app/contact](https://muhammadtaha.app/contact)
+- [LinkedIn](https://www.linkedin.com/in/bolttaha/)
+- [Upwork](https://www.upwork.com/freelancers/bolttaha)

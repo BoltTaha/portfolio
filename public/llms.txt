@@ -1,0 +1,42 @@
+# Muhammad Taha (BoltTaha)
+
+> Muhammad Taha, also known as BoltTaha, is a Forward Deployed Software
+> Engineer based in Pakistan who partners with businesses to turn broken,
+> time-consuming workflows into automated software systems — spanning
+> computer vision, LLM infrastructure, backend systems, and data pipelines.
+> He is a BS Computer Science student at FAST-NUCES (Class of 2027) and
+> Co-Lead of the AWS Cloud Club, FAST-NUCES Peshawar.
+
+## Pages
+
+- [Home](https://muhammadtaha.app/): overview, selected work, experience, stack, track record, client testimonials
+- [About](https://muhammadtaha.app/about): background, working approach, education, certifications
+- [Contact](https://muhammadtaha.app/contact): contact form and direct links
+
+## Production work for named clients
+
+- Basketball Highlight Detection — two-stage computer vision pipeline for a sports analytics client
+- GTM Sales Intelligence Assistant — hybrid text-to-SQL engine for Gohar Textile Mills
+- Automated Extraction Engine — PDF purchase-order-to-Excel automation for Gohar Textile Mills
+- GTM Sales Forecasting Engine — statistical sales forecasting pipeline for Gohar Textile Mills
+- OCR Preprocessing Pipeline — production document-cleaning pipeline for a US legal records company, processing an estimated 20M+ scanned documents
+
+## Core skills
+
+Python, PyTorch, computer vision (YOLO, OpenCV, object detection & tracking),
+LangChain, Retrieval Augmented Generation, AI agent development, Model
+Context Protocol (MCP), large language models, AWS Bedrock, Google Gemini
+API, FastAPI, Next.js, React, PostgreSQL, MongoDB, data engineering, XGBoost
+and time-series forecasting, OCR, Docker, AWS, Microsoft Azure, Hadoop &
+Spark.
+
+## Certifications
+
+Claude Code (Anthropic), Model Context Protocol (Anthropic), AI Fluency
+(Anthropic), Google Cybersecurity (Google/Coursera).
+
+## Elsewhere
+
+- GitHub: https://github.com/bolttaha
+- LinkedIn: https://www.linkedin.com/in/bolttaha/
+- Upwork: https://www.upwork.com/freelancers/bolttaha
