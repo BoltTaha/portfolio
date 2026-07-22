@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Taha — AI/ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Serif+4:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4F1EA;
+    --surface:#EDE9DF;
+    --card:#FBFAF6;
+    --line:rgba(30,26,20,0.12);
+    --line-strong:rgba(30,26,20,0.22);
+    --ink:#1E1A14;
+    --ink-soft:#6B6455;
+    --ink-mute:#9C9484;
+    --clay:#D97757;
+    --clay-deep:#B85C3E;
+    --serif:'Fraunces', serif;
+    --body:'Source Serif 4', serif;
+    --mono:'JetBrains Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 32px;}
+
+  nav{border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:76px;}
+  .logo{font-family:var(--serif);font-size:20px;font-weight:600;letter-spacing:-0.01em;}
+  .logo span{color:var(--clay);}
+  .nav-links{display:flex;gap:34px;font-size:15px;color:var(--ink-soft);}
+  .nav-links a:hover{color:var(--ink);}
+  .btn{
+    font-family:var(--body);font-size:14px;padding:9px 18px;border-radius:999px;
+    border:1px solid var(--ink);transition:all .15s ease;
+  }
+  .btn:hover{background:var(--ink);color:var(--bg);}
+
+  /* HERO */
+  .hero{padding:90px 0 70px;border-bottom:1px solid var(--line);}
+  .eyebrow{
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--clay-deep);margin-bottom:22px;
+  }
+  h1{
+    font-family:var(--serif);font-weight:500;font-size:58px;letter-spacing:-0.02em;
+    line-height:1.08;max-width:760px;margin-bottom:26px;
+  }
+  h1 em{font-style:italic;color:var(--clay-deep);font-weight:400;}
+  .sub{font-size:19px;color:var(--ink-soft);max-width:560px;margin-bottom:38px;}
+  .hero-ctas{display:flex;gap:14px;margin-bottom:56px;}
+
+  /* quote-style signature strip */
+  .signature{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:26px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  }
+  .sig-item{font-family:var(--mono);font-size:12.5px;color:var(--ink-mute);}
+  .sig-item strong{display:block;font-family:var(--serif);font-size:22px;font-weight:500;color:var(--ink);margin-bottom:4px;}
+
+  /* SECTIONS */
+  section{padding:70px 0;border-bottom:1px solid var(--line);}
+  .section-head{margin-bottom:40px;}
+  .section-tag{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--clay-deep);margin-bottom:10px;}
+  h2{font-family:var(--serif);font-size:32px;font-weight:500;letter-spacing:-0.01em;}
+
+  /* PROJECT LIST — editorial rows, not cards */
+  .proj-row{
+    display:grid;grid-template-columns:220px 1fr 140px;gap:28px;align-items:start;
+    padding:28px 0;border-top:1px solid var(--line);
+  }
+  .proj-row:last-child{border-bottom:none;}
+  .proj-num{font-family:var(--mono);font-size:13px;color:var(--ink-mute);}
+  .proj-title{font-family:var(--serif);font-size:21px;font-weight:500;margin-bottom:8px;}
+  .proj-desc{font-size:15.5px;color:var(--ink-soft);max-width:480px;}
+  .proj-meta{text-align:right;font-family:var(--mono);font-size:11.5px;color:var(--ink-mute);}
+  .proj-status{
+    display:inline-block;margin-top:6px;font-size:11px;padding:3px 10px;border-radius:999px;
+    border:1px solid var(--line-strong);color:var(--clay-deep);
+  }
+
+  /* STACK */
+  .stack-wrap{display:flex;flex-wrap:wrap;gap:10px;}
+  .chip{
+    font-family:var(--mono);font-size:12.5px;color:var(--ink-soft);
+    border:1px solid var(--line-strong);padding:8px 16px;border-radius:999px;background:var(--card);
+  }
+
+  /* TRUST */
+  .trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+  .trust-card{padding:26px 0;border-left:1px solid var(--line);padding-left:24px;}
+  .trust-card:first-child{border-left:none;padding-left:0;}
+  .trust-num{font-family:var(--serif);font-size:30px;font-weight:500;color:var(--clay-deep);}
+  .trust-label{font-size:14px;color:var(--ink-soft);margin-top:6px;}
+
+  footer{padding:40px 0 60px;}
+  .foot-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+  .foot-links{display:flex;gap:26px;font-size:14px;color:var(--ink-soft);}
+  .foot-links a:hover{color:var(--ink);}
+  .foot-note{font-family:var(--mono);font-size:12px;color:var(--ink-mute);}
+
+  @media(max-width:820px){
+    h1{font-size:38px;}
+    .proj-row{grid-template-columns:1fr;gap:8px;}
+    .proj-meta{text-align:left;}
+    .signature{grid-template-columns:repeat(2,1fr);}
+    .trust-row{grid-template-columns:1fr;}
+    .trust-card{border-left:none;padding-left:0;border-top:1px solid var(--line);padding-top:20px;}
+    .trust-card:first-child{border-top:none;padding-top:0;}
+    .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <div class="logo">bolt<span>taha</span></div>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#stack">Stack</a>
+      <a href="#trust">Track record</a>
+    </div>
+    <a href="#" class="btn">Get in touch</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <section class="hero" style="border-bottom:none;">
+    <div class="eyebrow">AI / ML engineer · available for select work</div>
+    <h1>Building AI systems people can <em>actually run</em>, not just admire.</h1>
+    <p class="sub">I design and ship production computer vision, LLM infrastructure, and document-extraction pipelines — final-year CS student, freelancing as BoltTaha.</p>
+    <div class="hero-ctas">
+      <a href="#work" class="btn">View the work</a>
+      <a href="#" class="btn" style="border-color:var(--clay-deep);color:var(--clay-deep);">Upwork profile ↗</a>
+    </div>
+  </section>
+
+  <div class="signature">
+    <div class="sig-item"><strong>6</strong>production &amp; open-source systems</div>
+    <div class="sig-item"><strong>5.0</strong>Upwork rating</div>
+    <div class="sig-item"><strong>2</strong>Gohar Textile Mills deployments</div>
+    <div class="sig-item"><strong>4</strong>certifications</div>
+  </div>
+
+  <section id="work">
+    <div class="section-head">
+      <div class="section-tag">selected work</div>
+      <h2>Systems shipped, in order</h2>
+    </div>
+
+    <div class="proj-row">
+      <div class="proj-num">01 · computer vision</div>
+      <div>
+        <div class="proj-title">Basket Detector Dashboard</div>
+        <div class="proj-desc">Real-time object-detection pipeline for a sports analytics client, feeding a live monitoring dashboard.</div>
+      </div>
+      <div class="proj-meta">sports client<div class="proj-status">production</div></div>
+    </div>
+
+    <div class="proj-row">
+      <div class="proj-num">02 · LLM / text-to-sql</div>
+      <div>
+        <div class="proj-title">GTM Text-to-SQL Chatbot</div>
+        <div class="proj-desc">Natural-language to SQL chatbot on AWS Bedrock, letting non-technical staff query business data conversationally.</div>
+      </div>
+      <div class="proj-meta">Gohar Textile Mills<div class="proj-status">production</div></div>
+    </div>
+
+    <div class="proj-row">
+      <div class="proj-num">03 · document AI</div>
+      <div>
+        <div class="proj-title">PO Extraction Engine</div>
+        <div class="proj-desc">PDF-to-Excel purchase order extraction, removing manual data entry from the procurement workflow.</div>
+      </div>
+      <div class="proj-meta">Gohar Textile Mills<div class="proj-status">production</div></div>
+    </div>
+
+    <div class="proj-row">
+      <div class="proj-num">04 · LLM infra</div>
+      <div>
+        <div class="proj-title">Schema-Guard Proxy</div>
+        <div class="proj-desc">A logit-free schema-enforcement proxy that guarantees structured output from closed-weight LLM APIs.</div>
+      </div>
+      <div class="proj-meta">open-source<div class="proj-status">in build</div></div>
+    </div>
+
+    <div class="proj-row">
+      <div class="proj-num">05 · vision + LLM</div>
+      <div>
+        <div class="proj-title">Vision-to-LLM Context Compressor</div>
+        <div class="proj-desc">Middleware compressing real-time video into event-driven crops for VLMs — roughly 95% fewer tokens than raw frame streaming.</div>
+      </div>
+      <div class="proj-meta">open-source<div class="proj-status">in build</div></div>
+    </div>
+
+    <div class="proj-row">
+      <div class="proj-num">06 · distributed systems</div>
+      <div>
+        <div class="proj-title">P2P LLM Inference Engine</div>
+        <div class="proj-desc">A decentralized inference prototype using pipeline parallelism and tensor offloading — BitTorrent-style, for AI.</div>
+      </div>
+      <div class="proj-meta">prototype<div class="proj-status">research</div></div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="section-head">
+      <div class="section-tag">tooling</div>
+      <h2>Stack &amp; certifications</h2>
+    </div>
+    <div class="stack-wrap">
+      <span class="chip">Python</span>
+      <span class="chip">PyTorch</span>
+      <span class="chip">YOLO</span>
+      <span class="chip">AWS Bedrock</span>
+      <span class="chip">OCR / document parsing</span>
+      <span class="chip">Claude Code — certified</span>
+      <span class="chip">MCP — certified</span>
+      <span class="chip">AI Fluency — certified</span>
+      <span class="chip">Google Cybersecurity — certified</span>
+    </div>
+  </section>
+
+  <section id="trust" style="border-bottom:none;">
+    <div class="section-head">
+      <div class="section-tag">track record</div>
+      <h2>Freelance &amp; community</h2>
+    </div>
+    <div class="trust-row">
+      <div class="trust-card">
+        <div class="trust-num">5.0 ★</div>
+        <div class="trust-label">Upwork rating, verified client history</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-num">Fiverr</div>
+        <div class="trust-label">Active gigs in OCR, YOLO detection, and AI backend/MCP pipelines</div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-num">Co-lead</div>
+        <div class="trust-label">AWS Cloud Club, FAST-NUCES</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="foot-note">&copy; 2026 Muhammad Taha</div>
+    <div class="foot-links">
+      <a href="mailto:bolt.taha.work@gmail.com">Email</a>
+      <a href="https://github.com/bolttaha">GitHub</a>
+      <a href="https://www.linkedin.com/in/muhammad-taha-57713b247">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
