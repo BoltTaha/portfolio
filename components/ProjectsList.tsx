@@ -7,10 +7,23 @@ const DEFAULT_VISIBLE = 6;
 
 export default function ProjectsList() {
   const [showAll, setShowAll] = useState(false);
+  const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const visibleProjects = showAll
     ? projects
     : projects.slice(0, DEFAULT_VISIBLE);
   const remaining = projects.length - DEFAULT_VISIBLE;
+
+  function toggleExpanded(number: string) {
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      if (next.has(number)) {
+        next.delete(number);
+      } else {
+        next.add(number);
+      }
+      return next;
+    });
+  }
 
   return (
     <section id="work" className="py-[70px] border-b border-line">
@@ -23,30 +36,53 @@ export default function ProjectsList() {
         </h2>
       </div>
 
-      {visibleProjects.map((project) => (
-        <div
-          key={project.number}
-          className="grid grid-cols-[220px_1fr_140px] max-[820px]:grid-cols-1 gap-7 max-[820px]:gap-2 items-start py-7 border-t border-line"
-        >
-          <div className="font-mono text-[15px] text-ink-mute">
-            {project.number} · {project.category}
+      {visibleProjects.map((project) => {
+        const isExpanded = expanded.has(project.number);
+        return (
+          <div
+            key={project.number}
+            className="grid grid-cols-[220px_1fr_140px] max-[820px]:grid-cols-1 gap-7 max-[820px]:gap-2 items-start py-7 border-t border-line"
+          >
+            <div className="font-mono text-[15px] text-ink-mute">
+              {project.number} · {project.category}
+            </div>
+            <div>
+              <h3 className="font-serif text-[21px] font-medium mb-2">
+                {project.title}
+              </h3>
+              <p
+                className={`text-[15.5px] text-ink-soft max-w-[480px] ${isExpanded ? "" : "line-clamp-3"}`}
+              >
+                {project.description}
+              </p>
+              <div className="mt-2 flex items-center gap-4">
+                <button
+                  onClick={() => toggleExpanded(project.number)}
+                  className="font-mono text-[12.5px] text-clay-deep hover:text-ink transition-colors"
+                >
+                  {isExpanded ? "Show less" : "Read more"}
+                </button>
+                {project.repoUrl && (
+                  <a
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-[12.5px] text-ink-soft hover:text-ink transition-colors"
+                  >
+                    View code ↗
+                  </a>
+                )}
+              </div>
+            </div>
+            <div className="flex flex-col items-end max-[820px]:items-start text-right max-[820px]:text-left font-mono text-[13px] text-ink-mute">
+              <span>{project.meta}</span>
+              <span className="mt-[6px] text-[12.5px] px-[10px] py-[3px] rounded-pill border border-line-strong text-clay-deep">
+                {project.status}
+              </span>
+            </div>
           </div>
-          <div>
-            <h3 className="font-serif text-[21px] font-medium mb-2">
-              {project.title}
-            </h3>
-            <p className="text-[15.5px] text-ink-soft max-w-[480px]">
-              {project.description}
-            </p>
-          </div>
-          <div className="flex flex-col items-end max-[820px]:items-start text-right max-[820px]:text-left font-mono text-[13px] text-ink-mute">
-            <span>{project.meta}</span>
-            <span className="mt-[6px] text-[12.5px] px-[10px] py-[3px] rounded-pill border border-line-strong text-clay-deep">
-              {project.status}
-            </span>
-          </div>
-        </div>
-      ))}
+        );
+      })}
 
       {remaining > 0 && (
         <button

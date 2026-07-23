@@ -7,6 +7,7 @@ export interface Project {
   description: string;
   meta: string;
   status: ProjectStatus;
+  repoUrl?: string;
 }
 
 export const projects: Project[] = [
@@ -63,6 +64,7 @@ export const projects: Project[] = [
       "Screenshot-based mobile payments are common but trivial to fake or reuse, and businesses had no reliable way to verify them beyond trusting a photo. Built a full-stack fraud-detection pipeline: Gemini vision extracts transaction details from each screenshot, business rules catch duplicate images, repeat transaction IDs, and payment fingerprints, and a weighted risk engine flags anything suspicious. Deployed to EC2 behind Nginx with PM2 auto-recovery and a live React admin dashboard for review.",
     meta: "open-source",
     status: "production",
+    repoUrl: "https://github.com/bolttaha/qr-payment-verification-system",
   },
   {
     number: "07",
@@ -72,6 +74,7 @@ export const projects: Project[] = [
       "Wanted real infrastructure experience beyond a single-node word-count tutorial. Built a Hadoop 3.3.6 cluster from scratch, first single-node, then a distributed two-node cluster on AWS EC2, then connected Apache Spark 3.5.1 over YARN for RDD and DAG-level analysis, and finally pulled live telemetry from 9 real satellites via the SatNOGS network and ran MapReduce analytics across 56 mapper/reducer configurations to benchmark parallelism on 16,000+ real orbital sensor readings.",
     meta: "self-directed",
     status: "research",
+    repoUrl: "https://github.com/bolttaha/hadoop-aws-distributed-cluster",
   },
   {
     number: "08",
@@ -81,6 +84,7 @@ export const projects: Project[] = [
       "Built a Flask-based decision-support system that classifies breaking crisis news into 5 categories (disaster, economy, war, tech, general), scores potential impact 0–100, and explains its reasoning by surfacing the most influential words. Trained on 130,000+ real news articles across two Kaggle datasets, with a logistic regression classifier (71.3% accuracy) validated against a neural network, plus a greedy ranker and A* search to find the most dangerous combination of up to 3 simultaneous events.",
     meta: "open-source",
     status: "in build",
+    repoUrl: "https://github.com/bolttaha/crisis-intelligence-decision-support",
   },
   {
     number: "09",
@@ -90,6 +94,7 @@ export const projects: Project[] = [
       "Every LLM forgets the start of a long conversation once its context window fills up. Built a hierarchical memory system that compresses old turns instead of deleting them: a 3-tier pipeline (raw recent turns, Gemini-summarized chunks, an ultra-compressed archive) keeps key facts alive indefinitely while bounding token usage, with a live inspector panel showing exactly what was kept and why.",
     meta: "open-source",
     status: "in build",
+    repoUrl: "https://github.com/bolttaha/Context-Window-Compressor",
   },
   {
     number: "10",
@@ -99,6 +104,7 @@ export const projects: Project[] = [
       "Built a Python tool that statistically transfers a reference photo's color aesthetic onto any target image, no AI model required. Uses LAB color-space statistical transfer (the Reinhard method) with a custom luminance clamp to prevent blown-out highlights and saturation-preserving blending, turning a flat, overcast photo into a warm golden-hour shot in one pass.",
     meta: "open-source",
     status: "in build",
+    repoUrl: "https://github.com/bolttaha/automated-color-grading",
   },
   {
     number: "11",
@@ -108,6 +114,7 @@ export const projects: Project[] = [
       "Built an AI tool that converts messy handwritten notes, equations, and diagrams into clean, compilable LaTeX and PDF. Unlike plain OCR, it understands context: auto-correcting handwriting mistakes, closing unclosed brackets in equations, and converting hand-drawn flowcharts and UML sketches directly into TikZ code. Bulk-processes an entire 50-page notebook in parallel using multi-threading.",
     meta: "open-source",
     status: "in build",
+    repoUrl: "https://github.com/bolttaha/SnapTeX",
   },
   {
     number: "12",
@@ -117,5 +124,6 @@ export const projects: Project[] = [
       "Built a Flutter event-planning app with Firebase-backed per-user data, Google sign-in, and AI-assisted event creation: describe an event in plain language and Gemini drafts the structured event for you. Designed around core HCI principles (visibility of system status, error prevention, reduced cognitive load) for a university human-computer interaction course.",
     meta: "HCI coursework",
     status: "in build",
+    repoUrl: "https://github.com/bolttaha/eventora-planner",
   },
 ];
