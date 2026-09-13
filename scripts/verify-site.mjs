@@ -64,6 +64,15 @@ for (const [path, doc] of documents) {
     const href = anchor.getAttribute("href");
     if (!href.startsWith("/") && !href.startsWith("#")) continue;
     const url = new URL(href, canonicalBase + path);
+    if (url.pathname === "/resume.pdf") {
+      const response = await fetch(base + url.pathname);
+      assert.equal(response.status, 200, `${path}: internal link ${href}`);
+      assert.ok(
+        response.headers.get("content-type")?.includes("application/pdf"),
+        `${path}: resume content type`,
+      );
+      continue;
+    }
     const target = documents.get(url.pathname);
     assert.ok(target, `${path}: internal link ${href}`);
     if (url.hash)
@@ -77,6 +86,9 @@ const missing = await fetch(`${base}/projects/does-not-exist`);
 assert.equal(missing.status, 404);
 assert.equal((await fetch(`${base}/does-not-exist`)).status, 404);
 assert.equal((await fetch(`${base}/profile.jpeg`)).status, 200);
+const resume = await fetch(`${base}/resume.pdf`);
+assert.equal(resume.status, 200);
+assert.ok(resume.headers.get("content-type")?.includes("application/pdf"));
 const social = await fetch(`${base}/opengraph-image`);
 assert.equal(social.status, 200);
 assert.ok(social.headers.get("content-type").includes("image/png"));
@@ -89,5 +101,5 @@ for (const url of urls.filter((url) => url.includes("/projects/")))
 for (const url of urls.filter((url) => url.includes("/client-work/")))
   assert.ok(llms.includes(url));
 console.log(
-  "PASS all internal links and anchors, 404 responses, portrait, social image, robots, llms.txt",
+  "PASS all internal links and anchors, 404 responses, resume PDF, portrait, social image, robots, llms.txt",
 );

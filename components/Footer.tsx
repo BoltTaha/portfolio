@@ -10,6 +10,7 @@ export default function Footer() {
         <Link href="/projects">Work</Link>
         <Link href="/about">About</Link>
         <Link href="/contact">Contact</Link>
+        <a href="/resume.pdf">Resume</a>
         <a href={`mailto:${site.email}`}>Email</a>
         <a href={site.github}>GitHub</a>
         <a href={site.linkedin}>LinkedIn</a>

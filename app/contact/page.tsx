@@ -42,6 +42,9 @@ export default function ContactPage() {
             <a className="text-link" href={site.upwork}>
               Upwork ↗
             </a>
+            <a className="text-link" href="/resume.pdf">
+              Resume ↗
+            </a>
           </div>
         </aside>
       </div>

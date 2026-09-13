@@ -25,8 +25,8 @@ export default function Hero() {
         <br />I build AI systems that work <em>beyond the demo.</em>
       </h1>
       <p className="hero-description">
-        AI engineer in Pakistan building computer vision, OCR, LLM, RAG,
-        backend, and automation systems for real client workflows.
+        AI engineer building computer vision, OCR, LLM, RAG, backend, and
+        automation systems for real client workflows.
       </p>
       <p className="text-ink-soft max-w-[620px] mb-8">
         My work includes a basketball clip finder for made-basket detection, a
@@ -40,6 +40,9 @@ export default function Hero() {
         <Link className="button" href="/contact">
           Discuss a role or project
         </Link>
+        <a className="button" href="/resume.pdf">
+          View resume
+        </a>
       </div>
     </section>
   );

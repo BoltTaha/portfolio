@@ -7,7 +7,7 @@ import { site } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "About",
-  "Meet Muhammad Taha (BoltTaha), an AI engineer in Pakistan building computer vision, OCR, LLM, RAG, backend, and automation systems for client workflows.",
+  "Meet Muhammad Taha (BoltTaha), an AI engineer building computer vision, OCR, LLM, RAG, backend, and automation systems for client workflows.",
   "/about",
 );
 export default function AboutPage() {
@@ -105,9 +105,14 @@ export default function AboutPage() {
       </section>
       <div className="case-cta">
         <h2>Let’s make something useful.</h2>
-        <Link className="button mt-5" href="/contact">
-          Discuss a role or project →
-        </Link>
+        <div className="flex flex-wrap gap-3 mt-5">
+          <Link className="button solid" href="/contact">
+            Discuss a role or project
+          </Link>
+          <a className="button" href="/resume.pdf">
+            View resume
+          </a>
+        </div>
       </div>
     </main>
   );

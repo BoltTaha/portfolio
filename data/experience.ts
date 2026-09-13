@@ -3,7 +3,7 @@ export const experience = [
     role: "AI Engineer Intern",
     organization: "Gohar Textile Mills Pvt Ltd.",
     dateRange: "Started June 2026",
-    location: "Faisalabad, Pakistan",
+    location: "Faisalabad",
     summary:
       "Python automation, local LLM workflows, and data reporting for textile operations.",
     highlights: [
@@ -16,7 +16,7 @@ export const experience = [
     role: "Co-Lead, Development & Projects",
     organization: "AWS Cloud Club, FAST-NUCES Peshawar",
     dateRange: "Started October 2025",
-    location: "Peshawar, Pakistan",
+    location: "Peshawar",
     summary:
       "Cloud projects and technical initiatives with the student community.",
     highlights: [
