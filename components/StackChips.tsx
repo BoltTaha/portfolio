@@ -1,58 +1,68 @@
-"use client";
-
-import { useState } from "react";
-import { stackChips } from "@/data/stack";
-
-const DEFAULT_VISIBLE = 15;
-
+import Link from "next/link";
+const groups = [
+  {
+    title: "LLM tools & backend",
+    skills: "Python · FastAPI · PostgreSQL · MCP · Chroma · Docker",
+    slug: "mcp-data-analyst",
+    project: "MCP Data Analyst",
+  },
+  {
+    title: "Document & image processing",
+    skills: "Gemini · Streamlit · LaTeX · OpenCV · NumPy",
+    slug: "snaptex",
+    project: "SnapTeX",
+  },
+  {
+    title: "Full-stack applications",
+    skills: "JavaScript · React · Express · MongoDB · Nginx",
+    slug: "qr-payment-verification",
+    project: "QR Payment Verification",
+  },
+  {
+    title: "Data & machine learning",
+    skills: "Hadoop · HDFS · Spark · AWS EC2 · scikit-learn",
+    slug: "distributed-data-systems",
+    project: "Distributed Data Systems",
+  },
+];
 export default function StackChips() {
-  const [showAll, setShowAll] = useState(false);
-  const visibleChips = showAll
-    ? stackChips
-    : stackChips.slice(0, DEFAULT_VISIBLE);
-
   return (
-    <section id="stack" className="py-[70px] border-b border-line">
-      <div className="mb-10">
-        <div className="font-mono text-xs tracking-[0.08em] uppercase text-clay-deep mb-[10px]">
-          tooling
-        </div>
-        <h2 className="font-serif text-[32px] font-medium tracking-[-0.01em]">
-          Stack &amp; certifications
-        </h2>
+    <section id="stack" className="section">
+      <p className="eyebrow">Skills, with evidence</p>
+      <h2 className="mb-8">The tools behind the work.</h2>
+      <div className="grid grid-cols-2 max-[820px]:grid-cols-1 gap-8">
+        {groups.map((group) => (
+          <article key={group.title}>
+            <h3 className="font-serif text-2xl mb-2">{group.title}</h3>
+            <p className="text-ink-soft mb-3">{group.skills}</p>
+            <Link className="text-link" href={`/projects/${group.slug}`}>
+              See {group.project} →
+            </Link>
+            {group.title === "Document & image processing" && (
+              <Link
+                className="text-link block mt-2"
+                href="/projects/automated-color-grading"
+              >
+                See Automated Color Grading →
+              </Link>
+            )}
+            {group.title === "Data & machine learning" && (
+              <Link
+                className="text-link block mt-2"
+                href="/projects/crisis-intelligence"
+              >
+                See Crisis Intelligence →
+              </Link>
+            )}
+          </article>
+        ))}
       </div>
-      <div className="flex flex-wrap gap-[10px]">
-        {visibleChips.map((chip) =>
-          chip.credentialUrl ? (
-            <a
-              key={chip.label}
-              href={chip.credentialUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-[12.5px] text-ink-soft border border-line-strong px-4 py-2 rounded-pill bg-card hover:text-ink hover:border-clay-deep transition-colors"
-            >
-              {chip.label}
-            </a>
-          ) : (
-            <span
-              key={chip.label}
-              className="font-mono text-[12.5px] text-ink-soft border border-line-strong px-4 py-2 rounded-pill bg-card"
-            >
-              {chip.label}
-            </span>
-          ),
-        )}
-      </div>
-
-      {stackChips.length > DEFAULT_VISIBLE && (
-        <button
-          onClick={() => setShowAll((v) => !v)}
-          className="mt-6 inline-flex items-center gap-1.5 font-mono text-[12.5px] text-clay-deep hover:text-ink transition-colors"
-        >
-          {showAll ? "Show less" : `Show all ${stackChips.length} skills`}
-          <span aria-hidden="true">{showAll ? "↑" : "↓"}</span>
-        </button>
-      )}
+      <p className="mt-8 text-ink-soft">
+        This portfolio uses Next.js, React, TypeScript, and Tailwind CSS.{" "}
+        <a className="text-link" href="https://github.com/BoltTaha/portfolio">
+          View its source →
+        </a>
+      </p>
     </section>
   );
 }

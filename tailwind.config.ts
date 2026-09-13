@@ -14,11 +14,11 @@ const config: Config = {
         ink: {
           DEFAULT: "#1E1A14",
           soft: "#6B6455",
-          mute: "#9C9484",
+          mute: "#746B5C",
         },
         clay: {
           DEFAULT: "#D97757",
-          deep: "#B85C3E",
+          deep: "#A34C32",
         },
         line: {
           DEFAULT: "rgba(30,26,20,0.12)",
@@ -26,9 +26,17 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ["var(--font-fraunces)", "serif"],
-        body: ["var(--font-source-serif)", "serif"],
-        mono: ["var(--font-jetbrains-mono)", "monospace"],
+        serif: ["Georgia", "Times New Roman", "serif"],
+        body: ["Georgia", "Times New Roman", "serif"],
+        mono: [
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Monaco",
+          "Consolas",
+          "Liberation Mono",
+          "monospace",
+        ],
       },
       maxWidth: {
         wrap: "980px",

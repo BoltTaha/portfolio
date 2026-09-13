@@ -1,19 +1,20 @@
-import { signatureStats } from "@/data/stack";
-
+import { projects } from "@/data/projects";
+import { evidence } from "@/data/sources";
 export default function SignatureStats() {
   return (
-    <div className="border-y border-line py-[26px] grid grid-cols-4 max-[820px]:grid-cols-2 gap-6">
-      {signatureStats.map((stat) => (
-        <div
-          key={stat.label}
-          className="font-mono text-[12.5px] text-ink-mute"
-        >
-          <strong className="block font-serif text-[22px] font-medium text-ink mb-1">
-            {stat.value}
-          </strong>
-          {stat.label}
-        </div>
-      ))}
+    <div className="facts-strip" aria-label="Portfolio at a glance">
+      <p>
+        <strong>{projects.length}</strong>
+        <span>public case studies</span>
+      </p>
+      <p>
+        <strong>{Object.keys(evidence).length}</strong>
+        <span>linked source repositories</span>
+      </p>
+      <p>
+        <strong>AI + software</strong>
+        <span>from integration to interface</span>
+      </p>
     </div>
   );
 }

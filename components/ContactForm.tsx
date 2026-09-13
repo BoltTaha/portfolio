@@ -1,125 +1,118 @@
 "use client";
-
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useId, useRef, useState, type FormEvent } from "react";
+import { site } from "@/data/site";
 
 type Status = "idle" | "submitting" | "success" | "error";
-
-interface ContactFormProps {
-  onSuccess?: () => void;
-  autoFocus?: boolean;
-  titleId?: string;
-}
-
-export default function ContactForm({
-  onSuccess,
-  autoFocus,
-  titleId,
-}: ContactFormProps) {
+export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
-  const firstFieldRef = useRef<HTMLInputElement>(null);
-  const idPrefix = titleId ?? "contact";
-
-  useEffect(() => {
-    if (autoFocus) firstFieldRef.current?.focus();
-  }, [autoFocus]);
-
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  const id = useId();
+  const request = useRef<AbortController | null>(null);
+  useEffect(() => () => request.current?.abort(), []);
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (request.current) return;
+    const key = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    if (!key) {
+      setStatus("error");
+      return;
+    }
+    const controller = new AbortController();
+    request.current = controller;
+    const timer = setTimeout(() => controller.abort(), 15000);
+    const formData = new FormData(event.currentTarget);
+    formData.append("access_key", key);
+    formData.append("subject", "Portfolio inquiry — muhammadtaha.app");
     setStatus("submitting");
-
-    const formData = new FormData(e.currentTarget);
-    formData.append(
-      "access_key",
-      process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "",
-    );
-    formData.append("subject", "New lead from muhammadtaha.app");
-
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         body: formData,
+        signal: controller.signal,
       });
-
-      if (response.ok) {
-        setStatus("success");
-        onSuccess?.();
-      } else {
-        setStatus("error");
-      }
+      const result = await response.json();
+      if (!response.ok || result.success !== true)
+        throw new Error("Submission not accepted");
+      setStatus("success");
     } catch {
       setStatus("error");
+    } finally {
+      clearTimeout(timer);
+      request.current = null;
     }
   }
-
-  if (status === "success") {
-    return (
-      <div className="py-6 text-center font-mono text-sm text-clay-deep">
-        Message sent successfully. I&apos;ll get back to you shortly.
-      </div>
-    );
-  }
-
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-1">
-      <label
-        htmlFor={`${idPrefix}-name`}
-        className="font-mono text-xs uppercase tracking-[0.06em] text-ink-soft mb-1"
-      >
-        Your name
-      </label>
-      <input
-        ref={firstFieldRef}
-        id={`${idPrefix}-name`}
-        type="text"
-        name="name"
-        required
-        placeholder="John Doe"
-        className="mb-4 rounded-lg border border-line-strong bg-bg px-3 py-2 font-body text-ink placeholder:text-ink-mute focus:outline-none focus:border-clay-deep transition-colors"
-      />
-
-      <label
-        htmlFor={`${idPrefix}-email`}
-        className="font-mono text-xs uppercase tracking-[0.06em] text-ink-soft mb-1"
-      >
-        Your email
-      </label>
-      <input
-        id={`${idPrefix}-email`}
-        type="email"
-        name="email"
-        required
-        placeholder="john@company.com"
-        className="mb-4 rounded-lg border border-line-strong bg-bg px-3 py-2 font-body text-ink placeholder:text-ink-mute focus:outline-none focus:border-clay-deep transition-colors"
-      />
-
-      <label
-        htmlFor={`${idPrefix}-message`}
-        className="font-mono text-xs uppercase tracking-[0.06em] text-ink-soft mb-1"
-      >
-        How can I help you?
-      </label>
-      <textarea
-        id={`${idPrefix}-message`}
-        name="message"
-        required
-        rows={4}
-        placeholder="We need an AI pipeline deployed..."
-        className="mb-5 resize-none rounded-lg border border-line-strong bg-bg px-3 py-2 font-body text-ink placeholder:text-ink-mute focus:outline-none focus:border-clay-deep transition-colors"
-      />
-
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="rounded-pill bg-ink px-[18px] py-[10px] text-center font-body text-sm text-bg transition-opacity hover:opacity-90 disabled:opacity-60"
-      >
-        {status === "submitting" ? "Sending..." : "Send message"}
-      </button>
-
-      {status === "error" && (
-        <p className="mt-3 font-mono text-xs text-clay-deep">
-          Something went wrong. Please try again.
-        </p>
+    <div>
+      <div role="status" aria-live="polite" aria-atomic="true">
+        {status === "success" && (
+          <p className="success-message">
+            Message sent. Thank you for getting in touch.
+          </p>
+        )}
+      </div>
+      {status !== "success" && (
+        <form
+          onSubmit={handleSubmit}
+          aria-busy={status === "submitting"}
+          className="contact-form"
+        >
+          <label htmlFor={`${id}-name`}>Your name</label>
+          <input
+            id={`${id}-name`}
+            name="name"
+            autoComplete="name"
+            required
+            maxLength={150}
+            placeholder="Your name"
+          />
+          <label htmlFor={`${id}-email`}>Your email</label>
+          <input
+            id={`${id}-email`}
+            name="email"
+            type="email"
+            autoComplete="email"
+            required
+            maxLength={254}
+            placeholder="you@example.com"
+          />
+          <label htmlFor={`${id}-message`}>How can I help?</label>
+          <textarea
+            id={`${id}-message`}
+            name="message"
+            required
+            rows={5}
+            maxLength={10000}
+            placeholder="Tell me about the role or the problem you’re working on."
+          />
+          <input
+            type="checkbox"
+            name="botcheck"
+            tabIndex={-1}
+            autoComplete="off"
+            className="hidden"
+            aria-hidden="true"
+          />
+          <p className="text-sm text-ink-soft mb-4">
+            Your message is sent through Web3Forms. Please keep it to
+            information you are comfortable sharing by email.
+          </p>
+          <button
+            className="button solid"
+            type="submit"
+            disabled={status === "submitting"}
+          >
+            {status === "submitting" ? "Sending…" : "Send message"}
+          </button>
+          {status === "error" && (
+            <p role="alert" className="mt-4 text-clay-deep">
+              Your message could not be confirmed as sent. Please try again or{" "}
+              <a className="text-link" href={`mailto:${site.email}`}>
+                email me directly
+              </a>
+              .
+            </p>
+          )}
+        </form>
       )}
-    </form>
+    </div>
   );
 }

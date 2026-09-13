@@ -1,98 +1,66 @@
-"use client";
+import Link from "next/link";
+import { projects, repoUrl, type Project } from "@/data/projects";
 
-import { useState } from "react";
-import { projects } from "@/data/projects";
-
-const DEFAULT_VISIBLE = 6;
+export function ProjectCards({ items }: { items: Project[] }) {
+  return (
+    <div className="project-grid">
+      {items.map((project, i) => (
+        <article key={project.slug} className="project-card">
+          <div className="eyebrow">
+            <span aria-hidden="true">{String(i + 1).padStart(2, "0")} / </span>
+            {project.category}
+          </div>
+          <h3 className="font-serif text-[27px] leading-tight">
+            <Link href={`/projects/${project.slug}`}>{project.title}</Link>
+          </h3>
+          <p className="text-ink-soft mt-4 mb-5">{project.summary}</p>
+          <div className="flex flex-wrap gap-2 mb-5">
+            {project.stack.slice(0, 4).map((tech) => (
+              <span className="tag" key={tech}>
+                {tech}
+              </span>
+            ))}
+          </div>
+          <p className="font-mono text-xs text-ink-soft mb-5">{project.kind}</p>
+          <div className="mt-auto flex flex-wrap gap-x-5 gap-y-3">
+            <Link
+              className="text-link"
+              href={`/projects/${project.slug}`}
+              aria-label={`Read ${project.title} case study`}
+            >
+              Read case study <span aria-hidden="true">↗</span>
+            </Link>
+            <a
+              className="text-link secondary"
+              href={repoUrl(project.repo)}
+              aria-label={`${project.title} source on GitHub`}
+            >
+              Source code
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
 
 export default function ProjectsList() {
-  const [showAll, setShowAll] = useState(false);
-  const [expanded, setExpanded] = useState<Set<string>>(new Set());
-  const visibleProjects = showAll
-    ? projects
-    : projects.slice(0, DEFAULT_VISIBLE);
-  const remaining = projects.length - DEFAULT_VISIBLE;
-
-  function toggleExpanded(number: string) {
-    setExpanded((prev) => {
-      const next = new Set(prev);
-      if (next.has(number)) {
-        next.delete(number);
-      } else {
-        next.add(number);
-      }
-      return next;
-    });
-  }
-
   return (
-    <section id="work" className="py-[70px] border-b border-line">
-      <div className="mb-10">
-        <div className="font-mono text-xs tracking-[0.08em] uppercase text-clay-deep mb-[10px]">
-          selected work
+    <section id="work" className="section">
+      <div className="section-heading">
+        <div>
+          <p className="eyebrow">Selected public work</p>
+          <h2>From a problem to a working system.</h2>
         </div>
-        <h2 className="font-serif text-[32px] font-medium tracking-[-0.01em]">
-          Systems shipped, in order
-        </h2>
+        <Link href="/projects" className="text-link">
+          All {projects.length} case studies →
+        </Link>
       </div>
-
-      {visibleProjects.map((project) => {
-        const isExpanded = expanded.has(project.number);
-        return (
-          <div
-            key={project.number}
-            className="grid grid-cols-[220px_1fr_140px] max-[820px]:grid-cols-1 gap-7 max-[820px]:gap-2 items-start py-7 border-t border-line"
-          >
-            <div className="font-mono text-[15px] text-ink-mute">
-              {project.number} · {project.category}
-            </div>
-            <div>
-              <h3 className="font-serif text-[21px] font-medium mb-2">
-                {project.title}
-              </h3>
-              <p
-                className={`text-[15.5px] text-ink-soft max-w-[480px] ${isExpanded ? "" : "line-clamp-3"}`}
-              >
-                {project.description}
-              </p>
-              <div className="mt-2 flex items-center gap-4">
-                <button
-                  onClick={() => toggleExpanded(project.number)}
-                  className="font-mono text-[12.5px] text-clay-deep hover:text-ink transition-colors"
-                >
-                  {isExpanded ? "Show less" : "Read more"}
-                </button>
-                {project.repoUrl && (
-                  <a
-                    href={project.repoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-mono text-[12.5px] text-ink-soft hover:text-ink transition-colors"
-                  >
-                    View code ↗
-                  </a>
-                )}
-              </div>
-            </div>
-            <div className="flex flex-col items-end max-[820px]:items-start text-right max-[820px]:text-left font-mono text-[13px] text-ink-mute">
-              <span>{project.meta}</span>
-              <span className="mt-[6px] text-[12.5px] px-[10px] py-[3px] rounded-pill border border-line-strong text-clay-deep">
-                {project.status}
-              </span>
-            </div>
-          </div>
-        );
-      })}
-
-      {remaining > 0 && (
-        <button
-          onClick={() => setShowAll((v) => !v)}
-          className="mt-2 inline-flex items-center gap-1.5 font-mono text-[14px] text-clay-deep hover:text-ink transition-colors"
-        >
-          {showAll ? "Show less" : `Show ${remaining} more projects`}
-          <span aria-hidden="true">{showAll ? "↑" : "↓"}</span>
-        </button>
-      )}
+      <p className="section-intro">
+        AI tools, document workflows, and data systems. Each case study explains
+        the implementation, its current limits, and the code behind it.
+      </p>
+      <ProjectCards items={projects.filter((p) => p.featured)} />
     </section>
   );
 }

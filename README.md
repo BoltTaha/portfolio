@@ -1,76 +1,66 @@
-# Muhammad Taha — Portfolio
+# Muhammad Taha — portfolio
 
-Personal portfolio for **Muhammad Taha** (operating as **BoltTaha**), a Forward
-Deployed Software Engineer building production AI systems, backend
-infrastructure, and workflow automation.
+The source for [muhammadtaha.app](https://muhammadtaha.app), Muhammad Taha’s portfolio of AI applications, backend services, document-processing tools, and data projects.
 
-**Live:** [muhammadtaha.app](https://muhammadtaha.app)
+The site preserves its warm editorial palette and serif typography. Eight public case studies explain the problem, implementation, result, and limitations of work maintained under [BoltTaha](https://github.com/BoltTaha). Client-work summaries and existing testimonials are presented separately.
 
-## Stack
+## Stack and local setup
 
-- [Next.js 14](https://nextjs.org) (App Router) + TypeScript (strict)
-- [Tailwind CSS](https://tailwindcss.com) with a custom editorial design system
-  (Fraunces / Source Serif 4 / JetBrains Mono via `next/font/google`)
-- [Web3Forms](https://web3forms.com) for the contact form (no backend needed)
-- Deployed on [Vercel](https://vercel.com)
-
-## Project structure
-
-```
-app/
-  page.tsx          Homepage — assembles all sections below
-  about/page.tsx     About page
-  contact/page.tsx   Contact page
-  layout.tsx         Root layout, fonts, metadata, JSON-LD
-  sitemap.ts          Sitemap
-  robots.ts           robots.txt
-components/          One component per section (Hero, ProjectsList, Experience,
-                       StackChips, TrustRow, Testimonials, Nav, Footer, ContactForm/Modal)
-data/                Typed content — edit these to update copy without touching
-                       component code (projects.ts, stack.ts, experience.ts, testimonials.ts)
-design/              Original static HTML mockup, kept for reference
-```
-
-## Getting started
+Next.js 16 App Router, React 19, TypeScript, Tailwind CSS 3, and Node.js 24. Use the locked dependency versions for reproducible installs.
 
 ```bash
-npm install
-cp .env.example .env.local   # then add your Web3Forms access key
+nvm use
+npm ci
+cp .env.example .env.local
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [localhost:3000](http://localhost:3000). Set `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` in `.env.local` to enable the contact form. This is the provider’s public client-side form key, not a server secret. Never put private API credentials into a `NEXT_PUBLIC_` variable. Without a key, the form provides an email fallback.
 
-### Environment variables
+Submissions go directly from the browser to Web3Forms. The form validates required fields, checks both HTTP status and the provider’s success flag, aborts after 15 seconds, retains input on failure, and announces success/error states. Automated tests mock the provider and do not send email. Configure provider-side domain restrictions and spam protection for the deployed form as appropriate to the account.
 
-| Variable | Purpose |
-|---|---|
-| `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` | Public access key from [web3forms.com](https://web3forms.com), used by the contact form. Safe to expose client-side. |
+## Validation
 
-## Scripts
+```bash
+npm run check  # lint, TypeScript, component/content tests, production build
+npm audit
+npm start     # serves the production build after npm run build
+```
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Start the dev server |
-| `npm run build` | Production build |
-| `npm start` | Serve the production build |
-| `npm run lint` | Run ESLint |
+ESLint 9 is retained because the React plugins bundled by the current Next configuration fail under ESLint 10. ESLint 9 is past upstream maintenance; migrate when those plugins support ESLint 10. The application runtime is Next.js 16 / React 19 on Node.js 24.
 
-## Editing content
+The GitHub Actions workflow uses `.nvmrc`, installs with `npm ci`, and runs lint, type checking, tests, a production dependency audit, and the build. `next/font` downloads the configured Google fonts during a fresh build, so that build step requires network access; the generated site self-hosts those fonts.
 
-Project entries, stack chips, experience, and testimonials all live in
-`data/*.ts` as typed arrays — add, remove, or edit an entry there and it
-flows through automatically, no component changes needed.
+## Routes and content
+
+- `/`: introduction, selected work, skills with project evidence, experience, existing testimonials, and FAQ.
+- `/projects`: all public projects plus separate client-work summaries.
+- `/projects/[slug]`: statically generated case studies. Unknown slugs return a missing-page response.
+- `/about`: background, student education, community work, and linked credential records.
+- `/contact`: contact form and verified public profile links.
+- `/sitemap.xml`, `/robots.txt`, `/llms.txt`: discovery files generated from site content.
+- `/opengraph-image`: generated social card using the current portrait.
+
+`data/projects.ts` owns case content, project types, source paths, and repository links. `data/sources.ts` pins the reviewed public commits. `data/site.ts` owns the site URL, identity, public contact links, portrait, and substantive content-update date. `data/faq.ts` owns the visible answers. Update these together when facts change. Review `docs/content-sources.md` before adding new claims.
+
+The portrait is `public/profile.jpeg` (400 × 400, about 27 KB). Next Image provides appropriately sized delivery on the home and About pages. The social card and Person structured data use the same portrait. Do not restore the removed, much larger PNG.
+
+## Search and structured data
+
+Each public page supplies a unique title, description, canonical URL, and social metadata. Case-study text is server rendered; discovering the project list does not require clicking a client-side “show more” button. Structured data describes a Person, WebSite, ProfilePage, and source-backed CreativeWork/SoftwareSourceCode. Education is shown as expected graduation, not `alumniOf`.
+
+The existing allow-all crawler policy is preserved. Search indexing, AI search retrieval, and model training are different purposes; this update adds no new crawler restrictions or permissions. `llms.txt` is an experimental text convention kept aligned with public pages. It is not required by Google and does not guarantee indexing, citations, recommendations, or rankings. The FAQ is visible prose without FAQ rich-result claims or unnecessary FAQ schema.
+
+Implementation references:
+
+- [Next.js 16 upgrade guidance](https://nextjs.org/docs/app/guides/upgrading/version-16)
+- [Next.js ESLint configuration](https://nextjs.org/docs/app/api-reference/config/eslint)
+- [Next.js social image conventions](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image)
+- [Google guidance for AI features and websites](https://developers.google.com/search/docs/appearance/ai-features)
+- [Google ProfilePage structured data](https://developers.google.com/search/docs/appearance/structured-data/profile-page)
 
 ## Deployment
 
-Deployed on Vercel, connected to this repo's `main` branch — every push
-triggers a new deployment. `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` must also be set
-in the Vercel project's Environment Variables for the contact form to work in
-production.
+The existing GitHub/Vercel integration controls deployment. A feature branch and pull request allow review before merging to `main`. Configure the deployment runtime for Node.js 24 and retain the Web3Forms environment variable in the deployment settings. A successful local build is not a production deployment, and a PR preview does not replace checking the production domain after merging.
 
-## Contact
-
-- [muhammadtaha.app/contact](https://muhammadtaha.app/contact)
-- [LinkedIn](https://www.linkedin.com/in/bolttaha/)
-- [Upwork](https://www.upwork.com/freelancers/bolttaha)
+Before merging, inspect the preview at desktop and mobile widths, confirm the portrait and social card, follow project/contact links, and test the contact dialog with Tab and Escape. A real email-delivery check requires submitting a message and confirming receipt in the destination inbox.
