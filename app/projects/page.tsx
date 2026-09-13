@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ProjectCards } from "@/components/ProjectsList";
 import { projects, clientWork } from "@/data/projects";
 import { pageMetadata } from "@/lib/metadata";
@@ -42,6 +43,11 @@ export default function ProjectsPage() {
               <p className="eyebrow">{work.context}</p>
               <h3>{work.title}</h3>
               <p>{work.summary}</p>
+              {"href" in work && work.href ? (
+                <Link className="text-link inline-block mt-4" href={work.href}>
+                  Read professional case study →
+                </Link>
+              ) : null}
             </article>
           ))}
         </div>

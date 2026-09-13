@@ -12,8 +12,8 @@ export default function SignatureStats() {
         <span>linked source repositories</span>
       </p>
       <p>
-        <strong>AI + software</strong>
-        <span>from integration to interface</span>
+        <strong>2</strong>
+        <span>detailed client AI case studies</span>
       </p>
     </div>
   );

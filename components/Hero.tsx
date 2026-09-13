@@ -22,16 +22,16 @@ export default function Hero() {
       </div>
       <h1>
         I’m Muhammad Taha.
-        <br />I build software that makes <em>complex work simpler.</em>
+        <br />I build AI systems that work <em>beyond the demo.</em>
       </h1>
       <p className="hero-description">
-        I build AI applications, backend services, and data pipelines—from tools
-        that query databases to systems that turn documents into usable
-        information.
+        AI engineer in Pakistan building computer vision, OCR, LLM, RAG,
+        backend, and automation systems for real client workflows.
       </p>
       <p className="text-ink-soft max-w-[620px] mb-8">
-        Explore how I approach LLM integration, document processing, and
-        workflow automation through public code and detailed case studies.
+        My work includes a basketball clip finder for made-basket detection, a
+        US document preprocessing pipeline for OCR readiness, and public
+        source-backed projects in LLM tooling and document AI.
       </p>
       <div className="flex flex-wrap gap-3">
         <Link className="button solid" href="/projects">

@@ -2,9 +2,24 @@ export const faqs = [
   {
     question: "What does Muhammad Taha specialize in?",
     answer:
-      "I build AI applications, backend services, and data-processing workflows. My public projects demonstrate LLM tool integration, document conversion, receipt analysis, and distributed data fundamentals. I focus on making these workflows understandable and usable, with clear boundaries around what the software can do.",
+      "Muhammad Taha specializes in practical AI engineering: computer vision, OCR and document preprocessing, LLM applications, RAG, backend systems, and automation. His client work includes basketball made-basket clip detection and a US document preprocessing pipeline for OCR readiness.",
     href: "/about",
     label: "About my work",
+  },
+  {
+    question:
+      "Can Muhammad Taha build computer vision systems for sports video?",
+    answer:
+      "Yes. I built a basketball clip finder for a US sports client that scans game footage, detects made baskets, exports 20-second highlight clips, and includes a dashboard for reviewing false positives from difficult real-game footage.",
+    href: "/client-work/basketball-clip-finder",
+    label: "Basketball computer vision case study",
+  },
+  {
+    question: "Can Muhammad Taha build OCR preprocessing pipelines?",
+    answer:
+      "Yes. I am building a production document-preprocessing pipeline for a US client that prepares Dallas County property-scan TIFFs for OCR by correcting orientation and skew, cleaning artifacts, reducing noise, normalizing illumination, and preserving the source folder structure.",
+    href: "/client-work/document-ocr-preprocessing-pipeline",
+    label: "OCR preprocessing case study",
   },
   {
     question: "Which technologies do you use?",

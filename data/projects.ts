@@ -1,3 +1,4 @@
+import { clientCaseStudies } from "./client-work";
 import { evidence } from "./sources";
 
 type Repo = keyof typeof evidence;
@@ -351,18 +352,12 @@ export const projects: Project[] = [
 
 // Already-public portfolio history; separate from the source-backed case studies.
 export const clientWork = [
-  {
-    title: "Basketball video analysis",
-    context: "Sports analytics client",
-    summary:
-      "Computer-vision and video-processing workflows for detecting and tracking basketball activity.",
-  },
-  {
-    title: "Sales-data assistant",
-    context: "Gohar Textile Mills",
-    summary:
-      "A local retrieval and reporting workflow for exploring sales and production information.",
-  },
+  ...clientCaseStudies.map((study) => ({
+    title: study.shortTitle,
+    context: study.clientContext,
+    summary: study.summary,
+    href: `/client-work/${study.slug}`,
+  })),
   {
     title: "Purchase-order automation",
     context: "Gohar Textile Mills",
@@ -374,12 +369,6 @@ export const clientWork = [
     context: "Gohar Textile Mills",
     summary:
       "Time-series backtesting, model comparison, and a Streamlit dashboard for sales projections.",
-  },
-  {
-    title: "Legal-record OCR",
-    context: "US legal records client",
-    summary:
-      "Document image preprocessing, OCR, and structured data extraction.",
   },
 ];
 

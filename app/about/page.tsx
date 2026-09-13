@@ -7,7 +7,7 @@ import { site } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "About",
-  "Meet Muhammad Taha (BoltTaha), an AI and software engineer and FAST-NUCES computer science student building AI tools, backend services, and data workflows.",
+  "Meet Muhammad Taha (BoltTaha), an AI engineer in Pakistan building computer vision, OCR, LLM, RAG, backend, and automation systems for client workflows.",
   "/about",
 );
 export default function AboutPage() {
@@ -39,9 +39,10 @@ export default function AboutPage() {
           <em>a useful problem.</em>
         </h1>
         <p>
-          I’m Muhammad Taha, an AI and software engineer. I work with Python,
-          language-model APIs, backend services, and data pipelines to turn
-          complex inputs into usable tools.
+          I’m Muhammad Taha, an AI engineer focused on computer vision, OCR, LLM
+          applications, RAG, backend systems, and automation. I build software
+          that works with messy real-world inputs: game footage, scanned
+          documents, databases, and operational workflows.
         </p>
       </header>
       <section className="section pt-0">
@@ -53,10 +54,11 @@ export default function AboutPage() {
             That shapes the data model, the interface, and where AI is useful.
           </p>
           <p>
-            My public work includes a guarded database-analysis service,
-            document-to-LaTeX conversion, conversation-memory experiments, and a
-            receipt-review application. The case studies explain the technical
-            decisions and the limits that matter when using each tool.
+            My professional work includes a basketball made-basket clip finder
+            for a US sports client and a production OCR preprocessing workflow
+            for US records data. My public work includes a guarded
+            database-analysis service, document-to-LaTeX conversion,
+            conversation-memory experiments, and a receipt-review application.
           </p>
           <p>
             My existing professional work history includes automation at Gohar
