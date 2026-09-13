@@ -5,7 +5,7 @@ export default function SignatureStats() {
     <div className="facts-strip" aria-label="Portfolio at a glance">
       <p>
         <strong>{projects.length}</strong>
-        <span>public case studies</span>
+        <span>case studies</span>
       </p>
       <p>
         <strong>{Object.keys(evidence).length}</strong>

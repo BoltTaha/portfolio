@@ -1,33 +1,80 @@
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 import { ProjectCards } from "@/components/ProjectsList";
 import { projects, clientWork } from "@/data/projects";
 import { pageMetadata } from "@/lib/metadata";
+import { site } from "@/data/site";
 export const metadata = pageMetadata(
   "Projects & case studies",
-  "Explore Muhammad Taha’s AI, backend, document-processing, and data-engineering projects with implementation notes and public source code.",
+  "Explore Muhammad Taha’s AI, Graph-RAG, backend, document-processing, computer-vision, and data-engineering projects with implementation notes and evidence links.",
   "/projects",
 );
 export default function ProjectsPage() {
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Muhammad Taha project case studies",
+    itemListElement: projects.map((project, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${site.url}/projects/${project.slug}`,
+      name: project.title,
+      description: project.summary,
+    })),
+  };
   return (
     <main id="main-content" className="page-wrap">
+      <JsonLd data={itemListSchema} />
       <header className="page-intro">
-        <p className="eyebrow">The work / public case studies</p>
+        <p className="eyebrow">The work / curated case studies</p>
         <h1>
           What I built.
           <br />
           <em>How it works.</em>
         </h1>
         <p>
-          Eight case studies across AI applications, backend systems, document
-          processing, and educational data projects. Each one links the
-          explanation to the implementation.
+          Curated case studies across AI applications, Graph-RAG, backend
+          systems, document processing, computer vision, and educational data
+          projects. Each one connects the explanation to implementation evidence
+          or a clear source-status note.
         </p>
       </header>
       <section aria-labelledby="public-projects-title">
         <h2 id="public-projects-title" className="sr-only">
-          Public projects
+          Project case studies
         </h2>
         <ProjectCards items={projects} />
+      </section>
+      <section id="github-coverage" className="section">
+        <p className="eyebrow">GitHub coverage</p>
+        <h2 className="mb-4">Curated, not inflated.</h2>
+        <p className="section-intro">
+          My GitHub account contains a broader mix of portfolio projects,
+          coursework, experiments, and learning repositories. This portfolio
+          highlights the work that best demonstrates AI engineering, backend
+          architecture, document processing, computer vision, and production
+          delivery. Coursework, forks, tutorials, and small experiments are not
+          promoted as client-ready products unless they teach a useful technical
+          idea.
+        </p>
+        <div className="note-grid">
+          <article>
+            <h3>Featured here</h3>
+            <p>
+              Rabt, MCP Data Analyst, QR Payment Verification, SnapTeX, Context
+              Window Compressor, imaging tools, data systems, and client AI case
+              studies.
+            </p>
+          </article>
+          <article>
+            <h3>Available through GitHub</h3>
+            <p>
+              Broader repositories remain linked from GitHub. They support the
+              learning story, but the site keeps the main hiring path focused on
+              stronger, more relevant evidence.
+            </p>
+          </article>
+        </div>
       </section>
       <section id="client-work" className="section">
         <p className="eyebrow">Professional experience</p>

@@ -1,10 +1,10 @@
 import Link from "next/link";
 const groups = [
   {
-    title: "LLM tools & backend",
-    skills: "Python · FastAPI · PostgreSQL · MCP · Chroma · Docker",
-    slug: "mcp-data-analyst",
-    project: "MCP Data Analyst",
+    title: "LLM tools, RAG & context systems",
+    skills: "Python · FastAPI · PostgreSQL · MCP · Graph-RAG · AST parsing",
+    slug: "rabt-codebase-graphrag",
+    project: "Rabt Codebase Graph-RAG",
   },
   {
     title: "Document & image processing",
@@ -38,6 +38,14 @@ export default function StackChips() {
             <Link className="text-link" href={`/projects/${group.slug}`}>
               See {group.project} →
             </Link>
+            {group.title === "LLM tools, RAG & context systems" && (
+              <Link
+                className="text-link block mt-2"
+                href="/projects/mcp-data-analyst"
+              >
+                See MCP Data Analyst →
+              </Link>
+            )}
             {group.title === "Document & image processing" && (
               <Link
                 className="text-link block mt-2"

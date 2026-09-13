@@ -151,6 +151,18 @@
   .example-note p:not(.eyebrow) {
     @apply text-ink-soft mt-4;
   }
+  .note-grid {
+    @apply grid grid-cols-2 max-[820px]:grid-cols-1 gap-5;
+  }
+  .note-grid article {
+    @apply rounded-2xl border border-line-strong bg-card p-6;
+  }
+  .note-grid h3 {
+    @apply font-serif text-2xl font-medium mb-3;
+  }
+  .note-grid p {
+    @apply text-ink-soft;
+  }
   .client-list article,
   .faq-list article {
     @apply py-7 border-t border-line;

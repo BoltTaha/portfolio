@@ -7,10 +7,11 @@ export interface Project {
   title: string;
   category: string;
   summary: string;
-  kind: "Personal project" | "Educational project";
+  kind: "Personal project" | "Educational project" | "Private project";
   status: string;
   stack: string[];
-  repo: Repo;
+  repo?: Repo;
+  sourceNote?: string;
   featured?: boolean;
   problem: string;
   audience: string;
@@ -19,11 +20,49 @@ export interface Project {
   outcome: string;
   limitations: string[];
   nextSteps: string;
-  sourcePaths: string[];
+  sourcePaths?: string[];
   relatedRepos?: Repo[];
 }
 
 export const projects: Project[] = [
+  {
+    slug: "rabt-codebase-graphrag",
+    title: "Rabt Codebase Graph-RAG",
+    category: "LLM infrastructure · code intelligence",
+    summary:
+      "A codebase-context system that uses AST and graph analysis to give LLM workflows smaller, more relevant code context instead of dumping whole repositories into prompts.",
+    kind: "Private project",
+    status: "Implemented private project; public source not currently linked",
+    featured: true,
+    sourceNote:
+      "Rabt is included as a portfolio case study from Muhammad Taha's resume and professional profile details. Its public repository was not available through the connected GitHub check, so this page avoids source-only claims and does not expose private code.",
+    stack: ["Python", "AST parsing", "Graph-RAG", "NetworkX", "LLM context"],
+    problem:
+      "LLM coding assistants often waste context on files and text that are not relevant to the current question. Full-repository prompts are expensive, noisy, and hard to inspect when a task only needs a focused slice of the codebase.",
+    audience:
+      "Developers building code-aware AI tools, repository assistants, and context pipelines for LLM agents.",
+    approach: [
+      "Rabt treats a codebase as a graph of symbols, files, dependencies, and runtime relationships rather than a flat folder of text chunks.",
+      "AST parsing identifies code structure so context can be selected around functions, classes, imports, and call relationships instead of arbitrary text windows.",
+      "Graph-based retrieval builds a smaller context packet for the model, keeping the relevant neighborhood while leaving unrelated files out of the prompt.",
+      "The project demonstrates context engineering discipline: reduce prompt size by choosing better evidence, then make the selected context inspectable before an LLM uses it.",
+    ],
+    features: [
+      "AST-aware codebase parsing",
+      "Graph-based context selection",
+      "Repository-level relationship modeling",
+      "Prompt/context reduction for code-aware LLM workflows",
+    ],
+    outcome:
+      "The project demonstrates an important AI-engineering skill: building retrieval and context systems around the shape of the data. Resume/profile material reports a 99.2% context reduction in a tested workflow; this portfolio presents that as a reported project result, not an independently reproduced benchmark.",
+    limitations: [
+      "The source repository is not currently public through the connected GitHub check, so implementation links are not shown here.",
+      "Context reduction is task-dependent. A smaller prompt is only useful if the selected context still preserves the evidence needed for the coding task.",
+      "Graph construction, symbol resolution, and runtime telemetry need continuous validation across languages and repository styles.",
+    ],
+    nextSteps:
+      "Publish a sanitized technical write-up with diagrams, representative examples, and repeatable benchmark cases if the project can be shared publicly.",
+  },
   {
     slug: "mcp-data-analyst",
     title: "MCP Data Analyst",

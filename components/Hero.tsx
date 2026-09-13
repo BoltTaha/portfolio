@@ -30,8 +30,9 @@ export default function Hero() {
       </p>
       <p className="text-ink-soft max-w-[620px] mb-8">
         My work includes a basketball clip finder for made-basket detection, a
-        US document preprocessing pipeline for OCR readiness, and public
-        source-backed projects in LLM tooling and document AI.
+        US document preprocessing pipeline for OCR readiness, Rabt for codebase
+        Graph-RAG/context optimization, and source-backed projects in LLM
+        tooling and document AI.
       </p>
       <div className="flex flex-wrap gap-3">
         <Link className="button solid" href="/projects">

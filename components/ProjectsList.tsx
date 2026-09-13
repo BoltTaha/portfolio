@@ -30,13 +30,17 @@ export function ProjectCards({ items }: { items: Project[] }) {
             >
               Read case study <span aria-hidden="true">↗</span>
             </Link>
-            <a
-              className="text-link secondary"
-              href={repoUrl(project.repo)}
-              aria-label={`${project.title} source on GitHub`}
-            >
-              Source code
-            </a>
+            {project.repo ? (
+              <a
+                className="text-link secondary"
+                href={repoUrl(project.repo)}
+                aria-label={`${project.title} source on GitHub`}
+              >
+                Source code
+              </a>
+            ) : (
+              <span className="text-ink-soft text-sm">Private source</span>
+            )}
           </div>
         </article>
       ))}
@@ -57,8 +61,9 @@ export default function ProjectsList() {
         </Link>
       </div>
       <p className="section-intro">
-        AI tools, document workflows, and data systems. Each case study explains
-        the implementation, its current limits, and the code behind it.
+        AI tools, code intelligence, document workflows, and data systems. Each
+        case study explains the implementation, its current limits, and the
+        evidence behind it.
       </p>
       <ProjectCards items={projects.filter((p) => p.featured)} />
     </section>

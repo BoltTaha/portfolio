@@ -2,7 +2,7 @@
 
 The source for [muhammadtaha.app](https://muhammadtaha.app), Muhammad Taha’s portfolio of AI applications, backend services, document-processing tools, and data projects.
 
-The site preserves its warm editorial palette and serif typography. Eight public case studies explain the problem, implementation, result, and limitations of work maintained under [BoltTaha](https://github.com/BoltTaha). Client-work summaries and existing testimonials are presented separately.
+The site preserves its warm editorial palette and serif typography. Nine curated case studies explain the problem, implementation, result, and limitations of public-source, educational, and private-source work. Public repository-backed projects link to [BoltTaha](https://github.com/BoltTaha); private-source and client-work summaries are labeled separately.
 
 ## Stack and local setup
 
@@ -41,7 +41,7 @@ The GitHub Actions workflow uses `.nvmrc`, installs with `npm ci`, and runs lint
 - `/sitemap.xml`, `/robots.txt`, `/llms.txt`: discovery files generated from site content.
 - `/opengraph-image`: generated social card using the current portrait.
 
-`data/projects.ts` owns case content, project types, source paths, and repository links. `data/sources.ts` pins the reviewed public commits. `data/site.ts` owns the site URL, identity, public contact links, portrait, and substantive content-update date. `data/faq.ts` owns the visible answers. Update these together when facts change. Review `docs/content-sources.md` before adding new claims.
+`data/projects.ts` owns case content, project types, source paths, repository links, and private-source notes. `data/sources.ts` pins the reviewed public commits. `data/site.ts` owns the site URL, identity, public contact links, portrait, and substantive content-update date. `data/faq.ts` owns the visible answers. Update these together when facts change. Review `docs/content-sources.md` before adding new claims.
 
 The portrait is `public/profile.jpeg` (400 × 400, about 27 KB). Next Image provides appropriately sized delivery on the home and About pages. The social card and Person structured data use the same portrait. Do not restore the removed, much larger PNG.
 

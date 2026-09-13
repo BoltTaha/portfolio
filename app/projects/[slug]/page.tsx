@@ -31,7 +31,7 @@ export default async function ProjectPage({ params }: Props) {
     about: {
       "@type": "SoftwareSourceCode",
       name: project.title,
-      codeRepository: repoUrl(project.repo),
+      ...(project.repo ? { codeRepository: repoUrl(project.repo) } : {}),
       description: project.summary,
       runtimePlatform: project.stack.join(", "),
       maintainer: { "@id": `${site.url}/#person` },
@@ -55,12 +55,20 @@ export default async function ProjectPage({ params }: Props) {
           ))}
         </div>
         <div className="flex flex-wrap gap-3 mt-8">
-          <a className="button solid" href={repoUrl(project.repo)}>
-            View repository ↗
-          </a>
-          <a className="button" href={sourceUrl(project.repo)}>
-            Read the documentation
-          </a>
+          {project.repo ? (
+            <>
+              <a className="button solid" href={repoUrl(project.repo)}>
+                View repository ↗
+              </a>
+              <a className="button" href={sourceUrl(project.repo)}>
+                Read the documentation
+              </a>
+            </>
+          ) : (
+            <Link className="button solid" href="/contact">
+              Discuss a similar system
+            </Link>
+          )}
         </div>
       </header>
       <dl className="case-facts">
@@ -75,11 +83,18 @@ export default async function ProjectPage({ params }: Props) {
         <div>
           <dt>My role</dt>
           <dd>
-            Project maintained under{" "}
-            <a className="text-link" href={site.github}>
-              BoltTaha
-            </a>
-            . The repository records the contribution history.
+            {project.repo ? (
+              <>
+                Project maintained under{" "}
+                <a className="text-link" href={site.github}>
+                  BoltTaha
+                </a>
+                . The repository records the contribution history.
+              </>
+            ) : (
+              (project.sourceNote ??
+              "Private project summary. Public source is not currently linked.")
+            )}
           </dd>
         </div>
       </dl>
@@ -119,27 +134,35 @@ export default async function ProjectPage({ params }: Props) {
           <p>{project.nextSteps}</p>
         </section>
         <section>
-          <p className="eyebrow">04 / Explore the source</p>
-          <h2>Read the implementation.</h2>
-          <p>
-            These links preserve the code revision reviewed for this case study.
-            The repository may have changed since then.
-          </p>
-          <ul className="source-list">
-            <li>
-              <a href={sourceUrl(project.repo)}>Project README ↗</a>
-            </li>
-            {project.sourcePaths.map((path) => (
-              <li key={path}>
-                <a href={sourceUrl(project.repo, path)}>{path} ↗</a>
-              </li>
-            ))}
-            {project.relatedRepos?.map((repo) => (
-              <li key={repo}>
-                <a href={sourceUrl(repo)}>{repo} — related repository ↗</a>
-              </li>
-            ))}
-          </ul>
+          <p className="eyebrow">04 / Evidence</p>
+          <h2>
+            {project.repo ? "Read the implementation." : "What can be shared."}
+          </h2>
+          {project.repo ? (
+            <>
+              <p>
+                These links preserve the code revision reviewed for this case
+                study. The repository may have changed since then.
+              </p>
+              <ul className="source-list">
+                <li>
+                  <a href={sourceUrl(project.repo)}>Project README ↗</a>
+                </li>
+                {project.sourcePaths?.map((path) => (
+                  <li key={path}>
+                    <a href={sourceUrl(project.repo!, path)}>{path} ↗</a>
+                  </li>
+                ))}
+                {project.relatedRepos?.map((repo) => (
+                  <li key={repo}>
+                    <a href={sourceUrl(repo)}>{repo} — related repository ↗</a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <p>{project.sourceNote}</p>
+          )}
         </section>
       </div>
       <aside className="case-cta">

@@ -57,8 +57,9 @@ export default function AboutPage() {
             My professional work includes a basketball made-basket clip finder
             for a US sports client and a production OCR preprocessing workflow
             for US records data. My public work includes a guarded
-            database-analysis service, document-to-LaTeX conversion,
-            conversation-memory experiments, and a receipt-review application.
+            database-analysis service, Rabt for codebase Graph-RAG/context
+            optimization, document-to-LaTeX conversion, conversation-memory
+            experiments, and a receipt-review application.
           </p>
           <p>
             My existing professional work history includes automation at Gohar

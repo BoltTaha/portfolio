@@ -17,9 +17,13 @@ describe("public discovery contract", () => {
         pageMetadata(project.title, project.summary, path).alternates
           ?.canonical,
       ).toBe(path);
-      expect(sourceUrl(project.repo)).toContain(
-        `/blob/${evidence[project.repo]}/README.md`,
-      );
+      if (project.repo) {
+        expect(sourceUrl(project.repo)).toContain(
+          `/blob/${evidence[project.repo]}/README.md`,
+        );
+      } else {
+        expect(project.sourceNote).toBeTruthy();
+      }
     }
     expect(getProject("does-not-exist")).toBeUndefined();
   });
