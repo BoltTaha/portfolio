@@ -32,6 +32,9 @@ export default function Testimonials() {
               {t.source}
               {t.date && <> · {t.date}</>}
             </div>
+            {t.context && (
+              <p className="mt-3 text-sm text-ink-soft">{t.context}</p>
+            )}
           </div>
         ))}
       </div>

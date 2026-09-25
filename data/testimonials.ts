@@ -4,9 +4,18 @@ export interface Testimonial {
   source: string;
   author?: string;
   date?: string;
+  context?: string;
 }
 
 export const testimonials: Testimonial[] = [
+  {
+    quote:
+      "Outstanding work! Clean code, great communication, and delivered everything on time. Went above and beyond expectations. It was a pleasure working with M. Taha, and I'd gladly work with him again. Highly recommended!",
+    rating: 5,
+    source: "Upwork",
+    context:
+      "Endorsed skills: Retrieval Augmented Generation, Generative AI Software, LLM Prompt Engineering, AI Agent Development",
+  },
   {
     quote:
       "Would always be willing to hire this freelancer. He is so great, quick and hard working.",
