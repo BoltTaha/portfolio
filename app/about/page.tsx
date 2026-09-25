@@ -59,7 +59,7 @@ export default function AboutPage() {
             for a US sports client and a production OCR preprocessing workflow
             for US records data. My public work includes a guarded
             database-analysis service, a local document de-identification
-            prototype, Rabt for codebase Graph-RAG/context optimization,
+            system, Rabt for codebase Graph-RAG/context optimization,
             document-to-LaTeX conversion, conversation-memory experiments, and a
             receipt-review application.
           </p>

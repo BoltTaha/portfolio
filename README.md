@@ -2,7 +2,7 @@
 
 The source for [muhammadtaha.app](https://muhammadtaha.app), Muhammad Taha’s portfolio of AI applications, backend services, document-processing tools, and data projects.
 
-The site preserves its warm editorial palette and serif typography. Ten curated case studies explain the problem, implementation, result, and limitations of public-source, educational, and private-source work, including a local document de-identification prototype. Public repository-backed projects link to [BoltTaha](https://github.com/BoltTaha); private-source and client-work summaries are labeled separately.
+The site preserves its warm editorial palette and serif typography. Ten curated case studies explain the problem, implementation, result, and limitations of public-source, educational, and private-source work, including a local document de-identification system. Public repository-backed projects link to [BoltTaha](https://github.com/BoltTaha); private-source and client-work summaries are labeled separately.
 
 ## Stack and local setup
 

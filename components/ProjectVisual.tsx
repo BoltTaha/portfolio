@@ -4,7 +4,7 @@ export default function ProjectVisual({ slug }: { slug: string }) {
   if (slug === "local-document-deid") {
     return (
       <aside className="example-note">
-        <p className="eyebrow">Prototype workflow</p>
+        <p className="eyebrow">Review workflow</p>
         <h2>Local review before approved export.</h2>
         <p>
           The demo pack uses synthetic files to show the privacy workflow: local
@@ -15,7 +15,7 @@ export default function ProjectVisual({ slug }: { slug: string }) {
           {[
             {
               src: "local-application.png",
-              alt: "Local De-ID prototype application running in a browser",
+              alt: "Local De-ID application running in a browser",
               caption: "Local application",
             },
             {

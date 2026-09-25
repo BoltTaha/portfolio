@@ -2,7 +2,7 @@ export const faqs = [
   {
     question: "What does Muhammad Taha specialize in?",
     answer:
-      "Muhammad Taha specializes in practical AI engineering: computer vision, OCR and document preprocessing, local de-identification workflows, LLM applications, RAG, backend systems, and automation. His work includes basketball made-basket clip detection, a US document preprocessing pipeline for OCR readiness, and a local document de-identification prototype.",
+      "Muhammad Taha specializes in practical AI engineering: computer vision, OCR and document preprocessing, local de-identification workflows, LLM applications, RAG, backend systems, and automation. His work includes basketball made-basket clip detection, a US document preprocessing pipeline for OCR readiness, and a local document de-identification system.",
     href: "/about",
     label: "About my work",
   },
@@ -25,7 +25,7 @@ export const faqs = [
     question:
       "Can Muhammad Taha build document privacy or de-identification workflows?",
     answer:
-      "Yes. I built a local document de-identification prototype that processes Word/PDF text locally, supports PDF/OCR review, uses rule and dictionary detection, requires human approval, and exports a new text-only DOCX with verification checks. It is presented honestly as a prototype, not a legal anonymisation guarantee.",
+      "Yes. I built a local document de-identification system that processes Word/PDF text locally, supports PDF/OCR review, uses rule and dictionary detection, requires human approval, and exports a new text-only DOCX with verification checks. It is presented honestly as a technical case study, not a legal anonymisation guarantee.",
     href: "/projects/local-document-deid",
     label: "Document de-identification case study",
   },

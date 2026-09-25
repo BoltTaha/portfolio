@@ -10,13 +10,13 @@ I build AI applications, backend services, and data workflows with Python, JavaS
 
 - **[MCP Data Analyst](https://github.com/BoltTaha/mcp-data-analyst)** — PostgreSQL analysis through MCP tools and REST endpoints, with SQL validation, read-only execution, computed statistics, and charts. Python, FastAPI, PostgreSQL, Chroma, Docker.
 - **[QR Payment Verification](https://github.com/BoltTaha/qr-payment-verification-system)** — Receipt extraction, duplicate checks, weighted risk signals, and a React admin review workflow. Express, MongoDB, Gemini. Receipt analysis supports human review; it does not establish bank settlement.
-- **[Context Window Compressor](https://github.com/BoltTaha/Context-Window-Compressor)** — A Gradio prototype for tiered conversation summaries, fact extraction, and context rebuilding. Compression is lossy and memory is in process.
+- **[Context Window Compressor](https://github.com/BoltTaha/Context-Window-Compressor)** — A Gradio application for tiered conversation summaries, fact extraction, and context rebuilding. Compression is lossy and memory is in process.
 - **[SnapTeX](https://github.com/BoltTaha/SnapTeX)** — Document images and PDFs to editable LaTeX, with concurrent page processing and optional PDF compilation. Python, Streamlit, Gemini, Poppler, LaTeX.
 - **[Automated Color Grading](https://github.com/BoltTaha/automated-color-grading)** — A deterministic, reference-based LAB color-transfer pipeline using OpenCV and NumPy, with committed example images.
 
 ## Educational projects
 
-- [Crisis Intelligence](https://github.com/BoltTaha/crisis-intelligence-decision-support): text classification and heuristic search experiments using Flask, scikit-learn, and TensorFlow. An educational prototype, not a validated emergency-response system.
+- [Crisis Intelligence](https://github.com/BoltTaha/crisis-intelligence-decision-support): text classification and heuristic search experiments using Flask, scikit-learn, and TensorFlow. An educational project, not a validated emergency-response system.
 - [Eventora Planner](https://github.com/BoltTaha/eventora-planner): Flutter HCI coursework combining event management, Firebase, and Gemini-assisted event entry.
 - [Hadoop cluster labs](https://github.com/BoltTaha/hadoop-aws-distributed-cluster), [Spark RDD exploration](https://github.com/BoltTaha/hadoop-spark-rdd-exploration), and [satellite telemetry analytics](https://github.com/BoltTaha/satellite-telemetry-hadoop-analytics): setup, distributed-processing exercises, and benchmark scripts.
 

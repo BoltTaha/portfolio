@@ -59,7 +59,7 @@ The rate limiter and retry path handle some API failures, but cannot eliminate p
 - In-process memory is lost on restart; durable cross-session storage is not implemented.
 - Repeated compression can accumulate information loss.
 - Character-based token estimates can differ from the model’s actual token usage.
-- The prototype sends conversation material to Gemini. Use only content appropriate for that service and deployment.
+- The application sends conversation material to Gemini. Use only content appropriate for that service and deployment.
 - A recall benchmark, model-specific token accounting, durable storage, and provider adapters would make useful next steps.
 
 ## Project context

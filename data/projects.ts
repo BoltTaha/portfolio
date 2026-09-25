@@ -27,23 +27,23 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "local-document-deid",
-    title: "Local Document De-ID Prototype",
+    title: "Local Document De-ID",
     category: "Document AI · privacy workflow",
     summary:
-      "A local Ubuntu prototype for reviewing, pseudonymising, and exporting sensitive Word/PDF text before external AI use, with mandatory human approval and verification checks.",
+      "A local Ubuntu system for reviewing, pseudonymising, and exporting sensitive Word/PDF text before external AI use, with mandatory human approval and verification checks.",
     kind: "Private project",
     status:
-      "Working prototype built from a real de-identification problem; not a paid client delivery",
+      "Working system built from a real de-identification problem; not a paid client delivery",
     featured: true,
     sourceNote:
-      "This case study is based on a local private prototype and synthetic demo pack. It was built for a real document de-identification problem, but the client did not purchase or receive it. The page avoids exposing private source files or client material.",
+      "This case study is based on a local private implementation and synthetic demo pack. It was built for a real document de-identification problem, but the client did not purchase or receive it. The page avoids exposing private source files or client material.",
     stack: ["Python", "DOCX", "PDF/OCR", "Tesseract", "Poppler", "Local UI"],
     problem:
       "Teams that want to use external AI on documents can accidentally expose personal names, emails, phone numbers, IDs, dates, payment details, hidden Word text, PDF text, OCR output, or document metadata. A safe workflow needs more than a regex pass: it needs local processing, review, export controls, and honest limits.",
     audience:
       "Operators and teams preparing sensitive Word or PDF text for later analysis while keeping the review workflow local and human-controlled.",
     approach: [
-      "The prototype processes files locally on Ubuntu and reconstructs supported inputs into new text-only DOCX outputs instead of copying source packages or original PDF drawing/image data.",
+      "The system processes files locally on Ubuntu and reconstructs supported inputs into new text-only DOCX outputs instead of copying source packages or original PDF drawing/image data.",
       "DOCX handling reads body text, tables, headers, footers, footnotes, endnotes, hidden text, and split runs while discarding comments, deleted revisions, source metadata, custom XML, thumbnails, relationships, and unsupported active content.",
       "PDF handling uses local Poppler extraction for text PDFs and local Tesseract OCR for scanned or mixed PDFs. OCR output enters the same review flow, while original image pixels are not copied into the export.",
       "Detection combines rules, validation checks, dictionaries, consistent within-document tokens, manual redaction, correction of false positives, mandatory review, approved export, manifesting, output rescans, and package whitelist checks.",
@@ -58,7 +58,7 @@ export const projects: Project[] = [
       "41 passing automated tests plus validation and benchmark artifacts",
     ],
     outcome:
-      "The prototype demonstrates a practical privacy-first document workflow: local extraction, review, pseudonymisation, manual correction, export, and independent checks. The validation record reports 41 passing automated tests, browser checks for review/export flows, wheel build/install smoke tests, and synthetic benchmark runs. These are prototype results on synthetic fixtures, not a production compliance claim.",
+      "The system demonstrates a practical privacy-first document workflow: local extraction, review, pseudonymisation, manual correction, export, and independent checks. The validation record reports 41 passing automated tests, browser checks for review/export flows, wheel build/install smoke tests, and synthetic benchmark runs. These are test results on synthetic fixtures, not a production compliance claim.",
     limitations: [
       "It does not guarantee anonymisation, legal compliance, forensic erasure, or complete detection of every identifier.",
       "The tested default uses rules and synthetic dictionaries; no statistical NER model was installed or benchmarked.",
@@ -67,7 +67,7 @@ export const projects: Project[] = [
       "Parser sandboxing, production retention controls, operator identity, multilingual evaluation, and adversarial re-identification testing remain future work.",
     ],
     nextSteps:
-      "Turn the prototype into a production-grade product by scoping real supported formats, adding representative acceptance tests, installing and calibrating a local NER model, hardening parser isolation, and defining retention and operator controls.",
+      "Turn the system into a production-grade product by scoping real supported formats, adding representative acceptance tests, installing and calibrating a local NER model, hardening parser isolation, and defining retention and operator controls.",
   },
   {
     slug: "rabt-codebase-graphrag",
@@ -196,7 +196,7 @@ export const projects: Project[] = [
     summary:
       "An experimental conversation-memory system that retains recent messages, compresses older exchanges, and rebuilds a bounded prompt context.",
     kind: "Personal project",
-    status: "Working experimental prototype",
+    status: "Working experimental system",
     featured: true,
     repo: "Context-Window-Compressor",
     stack: ["Python", "Gemini", "Gradio"],
@@ -350,7 +350,7 @@ export const projects: Project[] = [
     summary:
       "An educational text-classification and search application exploring crisis-message categories and heuristic resource-allocation strategies.",
     kind: "Educational project",
-    status: "Implemented coursework prototype",
+    status: "Implemented coursework project",
     repo: "crisis-intelligence-decision-support",
     stack: ["Python", "Flask", "scikit-learn", "TensorFlow", "TF-IDF"],
     problem:
@@ -374,7 +374,7 @@ export const projects: Project[] = [
     limitations: [
       "Class imbalance and weak minority-class recall limit how headline accuracy should be interpreted.",
       "Resource-allocation scores are heuristic and not operational evidence for emergency decisions.",
-      "This is an educational prototype, not a validated emergency-response system.",
+      "This is an educational project, not a validated emergency-response system.",
     ],
     nextSteps:
       "Evaluate per-class recall, improve imbalance handling, and validate the task with domain expertise before operational use.",

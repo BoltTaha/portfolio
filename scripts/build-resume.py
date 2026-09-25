@@ -186,7 +186,7 @@ story.append(
 )
 story.append(
     Paragraph(
-        "Recent work includes a basketball made-basket clip finder for a US sports client, a document preprocessing pipeline for scanned county records, a local document de-identification prototype, LLM/RAG systems, guarded data-analysis tools, and full-stack review workflows.",
+        "Recent work includes a basketball made-basket clip finder for a US sports client, a document preprocessing pipeline for scanned county records, a local document de-identification system, LLM/RAG systems, guarded data-analysis tools, and full-stack review workflows.",
         styles["Body"],
     )
 )
@@ -247,7 +247,7 @@ story += project(
     ],
 )
 story += project(
-    "Local Document De-ID Prototype",
+    "Local Document De-ID",
     "Python, DOCX/PDF, Tesseract, Poppler",
     [
         "Built a local review workflow for sensitive Word/PDF text with rule-based detection, manual redaction, mandatory approval, verified DOCX export, and loopback-only UI boundaries.",

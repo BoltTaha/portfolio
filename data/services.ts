@@ -50,7 +50,7 @@ export const services: ServiceOffer[] = [
         href: projectHref("automated-color-grading"),
       },
       {
-        label: "Crisis Intelligence ML prototype",
+        label: "Crisis Intelligence ML project",
         href: projectHref("crisis-intelligence"),
       },
     ],
@@ -92,7 +92,7 @@ export const services: ServiceOffer[] = [
         href: clientHref("document-ocr-preprocessing-pipeline"),
       },
       {
-        label: "Local Document De-ID Prototype",
+        label: "Local Document De-ID",
         href: projectHref("local-document-deid"),
       },
       { label: "SnapTeX document conversion", href: projectHref("snaptex") },
@@ -169,7 +169,7 @@ export const services: ServiceOffer[] = [
     whoItHelps:
       "Teams that want an AI workflow to operate across APIs, files, databases, dashboards, or internal tools with clear safety boundaries.",
     problems: [
-      "Your agent prototype works in a demo but fails on messy real inputs.",
+      "Your agent works in a demo but fails on messy real inputs.",
       "You need validation, retries, logs, approval steps, and fallback behavior.",
       "You need an AI workflow integrated into an existing backend or operations process.",
     ],
@@ -186,7 +186,7 @@ export const services: ServiceOffer[] = [
         href: projectHref("qr-payment-verification"),
       },
       {
-        label: "Local Document De-ID Prototype",
+        label: "Local Document De-ID",
         href: projectHref("local-document-deid"),
       },
     ],
@@ -241,12 +241,12 @@ export const services: ServiceOffer[] = [
   },
   {
     slug: "local-document-deidentification",
-    title: "Local Document De-Identification Prototype Developer",
+    title: "Local Document De-Identification Developer",
     shortTitle: "Document De-ID",
     searchIntent:
       "Hire a developer for local document de-identification, human review, PDF/DOCX processing, and privacy-first document workflows.",
     metaDescription:
-      "Hire Muhammad Taha for local document de-identification prototypes, PDF/DOCX processing, Tesseract, Poppler, rule-based detection, human review, and verified export.",
+      "Hire Muhammad Taha for local document de-identification systems, PDF/DOCX processing, Tesseract, Poppler, rule-based detection, human review, and verified export.",
     directAnswer:
       "Muhammad Taha builds local document de-identification and privacy-review workflows that process sensitive text locally, require human approval, and export reviewed documents with clear limits.",
     whoItHelps:
@@ -257,14 +257,14 @@ export const services: ServiceOffer[] = [
       "You need honest scope, visible limitations, and local processing boundaries rather than compliance promises.",
     ],
     deliverables: [
-      "Local prototype for DOCX/PDF text extraction and review",
+      "Local system for DOCX/PDF text extraction and review",
       "Rule and dictionary detection with manual redaction and correction",
       "Human approval gate, manifesting, and verified DOCX export",
       "Security and threat-model documentation for the next production phase",
     ],
     proof: [
       {
-        label: "Local Document De-ID Prototype",
+        label: "Local Document De-ID",
         href: projectHref("local-document-deid"),
       },
       {
@@ -277,7 +277,7 @@ export const services: ServiceOffer[] = [
     keywords: [
       "document de-identification developer",
       "document privacy workflow",
-      "PDF redaction prototype",
+      "PDF redaction workflow",
       "local document AI",
       "pseudonymisation tool",
     ],
