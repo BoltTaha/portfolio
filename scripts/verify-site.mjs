@@ -86,6 +86,12 @@ const missing = await fetch(`${base}/projects/does-not-exist`);
 assert.equal(missing.status, 404);
 assert.equal((await fetch(`${base}/does-not-exist`)).status, 404);
 assert.equal((await fetch(`${base}/profile.jpeg`)).status, 200);
+const favicon = await fetch(`${base}/favicon.ico`);
+assert.equal(favicon.status, 200);
+assert.ok(favicon.headers.get("content-type")?.includes("image"));
+const icon = await fetch(`${base}/icon.png`);
+assert.equal(icon.status, 200);
+assert.ok(icon.headers.get("content-type")?.includes("image/png"));
 const resume = await fetch(`${base}/resume.pdf`);
 assert.equal(resume.status, 200);
 assert.ok(resume.headers.get("content-type")?.includes("application/pdf"));
@@ -101,5 +107,5 @@ for (const url of urls.filter((url) => url.includes("/projects/")))
 for (const url of urls.filter((url) => url.includes("/client-work/")))
   assert.ok(llms.includes(url));
 console.log(
-  "PASS all internal links and anchors, 404 responses, resume PDF, portrait, social image, robots, llms.txt",
+  "PASS all internal links and anchors, 404 responses, icons, resume PDF, portrait, social image, robots, llms.txt",
 );

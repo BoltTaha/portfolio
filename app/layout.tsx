@@ -10,6 +10,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "512x512" }],
+  },
   robots: {
     index: true,
     follow: true,

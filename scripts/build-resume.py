@@ -167,7 +167,7 @@ doc.addPageTemplates([PageTemplate(id="normal", frames=[frame])])
 story = [
     Paragraph("Muhammad Taha", styles["Name"]),
     Paragraph(
-        "AI Engineer | Computer Vision, OCR, LLM/RAG, Backend Automation<br/>"
+        "AI Engineer | Computer Vision, Document AI, LLM/RAG Systems<br/>"
         '<link href="mailto:bolt.taha.work@gmail.com">bolt.taha.work@gmail.com</link> | '
         '<link href="https://www.linkedin.com/in/bolttaha/">linkedin.com/in/bolttaha</link> | '
         '<link href="https://github.com/BoltTaha">github.com/BoltTaha</link> | '
@@ -180,7 +180,7 @@ story = [
 story += section("Summary")
 story.append(
     Paragraph(
-        "AI engineer building production-oriented systems for video understanding, document processing, LLM workflows, and backend automation. I focus on the engineering that makes AI useful after the demo: data quality, evaluation, failure modes, interfaces, deployment, logging, and repeatable operations.",
+        "AI engineer building production-oriented systems for video understanding, document AI, LLM workflows, and production software. I focus on the engineering that makes AI useful after the demo: data quality, evaluation, failure modes, interfaces, deployment, logging, and repeatable operations.",
         styles["Body"],
     )
 )
@@ -203,7 +203,7 @@ story += role(
     ],
 )
 story += role(
-    "Document OCR Preprocessing Pipeline - Client AI Engineer",
+    "Document Preprocessing Pipeline - Client AI Engineer",
     "US records-processing environment | Active client work",
     [
         "Built a Python/OpenCV preprocessing pipeline for scanned county property records, preserving Year/Month/Date folder structure and multi-page TIFF page order.",
@@ -248,7 +248,7 @@ story += project(
 )
 story += project(
     "Local Document De-ID Prototype",
-    "Python, DOCX/PDF, OCR, Tesseract, Poppler",
+    "Python, DOCX/PDF, Tesseract, Poppler",
     [
         "Built a local review workflow for sensitive Word/PDF text with rule-based detection, manual redaction, mandatory approval, verified DOCX export, and loopback-only UI boundaries.",
     ],
@@ -257,7 +257,7 @@ story += project(
     "QR Payment Verification",
     "React, Express, MongoDB, Gemini Vision",
     [
-        "Built a receipt-review workflow with OCR extraction, duplicate detection, weighted risk signals, async upload status, and an admin review interface.",
+        "Built a receipt-review workflow with text extraction, duplicate detection, weighted risk signals, async upload status, and an admin review interface.",
     ],
 )
 
@@ -273,7 +273,7 @@ story += role(
 story += section("Core Skills")
 story.append(
     Paragraph(
-        "<b>AI engineering:</b> computer vision, OCR/document AI, document privacy workflows, LLM applications, RAG, MCP integrations, prompt engineering, evaluation, failure analysis, and human-in-the-loop workflows.",
+        "<b>AI engineering:</b> computer vision, document AI, document privacy workflows, LLM applications, RAG, MCP integrations, prompt engineering, evaluation, failure analysis, and human-in-the-loop workflows.",
         styles["Small"],
     )
 )
@@ -285,7 +285,7 @@ story.append(
 )
 story.append(
     Paragraph(
-        "<b>Computer vision:</b> OpenCV, YOLOv8, EfficientNet, image preprocessing, object detection, video analysis, OCR readiness, perceptual hashing, and risk scoring.",
+        "<b>Computer vision:</b> OpenCV, YOLOv8, EfficientNet, image preprocessing, object detection, video analysis, document readiness, perceptual hashing, and risk scoring.",
         styles["Small"],
     )
 )

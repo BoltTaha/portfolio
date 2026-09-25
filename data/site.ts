@@ -4,7 +4,7 @@ export const site = {
   handle: "BoltTaha",
   role: "AI & Software Engineer",
   description:
-    "Muhammad Taha (BoltTaha) builds computer vision, OCR, document privacy, LLM, RAG, backend, and automation systems for real client workflows.",
+    "Muhammad Taha (BoltTaha) builds computer vision, document AI, local document privacy, LLM, RAG, backend, and automation systems for real client workflows.",
   email: "bolt.taha.work@gmail.com",
   image: "/profile.jpeg",
   github: "https://github.com/BoltTaha",

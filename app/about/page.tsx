@@ -7,7 +7,7 @@ import { site } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "About",
-  "Meet Muhammad Taha (BoltTaha), an AI engineer building computer vision, OCR, document privacy, LLM, RAG, backend, and automation systems for client workflows.",
+  "Meet Muhammad Taha (BoltTaha), an AI engineer building computer vision, document AI, document privacy, LLM, RAG, backend, and automation systems for client workflows.",
   "/about",
 );
 export default function AboutPage() {
@@ -39,11 +39,11 @@ export default function AboutPage() {
           <em>a useful problem.</em>
         </h1>
         <p>
-          I’m Muhammad Taha, an AI engineer focused on computer vision, OCR,
-          document privacy workflows, LLM applications, RAG, backend systems,
-          and automation. I build software that works with messy real-world
-          inputs: game footage, scanned documents, databases, and operational
-          workflows.
+          I’m Muhammad Taha, an AI engineer focused on computer vision, document
+          AI, document privacy workflows, LLM applications, RAG, backend
+          systems, and automation. I build software that works with messy
+          real-world inputs: game footage, scanned documents, databases, and
+          operational workflows.
         </p>
       </header>
       <section className="section pt-0">
