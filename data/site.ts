@@ -9,6 +9,6 @@ export const site = {
   image: "/profile.jpeg",
   github: "https://github.com/BoltTaha",
   linkedin: "https://www.linkedin.com/in/bolttaha/",
-  upwork: "https://www.upwork.com/freelancers/bolttaha",
+  upwork: "https://www.upwork.com/freelancers/~01841c07c5ecaeebaf",
   updated: "2026-09-26",
 } as const;
