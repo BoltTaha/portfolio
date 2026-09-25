@@ -1,6 +1,57 @@
 import Image from "next/image";
 import { sourceUrl } from "@/data/projects";
 export default function ProjectVisual({ slug }: { slug: string }) {
+  if (slug === "local-document-deid") {
+    return (
+      <aside className="example-note">
+        <p className="eyebrow">Prototype workflow</p>
+        <h2>Local review before approved export.</h2>
+        <p>
+          The demo pack uses synthetic files to show the privacy workflow: local
+          upload, extracted source text, human review, manual correction, and
+          approved DOCX export. These screenshots do not contain client data.
+        </p>
+        <div className="grid grid-cols-2 max-[600px]:grid-cols-1 gap-5 mt-6">
+          {[
+            {
+              src: "local-application.png",
+              alt: "Local De-ID prototype application running in a browser",
+              caption: "Local application",
+            },
+            {
+              src: "extracted-source.png",
+              alt: "Extracted source text preview for review",
+              caption: "Extracted source",
+            },
+            {
+              src: "human-review.png",
+              alt: "Human review screen with redaction decisions",
+              caption: "Human review",
+            },
+            {
+              src: "approved-export.png",
+              alt: "Approved export screen after review attestation",
+              caption: "Approved export",
+            },
+          ].map((item) => (
+            <figure key={item.src}>
+              <Image
+                src={`/projects/local-deid/${item.src}`}
+                alt={item.alt}
+                width={624}
+                height={544}
+                sizes="(max-width:600px) 85vw, 420px"
+                className="rounded-lg w-full h-auto border border-line"
+              />
+              <figcaption className="font-mono text-xs text-ink-soft mt-3">
+                {item.caption}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </aside>
+    );
+  }
   if (slug !== "automated-color-grading") return null;
   return (
     <aside className="example-note">

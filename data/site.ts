@@ -4,11 +4,11 @@ export const site = {
   handle: "BoltTaha",
   role: "AI & Software Engineer",
   description:
-    "Muhammad Taha (BoltTaha) builds computer vision, OCR, LLM, RAG, backend, and automation systems for real client workflows.",
-  email: "contact@muhammadtaha.app",
+    "Muhammad Taha (BoltTaha) builds computer vision, OCR, document privacy, LLM, RAG, backend, and automation systems for real client workflows.",
+  email: "bolt.taha.work@gmail.com",
   image: "/profile.jpeg",
   github: "https://github.com/BoltTaha",
   linkedin: "https://www.linkedin.com/in/bolttaha/",
   upwork: "https://www.upwork.com/freelancers/bolttaha",
-  updated: "2026-09-13",
+  updated: "2026-09-26",
 } as const;

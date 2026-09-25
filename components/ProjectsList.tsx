@@ -53,7 +53,7 @@ export default function ProjectsList() {
     <section id="work" className="section">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">Selected public work</p>
+          <p className="eyebrow">Selected case studies</p>
           <h2>From a problem to a working system.</h2>
         </div>
         <Link href="/projects" className="text-link">

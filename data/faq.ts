@@ -2,7 +2,7 @@ export const faqs = [
   {
     question: "What does Muhammad Taha specialize in?",
     answer:
-      "Muhammad Taha specializes in practical AI engineering: computer vision, OCR and document preprocessing, LLM applications, RAG, backend systems, and automation. His client work includes basketball made-basket clip detection and a US document preprocessing pipeline for OCR readiness.",
+      "Muhammad Taha specializes in practical AI engineering: computer vision, OCR and document preprocessing, local de-identification workflows, LLM applications, RAG, backend systems, and automation. His work includes basketball made-basket clip detection, a US document preprocessing pipeline for OCR readiness, and a local document de-identification prototype.",
     href: "/about",
     label: "About my work",
   },
@@ -20,6 +20,14 @@ export const faqs = [
       "Yes. I am building a production document-preprocessing pipeline for a US client that prepares Dallas County property-scan TIFFs for OCR by correcting orientation and skew, cleaning artifacts, reducing noise, normalizing illumination, and preserving the source folder structure.",
     href: "/client-work/document-ocr-preprocessing-pipeline",
     label: "OCR preprocessing case study",
+  },
+  {
+    question:
+      "Can Muhammad Taha build document privacy or de-identification workflows?",
+    answer:
+      "Yes. I built a local document de-identification prototype that processes Word/PDF text locally, supports PDF/OCR review, uses rule and dictionary detection, requires human approval, and exports a new text-only DOCX with verification checks. It is presented honestly as a prototype, not a legal anonymisation guarantee.",
+    href: "/projects/local-document-deid",
+    label: "Document de-identification case study",
   },
   {
     question: "What is Rabt, and what does it demonstrate?",
@@ -59,7 +67,7 @@ export const faqs = [
   {
     question: "How can I contact you about a role or project?",
     answer:
-      "Email contact@muhammadtaha.app or use the contact form. Include the problem, the kind of help you need, and any useful context about your team or role. You can also find my existing LinkedIn and Upwork profiles on the contact page.",
+      "Email bolt.taha.work@gmail.com or use the contact form. Include the problem, the kind of help you need, and any useful context about your team or role. You can also find my existing LinkedIn and Upwork profiles on the contact page.",
     href: "/contact",
     label: "Get in touch",
   },

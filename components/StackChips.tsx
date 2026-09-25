@@ -8,7 +8,7 @@ const groups = [
   },
   {
     title: "Document & image processing",
-    skills: "Gemini · Streamlit · LaTeX · OpenCV · NumPy",
+    skills: "OCR · DOCX/PDF · Tesseract · Poppler · OpenCV · Gemini",
     slug: "snaptex",
     project: "SnapTeX",
   },
@@ -47,12 +47,20 @@ export default function StackChips() {
               </Link>
             )}
             {group.title === "Document & image processing" && (
-              <Link
-                className="text-link block mt-2"
-                href="/projects/automated-color-grading"
-              >
-                See Automated Color Grading →
-              </Link>
+              <>
+                <Link
+                  className="text-link block mt-2"
+                  href="/projects/local-document-deid"
+                >
+                  See Local Document De-ID →
+                </Link>
+                <Link
+                  className="text-link block mt-2"
+                  href="/projects/automated-color-grading"
+                >
+                  See Automated Color Grading →
+                </Link>
+              </>
             )}
             {group.title === "Data & machine learning" && (
               <Link

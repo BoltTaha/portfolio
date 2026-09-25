@@ -51,6 +51,8 @@ export const personSchema = {
     "AI engineering",
     "Computer vision",
     "OCR and document preprocessing",
+    "Document de-identification workflows",
+    "Local document privacy tooling",
     "Large language model applications",
     "Retrieval augmented generation",
     "Graph-RAG",

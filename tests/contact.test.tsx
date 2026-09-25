@@ -48,12 +48,10 @@ describe("contact submissions", () => {
   ])("retains input after a rejected response: %j", async (response) => {
     vi.stubGlobal(
       "fetch",
-      vi
-        .fn()
-        .mockResolvedValue({
-          ok: response.ok,
-          json: async () => ({ success: response.success }),
-        }),
+      vi.fn().mockResolvedValue({
+        ok: response.ok,
+        json: async () => ({ success: response.success }),
+      }),
     );
     render(<ContactForm />);
     submit();

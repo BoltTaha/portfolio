@@ -7,7 +7,7 @@ import { site } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
   "About",
-  "Meet Muhammad Taha (BoltTaha), an AI engineer building computer vision, OCR, LLM, RAG, backend, and automation systems for client workflows.",
+  "Meet Muhammad Taha (BoltTaha), an AI engineer building computer vision, OCR, document privacy, LLM, RAG, backend, and automation systems for client workflows.",
   "/about",
 );
 export default function AboutPage() {
@@ -39,10 +39,11 @@ export default function AboutPage() {
           <em>a useful problem.</em>
         </h1>
         <p>
-          I’m Muhammad Taha, an AI engineer focused on computer vision, OCR, LLM
-          applications, RAG, backend systems, and automation. I build software
-          that works with messy real-world inputs: game footage, scanned
-          documents, databases, and operational workflows.
+          I’m Muhammad Taha, an AI engineer focused on computer vision, OCR,
+          document privacy workflows, LLM applications, RAG, backend systems,
+          and automation. I build software that works with messy real-world
+          inputs: game footage, scanned documents, databases, and operational
+          workflows.
         </p>
       </header>
       <section className="section pt-0">
@@ -57,14 +58,15 @@ export default function AboutPage() {
             My professional work includes a basketball made-basket clip finder
             for a US sports client and a production OCR preprocessing workflow
             for US records data. My public work includes a guarded
-            database-analysis service, Rabt for codebase Graph-RAG/context
-            optimization, document-to-LaTeX conversion, conversation-memory
-            experiments, and a receipt-review application.
+            database-analysis service, a local document de-identification
+            prototype, Rabt for codebase Graph-RAG/context optimization,
+            document-to-LaTeX conversion, conversation-memory experiments, and a
+            receipt-review application.
           </p>
           <p>
             My existing professional work history includes automation at Gohar
             Textile Mills and freelance computer-vision, document-processing,
-            and data projects.
+            document privacy, and data projects.
           </p>
           <Link className="text-link" href="/projects">
             Explore the project evidence →

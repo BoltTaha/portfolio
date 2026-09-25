@@ -26,6 +26,50 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "local-document-deid",
+    title: "Local Document De-ID Prototype",
+    category: "Document AI · privacy workflow",
+    summary:
+      "A local Ubuntu prototype for reviewing, pseudonymising, and exporting sensitive Word/PDF text before external AI use, with mandatory human approval and verification checks.",
+    kind: "Private project",
+    status:
+      "Working prototype built from a real de-identification problem; not a paid client delivery",
+    featured: true,
+    sourceNote:
+      "This case study is based on a local private prototype and synthetic demo pack. It was built for a real document de-identification problem, but the client did not purchase or receive it. The page avoids exposing private source files or client material.",
+    stack: ["Python", "DOCX", "PDF/OCR", "Tesseract", "Poppler", "Local UI"],
+    problem:
+      "Teams that want to use external AI on documents can accidentally expose personal names, emails, phone numbers, IDs, dates, payment details, hidden Word text, PDF text, OCR output, or document metadata. A safe workflow needs more than a regex pass: it needs local processing, review, export controls, and honest limits.",
+    audience:
+      "Operators and teams preparing sensitive Word or PDF text for later analysis while keeping the review workflow local and human-controlled.",
+    approach: [
+      "The prototype processes files locally on Ubuntu and reconstructs supported inputs into new text-only DOCX outputs instead of copying source packages or original PDF drawing/image data.",
+      "DOCX handling reads body text, tables, headers, footers, footnotes, endnotes, hidden text, and split runs while discarding comments, deleted revisions, source metadata, custom XML, thumbnails, relationships, and unsupported active content.",
+      "PDF handling uses local Poppler extraction for text PDFs and local Tesseract OCR for scanned or mixed PDFs. OCR output enters the same review flow, while original image pixels are not copied into the export.",
+      "Detection combines rules, validation checks, dictionaries, consistent within-document tokens, manual redaction, correction of false positives, mandatory review, approved export, manifesting, output rescans, and package whitelist checks.",
+      "The local review UI runs on loopback only with an unpredictable session URL, Host/Origin checks, no external assets, and a Linux seccomp guard that blocks new internet-family sockets in the processing process and inherited native children.",
+    ],
+    features: [
+      "DOCX and PDF/OCR ingestion for synthetic demo inputs",
+      "Before-and-after review screen with manual redaction",
+      "Consistent within-document pseudonymisation tokens",
+      "Mandatory human attestation before export",
+      "Atomic approved DOCX export and operational manifest",
+      "41 passing automated tests plus validation and benchmark artifacts",
+    ],
+    outcome:
+      "The prototype demonstrates a practical privacy-first document workflow: local extraction, review, pseudonymisation, manual correction, export, and independent checks. The validation record reports 41 passing automated tests, browser checks for review/export flows, wheel build/install smoke tests, and synthetic benchmark runs. These are prototype results on synthetic fixtures, not a production compliance claim.",
+    limitations: [
+      "It does not guarantee anonymisation, legal compliance, forensic erasure, or complete detection of every identifier.",
+      "The tested default uses rules and synthetic dictionaries; no statistical NER model was installed or benchmarked.",
+      "Supported outputs are new text-only DOCX files. Source layout, images, signatures, accessibility structure, tables as tables, and PDF output are not preserved.",
+      "The metrics come from a tiny synthetic corpus and should not be presented as performance on real client data.",
+      "Parser sandboxing, production retention controls, operator identity, multilingual evaluation, and adversarial re-identification testing remain future work.",
+    ],
+    nextSteps:
+      "Turn the prototype into a production-grade product by scoping real supported formats, adding representative acceptance tests, installing and calibrating a local NER model, hardening parser isolation, and defining retention and operator controls.",
+  },
+  {
     slug: "rabt-codebase-graphrag",
     title: "Rabt Codebase Graph-RAG",
     category: "LLM infrastructure · code intelligence",

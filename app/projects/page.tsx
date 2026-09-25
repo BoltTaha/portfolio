@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/data/site";
 export const metadata = pageMetadata(
   "Projects & case studies",
-  "Explore Muhammad Taha’s AI, Graph-RAG, backend, document-processing, computer-vision, and data-engineering projects with implementation notes and evidence links.",
+  "Explore Muhammad Taha’s AI, Graph-RAG, backend, document privacy, document-processing, computer-vision, and data-engineering projects with implementation notes and evidence links.",
   "/projects",
 );
 export default function ProjectsPage() {
@@ -34,9 +34,9 @@ export default function ProjectsPage() {
         </h1>
         <p>
           Curated case studies across AI applications, Graph-RAG, backend
-          systems, document processing, computer vision, and educational data
-          projects. Each one connects the explanation to implementation evidence
-          or a clear source-status note.
+          systems, document processing, document privacy, computer vision, and
+          educational data projects. Each one connects the explanation to
+          implementation evidence or a clear source-status note.
         </p>
       </header>
       <section aria-labelledby="public-projects-title">
@@ -52,18 +52,18 @@ export default function ProjectsPage() {
           My GitHub account contains a broader mix of portfolio projects,
           coursework, experiments, and learning repositories. This portfolio
           highlights the work that best demonstrates AI engineering, backend
-          architecture, document processing, computer vision, and production
-          delivery. Coursework, forks, tutorials, and small experiments are not
-          promoted as client-ready products unless they teach a useful technical
-          idea.
+          architecture, document processing, document privacy, computer vision,
+          and production delivery. Coursework, forks, tutorials, and small
+          experiments are not promoted as client-ready products unless they
+          teach a useful technical idea.
         </p>
         <div className="note-grid">
           <article>
             <h3>Featured here</h3>
             <p>
-              Rabt, MCP Data Analyst, QR Payment Verification, SnapTeX, Context
-              Window Compressor, imaging tools, data systems, and client AI case
-              studies.
+              Local Document De-ID, Rabt, MCP Data Analyst, QR Payment
+              Verification, SnapTeX, Context Window Compressor, imaging tools,
+              data systems, and client AI case studies.
             </p>
           </article>
           <article>

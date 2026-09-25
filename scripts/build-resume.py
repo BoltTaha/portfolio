@@ -168,7 +168,10 @@ story = [
     Paragraph("Muhammad Taha", styles["Name"]),
     Paragraph(
         "AI Engineer | Computer Vision, OCR, LLM/RAG, Backend Automation<br/>"
-        "bolt.taha.work@gmail.com | linkedin.com/in/bolttaha | github.com/BoltTaha | muhammadtaha.app",
+        '<link href="mailto:bolt.taha.work@gmail.com">bolt.taha.work@gmail.com</link> | '
+        '<link href="https://www.linkedin.com/in/bolttaha/">linkedin.com/in/bolttaha</link> | '
+        '<link href="https://github.com/BoltTaha">github.com/BoltTaha</link> | '
+        '<link href="https://muhammadtaha.app">muhammadtaha.app</link>',
         styles["Contact"],
     ),
     Spacer(1, 8),
@@ -183,7 +186,7 @@ story.append(
 )
 story.append(
     Paragraph(
-        "Recent work includes a basketball made-basket clip finder for a US sports client, a document preprocessing pipeline for scanned county records, LLM/RAG systems, guarded data-analysis tools, and full-stack review workflows.",
+        "Recent work includes a basketball made-basket clip finder for a US sports client, a document preprocessing pipeline for scanned county records, a local document de-identification prototype, LLM/RAG systems, guarded data-analysis tools, and full-stack review workflows.",
         styles["Body"],
     )
 )
@@ -244,17 +247,17 @@ story += project(
     ],
 )
 story += project(
+    "Local Document De-ID Prototype",
+    "Python, DOCX/PDF, OCR, Tesseract, Poppler",
+    [
+        "Built a local review workflow for sensitive Word/PDF text with rule-based detection, manual redaction, mandatory approval, verified DOCX export, and loopback-only UI boundaries.",
+    ],
+)
+story += project(
     "QR Payment Verification",
     "React, Express, MongoDB, Gemini Vision",
     [
         "Built a receipt-review workflow with OCR extraction, duplicate detection, weighted risk signals, async upload status, and an admin review interface.",
-    ],
-)
-story += project(
-    "SnapTeX",
-    "Python, Streamlit, Gemini, LaTeX",
-    [
-        "Built a document conversion workflow that turns images and PDFs into editable LaTeX, with page-level parallel processing and optional PDF compilation.",
     ],
 )
 
@@ -270,7 +273,7 @@ story += role(
 story += section("Core Skills")
 story.append(
     Paragraph(
-        "<b>AI engineering:</b> computer vision, OCR/document AI, LLM applications, RAG, MCP integrations, prompt engineering, evaluation, failure analysis, and human-in-the-loop workflows.",
+        "<b>AI engineering:</b> computer vision, OCR/document AI, document privacy workflows, LLM applications, RAG, MCP integrations, prompt engineering, evaluation, failure analysis, and human-in-the-loop workflows.",
         styles["Small"],
     )
 )
