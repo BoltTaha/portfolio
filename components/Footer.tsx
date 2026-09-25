@@ -8,6 +8,7 @@ export default function Footer() {
       </p>
       <nav aria-label="Footer navigation">
         <Link href="/projects">Work</Link>
+        <Link href="/services">Services</Link>
         <Link href="/about">About</Link>
         <Link href="/contact">Contact</Link>
         <a href="/resume.pdf">Resume</a>

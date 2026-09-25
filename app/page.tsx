@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import SignatureStats from "@/components/SignatureStats";
 import ProjectsList from "@/components/ProjectsList";
+import ServicesPreview from "@/components/ServicesPreview";
 import Experience from "@/components/Experience";
 import StackChips from "@/components/StackChips";
 import Testimonials from "@/components/Testimonials";
@@ -18,6 +19,7 @@ export default function Home() {
       <Hero />
       <SignatureStats />
       <ProjectsList />
+      <ServicesPreview />
       <StackChips />
       <Experience />
       <Testimonials />

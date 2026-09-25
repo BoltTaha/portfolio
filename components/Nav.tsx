@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import ContactModal from "@/components/ContactModal";
 const links = [
   { href: "/projects", label: "Work" },
+  { href: "/services", label: "Services" },
   { href: "/#stack", label: "Skills" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { projects, getProject, sourceUrl } from "@/data/projects";
 import { evidence } from "@/data/sources";
 import { site } from "@/data/site";
+import { services, getService } from "@/data/services";
 import { pageMetadata, personSchema } from "@/lib/metadata";
 import sitemap from "@/app/sitemap";
 import robots from "@/app/robots";
@@ -9,6 +10,7 @@ import { GET } from "@/app/llms.txt/route";
 describe("public discovery contract", () => {
   it("gives every case study a unique canonical and sitemap entry", () => {
     expect(new Set(projects.map((p) => p.slug)).size).toBe(projects.length);
+    expect(new Set(services.map((s) => s.slug)).size).toBe(services.length);
     const urls = sitemap().map((entry) => entry.url);
     for (const project of projects) {
       const path = `/projects/${project.slug}`;
@@ -25,12 +27,24 @@ describe("public discovery contract", () => {
         expect(project.sourceNote).toBeTruthy();
       }
     }
+    for (const service of services) {
+      const path = `/services/${service.slug}`;
+      expect(urls).toContain(site.url + path);
+      expect(
+        pageMetadata(service.title, service.metaDescription, path).alternates
+          ?.canonical,
+      ).toBe(path);
+    }
     expect(getProject("does-not-exist")).toBeUndefined();
+    expect(getService("does-not-exist")).toBeUndefined();
   });
   it("keeps the optional discovery text aligned with the public cases", async () => {
     const text = await GET().text();
     projects.forEach((project) =>
       expect(text).toContain(`${site.url}/projects/${project.slug}`),
+    );
+    services.forEach((service) =>
+      expect(text).toContain(`${site.url}/services/${service.slug}`),
     );
     expect(robots().sitemap).toBe(`${site.url}/sitemap.xml`);
   });
