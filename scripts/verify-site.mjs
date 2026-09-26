@@ -9,8 +9,8 @@ const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(
 );
 assert.equal(
   urls.length,
-  27,
-  "Expected homepage, about, contact, project index, services index, insights index, six service pages, three insight articles, two client cases, and ten curated project cases",
+  30,
+  "Expected homepage, about, contact, project index, services index, insights index, six service pages, six insight articles, two client cases, and ten curated project cases",
 );
 const titles = new Set();
 const documents = new Map();

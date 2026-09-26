@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata(
   "AI engineering insights",
-  "Technical articles by Muhammad Taha on computer vision, sports video analysis, document AI pipelines, RAG, AI agents, and safer text-to-SQL systems.",
+  "Technical articles by Muhammad Taha on computer vision, code intelligence, document AI, RAG, AI agents, payment review, mobile AI, and safer text-to-SQL systems.",
   "/insights",
 );
 
@@ -17,7 +17,7 @@ export default function InsightsPage() {
     name: "Muhammad Taha AI engineering insights",
     url: `${site.url}/insights`,
     description:
-      "Practical technical writing on computer vision, document AI, RAG, AI agents, and data systems.",
+      "Practical technical writing on computer vision, code intelligence, document AI, RAG, mobile AI, risk workflows, and data systems.",
     author: { "@id": `${site.url}/#person` },
     hasPart: insights.map((insight) => ({
       "@type": "BlogPosting",
@@ -39,9 +39,9 @@ export default function InsightsPage() {
           <em>explained with evidence.</em>
         </h1>
         <p>
-          Detailed articles on building computer vision, document-processing,
-          and AI data systems around real constraints, review workflows, and
-          production failure modes.
+          Detailed articles on building computer vision, code-intelligence,
+          document-processing, mobile, and AI data systems around real
+          constraints, review workflows, and production failure modes.
         </p>
       </header>
       <section className="project-grid" aria-label="AI engineering articles">

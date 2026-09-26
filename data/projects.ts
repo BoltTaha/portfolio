@@ -75,11 +75,10 @@ export const projects: Project[] = [
     category: "LLM infrastructure · code intelligence",
     summary:
       "A codebase-context system that uses AST and graph analysis to give LLM workflows smaller, more relevant code context instead of dumping whole repositories into prompts.",
-    kind: "Private project",
-    status: "Implemented private project; public source not currently linked",
+    kind: "Personal project",
+    status: "Implemented public research project with repeatable evaluations",
     featured: true,
-    sourceNote:
-      "Rabt is included as a portfolio case study from Muhammad Taha's resume and professional profile details. Its public repository was not available through the connected GitHub check, so this page avoids source-only claims and does not expose private code.",
+    repo: "rabt-code-intelligence",
     stack: ["Python", "AST parsing", "Graph-RAG", "NetworkX", "LLM context"],
     problem:
       "LLM coding assistants often waste context on files and text that are not relevant to the current question. Full-repository prompts are expensive, noisy, and hard to inspect when a task only needs a focused slice of the codebase.",
@@ -95,17 +94,24 @@ export const projects: Project[] = [
       "AST-aware codebase parsing",
       "Graph-based context selection",
       "Repository-level relationship modeling",
-      "Prompt/context reduction for code-aware LLM workflows",
+      "Deterministic intent routing with an optional LLM fallback",
+      "Repeatable protocol, stress tests, and baseline comparison tools",
     ],
     outcome:
-      "The project demonstrates an important AI-engineering skill: building retrieval and context systems around the shape of the data. Resume/profile material reports a 99.2% context reduction in a tested workflow; this portfolio presents that as a reported project result, not an independently reproduced benchmark.",
+      "The public testing report records two scoped results: 31,661 prompt tokens for full-repository context versus 85 for Rabt on one Requests-library query (99.7% fewer), and an 11-node answer subgraph from a 1,433-node graph (about 99.2% fewer nodes). These are repository-reported results for specific queries, not a universal accuracy or cost claim.",
     limitations: [
-      "The source repository is not currently public through the connected GitHub check, so implementation links are not shown here.",
       "Context reduction is task-dependent. A smaller prompt is only useful if the selected context still preserves the evidence needed for the coding task.",
-      "Graph construction, symbol resolution, and runtime telemetry need continuous validation across languages and repository styles.",
+      "The current implementation and published evaluations focus on Python; other languages and dynamic behavior require separate parsers and validation.",
+      "The strongest token result is from one repository-level query and should be expanded into a multi-query benchmark before making broader performance claims.",
     ],
     nextSteps:
-      "Publish a sanitized technical write-up with diagrams, representative examples, and repeatable benchmark cases if the project can be shared publicly.",
+      "Expand the evaluation across more repositories, query types, and languages; measure answer quality alongside context size; and package the graph service behind an editor or agent integration.",
+    sourcePaths: [
+      "docs/TESTING_REPORT.md",
+      "parser/ast_parser.py",
+      "graph/queries.py",
+      "evaluation/baseline_comparison.py",
+    ],
   },
   {
     slug: "mcp-data-analyst",
