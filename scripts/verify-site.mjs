@@ -9,8 +9,8 @@ const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(
 );
 assert.equal(
   urls.length,
-  23,
-  "Expected homepage, about, contact, project index, services index, six service pages, two client cases, and ten curated project cases",
+  27,
+  "Expected homepage, about, contact, project index, services index, insights index, six service pages, three insight articles, two client cases, and ten curated project cases",
 );
 const titles = new Set();
 const documents = new Map();
@@ -107,6 +107,8 @@ for (const url of urls.filter((url) => url.includes("/projects/")))
 for (const url of urls.filter((url) => url.includes("/client-work/")))
   assert.ok(llms.includes(url));
 for (const url of urls.filter((url) => url.includes("/services/")))
+  assert.ok(llms.includes(url));
+for (const url of urls.filter((url) => url.includes("/insights/")))
   assert.ok(llms.includes(url));
 console.log(
   "PASS all internal links and anchors, 404 responses, icons, resume PDF, portrait, social image, robots, llms.txt",

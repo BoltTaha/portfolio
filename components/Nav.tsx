@@ -5,6 +5,7 @@ import ContactModal from "@/components/ContactModal";
 const links = [
   { href: "/projects", label: "Work" },
   { href: "/services", label: "Services" },
+  { href: "/insights", label: "Insights" },
   { href: "/#stack", label: "Skills" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
