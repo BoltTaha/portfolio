@@ -64,6 +64,8 @@ for (const [path, doc] of documents) {
     const href = anchor.getAttribute("href");
     if (!href.startsWith("/") && !href.startsWith("#")) continue;
     const url = new URL(href, canonicalBase + path);
+    // Cloudflare replaces public mailto links with this runtime-only route.
+    if (url.pathname === "/cdn-cgi/l/email-protection") continue;
     if (url.pathname === "/resume.pdf") {
       const response = await fetch(base + url.pathname);
       assert.equal(response.status, 200, `${path}: internal link ${href}`);
