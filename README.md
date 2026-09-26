@@ -2,7 +2,7 @@
 
 The source for [muhammadtaha.app](https://muhammadtaha.app), Muhammad Taha’s portfolio of AI applications, backend services, document-processing tools, and data projects.
 
-The site preserves its warm editorial palette and serif typography. Ten curated case studies explain the problem, implementation, result, and limitations of public-source, educational, and private-source work, including a local document de-identification system. Public repository-backed projects link to [BoltTaha](https://github.com/BoltTaha); private-source and client-work summaries are labeled separately.
+The site preserves its warm editorial palette and serif typography. Ten curated case studies explain the problem, implementation, result, and limitations of public-source, educational, and private-source work, including a local document de-identification system. Six service pages connect that evidence to client problems, and three technical insight articles explain reusable engineering decisions without exposing private client code or data. Public repository-backed projects link to [BoltTaha](https://github.com/BoltTaha); private-source and client-work summaries are labeled separately.
 
 ## Stack and local setup
 
@@ -33,23 +33,25 @@ The GitHub Actions workflow uses `.nvmrc`, installs with `npm ci`, and runs lint
 
 ## Routes and content
 
-- `/`: introduction, selected work, skills with project evidence, experience, existing testimonials, and FAQ.
+- `/`: introduction, selected work, services, technical insights, skills with project evidence, experience, testimonials, and FAQ.
 - `/projects`: all public projects plus separate client-work summaries.
 - `/projects/[slug]`: statically generated case studies. Unknown slugs return a missing-page response.
+- `/services` and `/services/[slug]`: client-facing AI engineering offers connected to relevant evidence.
+- `/insights` and `/insights/[slug]`: statically generated technical articles with related case studies and direct answers.
 - `/about`: background, student education, community work, and linked credential records.
 - `/contact`: contact form and verified public profile links.
 - `/sitemap.xml`, `/robots.txt`, `/llms.txt`: discovery files generated from site content.
 - `/opengraph-image`: generated social card using the current portrait.
 
-`data/projects.ts` owns case content, project types, source paths, repository links, and private-source notes. `data/sources.ts` pins the reviewed public commits. `data/site.ts` owns the site URL, identity, public contact links, portrait, and substantive content-update date. `data/faq.ts` owns the visible answers. Update these together when facts change. Review `docs/content-sources.md` before adding new claims.
+`data/projects.ts` owns case content, project types, source paths, repository links, and private-source notes. `data/services.ts` owns the service offers, and `data/insights.ts` owns the technical articles. `data/sources.ts` pins the reviewed public commits. `data/site.ts` owns the site URL, identity, public contact links, portrait, and substantive content-update date. `data/faq.ts` owns the homepage answers. Update these together when facts change. Review `docs/content-sources.md` before adding new claims.
 
 The portrait is `public/profile.jpeg` (400 × 400, about 27 KB). Next Image provides appropriately sized delivery on the home and About pages. The social card and Person structured data use the same portrait. Do not restore the removed, much larger PNG.
 
 ## Search and structured data
 
-Each public page supplies a unique title, description, canonical URL, and social metadata. Case-study text is server rendered; discovering the project list does not require clicking a client-side “show more” button. Structured data describes a Person, WebSite, ProfilePage, and source-backed CreativeWork/SoftwareSourceCode. Education is shown as expected graduation, not `alumniOf`.
+Each public page supplies a unique title, description, canonical URL, and social metadata. Case-study and insight text is server rendered; discovering the project list does not require clicking a client-side “show more” button. Structured data describes a Person, WebSite, ProfilePage, Service, BlogPosting, FAQPage, and source-backed CreativeWork/SoftwareSourceCode. Education is shown as expected graduation, not `alumniOf`.
 
-The existing allow-all crawler policy is preserved. Search indexing, AI search retrieval, and model training are different purposes; this update adds no new crawler restrictions or permissions. `llms.txt` is an experimental text convention kept aligned with public pages. It is not required by Google and does not guarantee indexing, citations, recommendations, or rankings. The FAQ is visible prose without FAQ rich-result claims or unnecessary FAQ schema.
+The existing allow-all crawler policy is preserved. Search indexing, AI search retrieval, and model training are different purposes; this update adds no new crawler restrictions or permissions. `llms.txt` is an experimental text convention kept aligned with public pages. It is not required by Google and does not guarantee indexing, citations, recommendations, or rankings. FAQ schema mirrors visible answers on relevant service and insight pages; eligibility does not guarantee a Google rich result.
 
 Implementation references:
 
