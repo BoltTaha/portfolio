@@ -7,8 +7,13 @@ export interface Project {
   title: string;
   category: string;
   summary: string;
-  kind: "Personal project" | "Educational project" | "Private project";
+  kind:
+    | "Personal project"
+    | "Educational project"
+    | "Private project"
+    | "Client project";
   status: string;
+  role?: string;
   stack: string[];
   repo?: Repo;
   sourceNote?: string;
@@ -22,9 +27,82 @@ export interface Project {
   nextSteps: string;
   sourcePaths?: string[];
   relatedRepos?: Repo[];
+  clientReview?: {
+    quote: string;
+    rating: number;
+    source: string;
+    endorsements?: string[];
+  };
 }
 
 export const projects: Project[] = [
+  {
+    slug: "autonomous-driving-edge-perception",
+    title: "Autonomous Driving Edge Perception Prototype",
+    category: "Computer vision · Edge AI",
+    summary:
+      "A modular road-video perception pipeline combining ONNX object detection, persistent track IDs, lane and drivable-area overlays, structured output, and measured stage latency.",
+    kind: "Client project",
+    status: "Delivered Phase 1 proof of concept with a 5.0 client review",
+    role: "Computer Vision and Edge AI engineer responsible for architecture, implementation, benchmarking, documentation, and handoff.",
+    featured: true,
+    sourceNote:
+      "This case study is based on the delivered client handoff, three generated demo videos, performance reports, and a code review of the supplied archive. A public repository link will be added after the source is released.",
+    stack: [
+      "Python",
+      "ONNX Runtime",
+      "YOLOv8n",
+      "OpenCV",
+      "NumPy",
+      "SciPy",
+      "FFmpeg",
+      "Edge AI",
+    ],
+    problem:
+      "A three-engineer team needed a small, working perception prototype to test whether road-video detection, multi-object tracking, and lane understanding could form a practical foundation for later edge deployment. The goal was a measurable and transferable vision pipeline, not a complete autonomous-driving stack.",
+    audience:
+      "Engineering teams evaluating an early road-perception architecture before committing to hardware-specific optimization or a larger autonomous-driving program.",
+    approach: [
+      "The detector uses a pretrained YOLOv8n model exported to ONNX and executed with ONNX Runtime. PyTorch is not required at runtime, which keeps the inference path lighter and provides a portable starting point for TensorRT, HailoRT, OpenVINO, or another edge runtime.",
+      "A dependency-light, ByteTrack-style tracker combines a constant-velocity Kalman filter with Hungarian IoU association. High-confidence detections are matched first, followed by a lower-confidence recovery pass, and visible tracks receive persistent IDs while tracking conditions allow.",
+      "Lane and drivable-area perception uses grayscale conversion, Gaussian smoothing, Canny edges, a trapezoidal region of interest, probabilistic Hough lines, slope-based grouping, and temporal exponential smoothing. The stage is isolated behind a small interface so a learned segmentation model can replace it later.",
+      "The pipeline writes an annotated MP4, one JSONL record per frame with class, confidence, bounding box, track ID, frame, and timestamp, plus a JSON performance report containing mean, p50, p95, and maximum timings for each measured stage.",
+      "Configuration is centralized, and the handoff documents setup, model replacement, edge-platform tradeoffs, ONNX-to-TensorRT or Hailo compilation paths, FP16 and INT8 considerations, and the order in which bottlenecks should be optimized.",
+    ],
+    features: [
+      "YOLOv8n road-object detection through ONNX Runtime",
+      "Kalman-filter and Hungarian-IoU multi-object tracking",
+      "Classical computer-vision lane and drivable-area overlay",
+      "Live track count, inference time, frame number, and FPS display",
+      "Annotated video, JSONL detections, and JSON performance reports",
+      "Three reproducible public dash-cam demonstrations",
+      "Jetson, Raspberry Pi plus Hailo, quantization, and runtime guidance",
+    ],
+    outcome:
+      "The delivered prototype processed all three supplied public clips and generated annotated demonstrations, structured detections, and fresh performance reports. Across 221, 681, and 251-frame runs on a constrained one-logical-CPU environment, the reports recorded 9.42-9.58 processing FPS, 91.63-92.30 ms mean detector inference, 0.32-0.45 ms mean tracking time, and 3.58-7.54 ms mean lane-processing time. The client awarded the delivery 5.0 stars and said the result exceeded expectations.",
+    limitations: [
+      "This is a Phase 1 perception proof of concept, not a safety-certified autonomous-driving system. It does not include planning, control, localization, sensor fusion, or vehicle integration.",
+      "The supplied demonstrations use public dash-cam clips. Detection and tracking were visually inspected, but no labeled road benchmark or identity metric such as HOTA, MOTA, or IDF1 was reported.",
+      "The performance report measures the detector, tracker, lane stage, and their compute path. It is not a camera-to-display latency measurement because capture, visualization, encoding, and output writes are outside the recorded total.",
+      "The ~9.5 FPS result comes from a constrained one-logical-CPU development environment. It is not a claim about Jetson, Raspberry Pi, Hailo, GPU, or production performance.",
+      "Classical lane detection works best with visible lane markings and can degrade under sharp curves, glare, shadows, construction, occlusion, or unmarked roads.",
+    ],
+    nextSteps:
+      "Benchmark on the selected Jetson or Raspberry Pi plus Hailo target, convert the detector to FP16 and then calibrated INT8 where useful, measure true end-to-end latency, evaluate detection and identity quality on labeled representative footage, and replace the lane stage with a learned drivable-area model if operating conditions require it.",
+    clientReview: {
+      quote:
+        "Great experience working with Muhammad Taha. He understood the project well, delivered everything on time, and the final result was even better than I expected. Would definitely work with him again.",
+      rating: 5,
+      source: "Verified Upwork client",
+      endorsements: [
+        "Reliable",
+        "Committed to Quality",
+        "Solution Oriented",
+        "Clear Communicator",
+        "Accountable for Outcomes",
+      ],
+    },
+  },
   {
     slug: "local-document-deid",
     title: "Local Document De-ID",
@@ -441,6 +519,13 @@ export const projects: Project[] = [
 
 // Already-public portfolio history; separate from the source-backed case studies.
 export const clientWork = [
+  {
+    title: "Autonomous-driving edge perception",
+    context: "Computer vision and Edge AI client project",
+    summary:
+      "Delivered a modular road-video perception prototype with ONNX detection, persistent tracking IDs, lane overlays, structured output, measured stage timings, and edge-deployment guidance.",
+    href: "/projects/autonomous-driving-edge-perception",
+  },
   ...clientCaseStudies.map((study) => ({
     title: study.shortTitle,
     context: study.clientContext,

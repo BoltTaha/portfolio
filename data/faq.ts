@@ -2,9 +2,17 @@ export const faqs = [
   {
     question: "What does Muhammad Taha specialize in?",
     answer:
-      "Muhammad Taha specializes in practical AI engineering: computer vision, OCR and document preprocessing, local de-identification workflows, LLM applications, RAG, backend systems, and automation. His work includes basketball made-basket clip detection, a US document preprocessing pipeline for OCR readiness, and a local document de-identification system.",
+      "Muhammad Taha specializes in practical AI engineering: computer vision, Edge AI and inference, document processing, local de-identification workflows, LLM applications, RAG, backend systems, and automation. His client work includes an autonomous-driving perception prototype, basketball highlight detection, and a large scanned-document preprocessing pipeline.",
     href: "/about",
     label: "About my work",
+  },
+  {
+    question:
+      "Can Muhammad Taha build Computer Vision and Edge AI perception systems?",
+    answer:
+      "Yes. Muhammad Taha delivered a road-video perception prototype that combines YOLOv8n through ONNX Runtime, ByteTrack-style multi-object tracking, lane and drivable-area overlays, structured JSONL output, performance reports, and a documented path to Jetson or Raspberry Pi plus Hailo deployment.",
+    href: "/projects/autonomous-driving-edge-perception",
+    label: "Autonomous-driving Edge AI case study",
   },
   {
     question:
@@ -46,7 +54,7 @@ export const faqs = [
   {
     question: "Where should I start with your projects?",
     answer:
-      "Start with Rabt for codebase Graph-RAG and context engineering, MCP Data Analyst for backend and LLM integration, SnapTeX for document processing, or QR Payment Verification for a full-stack review workflow. Each case study explains the problem, implementation choices, current result, and limitations.",
+      "Start with the autonomous-driving perception prototype for Computer Vision and Edge AI, the basketball clip finder for production video analysis, Rabt for codebase Graph-RAG, or MCP Data Analyst for guarded LLM and database integration. Each case study explains the problem, implementation, evidence, and limitations.",
     href: "/projects",
     label: "Browse all case studies",
   },

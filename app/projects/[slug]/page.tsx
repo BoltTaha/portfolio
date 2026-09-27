@@ -36,6 +36,23 @@ export default async function ProjectPage({ params }: Props) {
       runtimePlatform: project.stack.join(", "),
       maintainer: { "@id": `${site.url}/#person` },
     },
+    ...(project.clientReview
+      ? {
+          review: {
+            "@type": "Review",
+            reviewBody: project.clientReview.quote,
+            reviewRating: {
+              "@type": "Rating",
+              ratingValue: project.clientReview.rating,
+              bestRating: 5,
+            },
+            author: {
+              "@type": "Person",
+              name: project.clientReview.source,
+            },
+          },
+        }
+      : {}),
   };
   return (
     <main id="main-content" className="page-wrap">
@@ -83,7 +100,9 @@ export default async function ProjectPage({ params }: Props) {
         <div>
           <dt>My role</dt>
           <dd>
-            {project.repo ? (
+            {project.role ? (
+              project.role
+            ) : project.repo ? (
               <>
                 Project maintained under{" "}
                 <a className="text-link" href={site.github}>
@@ -99,6 +118,31 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </dl>
       <ProjectVisual slug={project.slug} />
+      {project.clientReview ? (
+        <aside className="case-cta" aria-label="Client review">
+          <p
+            className="text-[18px] tracking-[0.15em] text-clay-deep mb-3"
+            aria-label={`${project.clientReview.rating} out of 5 stars`}
+          >
+            {"★".repeat(project.clientReview.rating)}
+          </p>
+          <blockquote className="font-serif italic text-[23px] leading-snug max-w-[760px]">
+            “{project.clientReview.quote}”
+          </blockquote>
+          <p className="font-mono text-xs uppercase tracking-[0.06em] text-ink-mute mt-4">
+            {project.clientReview.source}
+          </p>
+          {project.clientReview.endorsements?.length ? (
+            <div className="flex flex-wrap gap-2 mt-5">
+              {project.clientReview.endorsements.map((item) => (
+                <span className="tag" key={item}>
+                  {item}
+                </span>
+              ))}
+            </div>
+          ) : null}
+        </aside>
+      ) : null}
       <div className="case-body">
         <section>
           <p className="eyebrow">01 / Situation</p>

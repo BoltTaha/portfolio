@@ -19,14 +19,14 @@ const clientHref = (slug: string) => `/client-work/${slug}`;
 export const services: ServiceOffer[] = [
   {
     slug: "computer-vision-engineer",
-    title: "Computer Vision Engineer for Video and Image Workflows",
-    shortTitle: "Computer Vision",
+    title: "Computer Vision and Edge AI Engineer for Visual Systems",
+    shortTitle: "Computer Vision & Edge AI",
     searchIntent:
-      "Hire a computer vision freelancer for video analysis, object detection, image processing, and review workflows.",
+      "Hire a computer vision and Edge AI freelancer for video analysis, object detection, tracking, inference, image processing, and deployment-oriented workflows.",
     metaDescription:
-      "Hire Muhammad Taha for computer vision systems using Python, OpenCV, YOLOv8, EfficientNet, video analysis, object detection, and production review workflows.",
+      "Hire Muhammad Taha for Computer Vision and Edge AI systems using Python, OpenCV, YOLOv8, ONNX Runtime, video analysis, tracking, inference, and review workflows.",
     directAnswer:
-      "Muhammad Taha builds computer vision systems for real-world video and image workflows, including sports video analysis, object detection, tracking, image preprocessing, and human-review interfaces.",
+      "Muhammad Taha builds Computer Vision and Edge AI systems for real-world video and image workflows, including road perception, sports analysis, object detection, tracking, ONNX inference, image processing, and human-review interfaces.",
     whoItHelps:
       "Teams with footage, images, scans, or visual review workflows that need a working detection or processing system instead of a model demo.",
     problems: [
@@ -39,8 +39,13 @@ export const services: ServiceOffer[] = [
       "YOLOv8, EfficientNet, or lightweight classifier integration when appropriate",
       "Timestamped event extraction, review dashboards, and batch processing",
       "Evaluation notes, failure cases, setup instructions, and deployment-ready code",
+      "ONNX inference pipelines and practical edge-deployment recommendations",
     ],
     proof: [
+      {
+        label: "Autonomous-driving Edge AI perception prototype",
+        href: projectHref("autonomous-driving-edge-perception"),
+      },
       {
         label: "Basketball made-basket clip finder",
         href: clientHref("basketball-clip-finder"),
@@ -54,13 +59,15 @@ export const services: ServiceOffer[] = [
         href: projectHref("crisis-intelligence"),
       },
     ],
-    stack: ["Python", "OpenCV", "YOLOv8", "EfficientNet", "FFmpeg", "NumPy"],
+    stack: ["Python", "OpenCV", "YOLOv8", "ONNX Runtime", "PyTorch", "FFmpeg"],
     keywords: [
       "computer vision freelancer",
       "YOLO developer",
       "OpenCV engineer",
       "video analysis developer",
       "object detection freelancer",
+      "Edge AI engineer",
+      "ONNX deployment engineer",
     ],
   },
   {

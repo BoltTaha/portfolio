@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/data/site";
 export const metadata = pageMetadata(
   "Projects & case studies",
-  "Explore Muhammad Taha’s AI, Graph-RAG, backend, document privacy, document-processing, computer-vision, and data-engineering projects with implementation notes and evidence links.",
+  "Explore Muhammad Taha’s Computer Vision, Edge AI, Graph-RAG, backend, document-processing, and data-engineering projects with implementation notes and evidence.",
   "/projects",
 );
 export default function ProjectsPage() {
@@ -33,10 +33,10 @@ export default function ProjectsPage() {
           <em>How it works.</em>
         </h1>
         <p>
-          Curated case studies across AI applications, Graph-RAG, backend
-          systems, document processing, document privacy, computer vision, and
-          educational data projects. Each one connects the explanation to
-          implementation evidence or a clear source-status note.
+          Curated case studies across Computer Vision, Edge AI, Graph-RAG,
+          backend systems, document processing, document privacy, and data
+          projects. Each one connects the explanation to implementation evidence
+          or a clear source-status note.
         </p>
       </header>
       <section aria-labelledby="public-projects-title">

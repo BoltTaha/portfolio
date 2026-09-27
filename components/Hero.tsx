@@ -25,14 +25,14 @@ export default function Hero() {
         <br />I build AI systems that work <em>beyond the demo.</em>
       </h1>
       <p className="hero-description">
-        AI engineer building computer vision, OCR/document AI, privacy
+        AI engineer building computer vision, Edge AI, document AI, privacy
         workflows, LLM, RAG, backend, and automation systems for real workflows.
       </p>
       <p className="text-ink-soft max-w-[620px] mb-8">
-        My work includes a basketball clip finder for made-basket detection, a
-        US document preprocessing pipeline for OCR readiness, a local document
-        de-identification system, Rabt for codebase Graph-RAG/context
-        optimization, and source-backed projects in LLM tooling and document AI.
+        My work includes an autonomous-driving perception prototype, a
+        basketball clip finder for made-basket detection, a US document
+        preprocessing pipeline, a local document de-identification system, and
+        Rabt for codebase Graph-RAG and context optimization.
       </p>
       <div className="flex flex-wrap gap-3">
         <Link className="button solid" href="/projects">
