@@ -43,7 +43,7 @@ export const services: ServiceOffer[] = [
     ],
     proof: [
       {
-        label: "Autonomous-driving Edge AI perception prototype",
+        label: "Autonomous-driving Edge AI perception system",
         href: projectHref("autonomous-driving-edge-perception"),
       },
       {

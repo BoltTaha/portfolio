@@ -19,7 +19,7 @@ export default function ProjectVisual({ slug }: { slug: string }) {
             playsInline
             preload="metadata"
             poster="/projects/autonomous-driving/road-perception-poster.webp"
-            aria-label="Autonomous-driving perception prototype demonstration"
+            aria-label="Autonomous-driving perception system demonstration"
           >
             <source
               src="/projects/autonomous-driving/road-perception-demo.mp4"

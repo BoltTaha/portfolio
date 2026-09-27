@@ -185,8 +185,8 @@ export default async function ProjectPage({ params }: Props) {
           {project.repo ? (
             <>
               <p>
-                These links preserve the code revision reviewed for this case
-                study. The repository may have changed since then.
+                {project.repositoryNote ??
+                  "These links preserve the code revision reviewed for this case study. The repository may have changed since then."}
               </p>
               <ul className="source-list">
                 <li>

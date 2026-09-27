@@ -29,10 +29,10 @@ export default function Hero() {
         workflows, LLM, RAG, backend, and automation systems for real workflows.
       </p>
       <p className="text-ink-soft max-w-[620px] mb-8">
-        My work includes an autonomous-driving perception prototype, a
-        basketball clip finder for made-basket detection, a US document
-        preprocessing pipeline, a local document de-identification system, and
-        Rabt for codebase Graph-RAG and context optimization.
+        My work includes an autonomous-driving perception system, a basketball
+        clip finder for made-basket detection, a US document preprocessing
+        pipeline, a local document de-identification system, and Rabt for
+        codebase Graph-RAG and context optimization.
       </p>
       <div className="flex flex-wrap gap-3">
         <Link className="button solid" href="/projects">

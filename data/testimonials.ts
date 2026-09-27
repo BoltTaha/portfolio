@@ -14,7 +14,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     source: "Upwork",
     context:
-      "Autonomous-driving Computer Vision and Edge AI prototype · Endorsed for reliability, quality, solution ownership, communication, and accountability",
+      "Autonomous-driving Computer Vision and Edge AI system · Endorsed for reliability, quality, solution ownership, communication, and accountability",
   },
   {
     quote:

@@ -1,4 +1,5 @@
 export const evidence = {
+  "edge-road-perception": "7d295e651d1785d88fa0e97358285570f9cd11ef",
   "rabt-code-intelligence": "8a90e5e4f18ca2ee8ada14e8259cf0bcc2775f2f",
   "mcp-data-analyst": "4ac8302862d367818a39873729a7fa8ea4dd365d",
   "qr-payment-verification-system": "2166902c95259e823f2e3795bfef0d8514fe4bae",
