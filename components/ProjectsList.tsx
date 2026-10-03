@@ -26,7 +26,7 @@ export function ProjectCards({ items }: { items: Project[] }) {
             <Link
               className="text-link"
               href={`/projects/${project.slug}`}
-              aria-label={`Read ${project.title} case study`}
+              aria-label={`Read case study: ${project.title}`}
             >
               Read case study <span aria-hidden="true">↗</span>
             </Link>
@@ -34,7 +34,7 @@ export function ProjectCards({ items }: { items: Project[] }) {
               <a
                 className="text-link secondary"
                 href={repoUrl(project.repo)}
-                aria-label={`${project.title} source on GitHub`}
+                aria-label={`Source code for ${project.title} on GitHub`}
               >
                 Source code
               </a>
@@ -65,7 +65,7 @@ export default function ProjectsList() {
         case study explains the implementation, its current limits, and the
         evidence behind it.
       </p>
-      <ProjectCards items={projects.filter((p) => p.featured)} />
+      <ProjectCards items={projects.filter((p) => p.featured).slice(0, 6)} />
     </section>
   );
 }

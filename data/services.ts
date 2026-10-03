@@ -1,6 +1,7 @@
 export interface ServiceOffer {
   slug: string;
   title: string;
+  metaTitle: string;
   shortTitle: string;
   searchIntent: string;
   metaDescription: string;
@@ -8,7 +9,9 @@ export interface ServiceOffer {
   whoItHelps: string;
   problems: string[];
   deliverables: string[];
+  limitations: string[];
   proof: Array<{ label: string; href: string }>;
+  relatedInsights: Array<{ label: string; href: string }>;
   stack: string[];
   keywords: string[];
 }
@@ -20,6 +23,7 @@ export const services: ServiceOffer[] = [
   {
     slug: "computer-vision-engineer",
     title: "Computer Vision and Edge AI Engineer for Visual Systems",
+    metaTitle: "Computer Vision & Edge AI Engineer",
     shortTitle: "Computer Vision & Edge AI",
     searchIntent:
       "Hire a computer vision and Edge AI freelancer for video analysis, object detection, tracking, inference, image processing, and deployment-oriented workflows.",
@@ -41,6 +45,11 @@ export const services: ServiceOffer[] = [
       "Evaluation notes, failure cases, setup instructions, and deployment-ready code",
       "ONNX inference pipelines and practical edge-deployment recommendations",
     ],
+    limitations: [
+      "Accuracy and latency targets depend on representative footage, labels, camera placement, and target hardware.",
+      "A CPU reference benchmark or deployment recommendation is not presented as a measured Jetson, Hailo, or TensorRT result.",
+      "Safety-critical perception requires additional validation, sensor integration, and system-level controls beyond a portfolio pipeline.",
+    ],
     proof: [
       {
         label: "Autonomous-driving Edge AI perception system",
@@ -59,6 +68,12 @@ export const services: ServiceOffer[] = [
         href: projectHref("crisis-intelligence"),
       },
     ],
+    relatedInsights: [
+      {
+        label: "How to build a basketball highlight detector",
+        href: "/insights/basketball-highlight-detection",
+      },
+    ],
     stack: ["Python", "OpenCV", "YOLOv8", "ONNX Runtime", "PyTorch", "FFmpeg"],
     keywords: [
       "computer vision freelancer",
@@ -73,6 +88,7 @@ export const services: ServiceOffer[] = [
   {
     slug: "document-ai-engineer",
     title: "Document AI Engineer for Scans, PDFs, and Review Workflows",
+    metaTitle: "Document AI Engineer for Scans and PDFs",
     shortTitle: "Document AI",
     searchIntent:
       "Hire a document AI freelancer for scanned files, document preprocessing, text extraction, PDF workflows, and review systems.",
@@ -93,6 +109,11 @@ export const services: ServiceOffer[] = [
       "Local review screens, manifests, and operator documentation",
       "Validation checks and clear limits around what the system can and cannot guarantee",
     ],
+    limitations: [
+      "Extraction and preprocessing quality must be measured on representative documents rather than assumed from clean samples.",
+      "OCR or model output still needs validation when errors could affect records, payments, or privacy decisions.",
+      "Private client documents remain inside approved infrastructure and are not exposed as portfolio evidence.",
+    ],
     proof: [
       {
         label: "Dallas County document preprocessing pipeline",
@@ -103,6 +124,16 @@ export const services: ServiceOffer[] = [
         href: projectHref("local-document-deid"),
       },
       { label: "SnapTeX document conversion", href: projectHref("snaptex") },
+    ],
+    relatedInsights: [
+      {
+        label: "How to prepare large scanned archives for Document AI",
+        href: "/insights/scanned-document-preprocessing-pipeline",
+      },
+      {
+        label: "How to build a payment-receipt review workflow",
+        href: "/insights/payment-receipt-verification-workflow",
+      },
     ],
     stack: ["Python", "OpenCV", "Tesseract", "Poppler", "DOCX", "PDF"],
     keywords: [
@@ -116,6 +147,7 @@ export const services: ServiceOffer[] = [
   {
     slug: "rag-ai-engineer",
     title: "RAG Engineer for Knowledge Systems and AI Search",
+    metaTitle: "RAG Engineer for Knowledge Systems",
     shortTitle: "RAG Systems",
     searchIntent:
       "Hire a RAG developer for document search, grounded answers, citations, retrieval evaluation, and knowledge systems.",
@@ -136,6 +168,11 @@ export const services: ServiceOffer[] = [
       "Evaluation cases, failure review, and production-oriented API integration",
       "Cost, latency, caching, and fallback decisions documented clearly",
     ],
+    limitations: [
+      "Retrieval quality depends on the source collection, permissions, chunking, indexing, and an evaluation set that reflects real questions.",
+      "A smaller context window is useful only when the selected evidence still supports a correct answer.",
+      "Production systems need access control, source traceability, monitoring, and a defined response when evidence is insufficient.",
+    ],
     proof: [
       {
         label: "Rabt Codebase Graph-RAG",
@@ -145,6 +182,16 @@ export const services: ServiceOffer[] = [
       {
         label: "Context Window Compressor",
         href: projectHref("context-window-compressor"),
+      },
+    ],
+    relatedInsights: [
+      {
+        label: "How to give coding agents smaller, relevant context",
+        href: "/insights/codebase-context-graph-for-llm-agents",
+      },
+      {
+        label: "How to build a safe Text-to-SQL system",
+        href: "/insights/safe-text-to-sql-ai-system",
       },
     ],
     stack: [
@@ -166,6 +213,7 @@ export const services: ServiceOffer[] = [
   {
     slug: "ai-agent-developer",
     title: "AI Agent Developer for Tool-Calling and Workflow Automation",
+    metaTitle: "AI Agent & Workflow Automation Developer",
     shortTitle: "AI Agents",
     searchIntent:
       "Hire an AI agent developer for tool calling, workflow automation, guardrails, memory, retries, and human review.",
@@ -186,6 +234,11 @@ export const services: ServiceOffer[] = [
       "FastAPI or service-layer integration with existing software",
       "Test cases and documented failure modes for production readiness",
     ],
+    limitations: [
+      "Agent autonomy should be bounded by the consequence of each tool action and the reliability of its inputs.",
+      "Workflows that move money, alter records, or contact people require explicit authorization and human review where appropriate.",
+      "Model behavior can change, so production use needs evaluations, logs, retries, and deterministic fallbacks.",
+    ],
     proof: [
       { label: "MCP Data Analyst", href: projectHref("mcp-data-analyst") },
       {
@@ -195,6 +248,16 @@ export const services: ServiceOffer[] = [
       {
         label: "Local Document De-ID",
         href: projectHref("local-document-deid"),
+      },
+    ],
+    relatedInsights: [
+      {
+        label: "Payment-receipt review with deterministic controls",
+        href: "/insights/payment-receipt-verification-workflow",
+      },
+      {
+        label: "AI-assisted structured entry in Flutter and Firebase",
+        href: "/insights/ai-assisted-flutter-firebase-app",
       },
     ],
     stack: ["Python", "FastAPI", "MCP", "OpenAI", "Anthropic", "Gemini"],
@@ -209,6 +272,7 @@ export const services: ServiceOffer[] = [
   {
     slug: "text-to-sql-fastapi",
     title: "Text-to-SQL and FastAPI Engineer for Data Assistants",
+    metaTitle: "Text-to-SQL & FastAPI Engineer",
     shortTitle: "Text-to-SQL",
     searchIntent:
       "Hire a Text-to-SQL developer for PostgreSQL AI assistants, FastAPI backends, SQL validation, and safe database access.",
@@ -229,6 +293,11 @@ export const services: ServiceOffer[] = [
       "Schema-aware retrieval and MCP or REST interfaces",
       "Tests, Docker setup, and implementation notes for reviewers",
     ],
+    limitations: [
+      "Read-only execution reduces mutation risk but does not prevent costly, unauthorized, or analytically incorrect queries by itself.",
+      "Business terms and row-level permissions must be defined with the data owner before the assistant can be trusted.",
+      "Generated SQL requires evaluation against representative questions and known result checks.",
+    ],
     proof: [
       { label: "MCP Data Analyst", href: projectHref("mcp-data-analyst") },
       {
@@ -236,6 +305,12 @@ export const services: ServiceOffer[] = [
         href: "/about",
       },
       { label: "Client review for RAG and AI systems", href: "/#testimonials" },
+    ],
+    relatedInsights: [
+      {
+        label: "How to build a safe Text-to-SQL system",
+        href: "/insights/safe-text-to-sql-ai-system",
+      },
     ],
     stack: ["Python", "FastAPI", "PostgreSQL", "SQL", "MCP", "Docker"],
     keywords: [
@@ -249,6 +324,7 @@ export const services: ServiceOffer[] = [
   {
     slug: "local-document-deidentification",
     title: "Local Document De-Identification Developer",
+    metaTitle: "Local Document De-Identification Developer",
     shortTitle: "Document De-ID",
     searchIntent:
       "Hire a developer for local document de-identification, human review, PDF/DOCX processing, and privacy-first document workflows.",
@@ -269,6 +345,11 @@ export const services: ServiceOffer[] = [
       "Human approval gate, manifesting, and verified DOCX export",
       "Security and threat-model documentation for the next production phase",
     ],
+    limitations: [
+      "De-identification software cannot guarantee legal anonymisation or detection of every identifying detail.",
+      "Human review remains mandatory before an exported document is approved for downstream use.",
+      "Production deployment requires representative testing, parser isolation, retention controls, and organization-specific policy review.",
+    ],
     proof: [
       {
         label: "Local Document De-ID",
@@ -279,6 +360,12 @@ export const services: ServiceOffer[] = [
         href: "/services/document-ai-engineer",
       },
       { label: "Resume with document privacy workflow", href: "/resume.pdf" },
+    ],
+    relatedInsights: [
+      {
+        label: "How to prepare scanned documents for controlled processing",
+        href: "/insights/scanned-document-preprocessing-pipeline",
+      },
     ],
     stack: ["Python", "DOCX", "PDF", "Tesseract", "Poppler", "Local UI"],
     keywords: [

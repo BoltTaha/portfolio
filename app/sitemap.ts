@@ -5,7 +5,7 @@ import { services } from "@/data/services";
 import { insights } from "@/data/insights";
 import { site } from "@/data/site";
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+  const stablePages = [
     "/",
     "/about",
     "/contact",
@@ -13,11 +13,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services",
     "/insights",
     ...services.map((service) => `/services/${service.slug}`),
-    ...insights.map((insight) => `/insights/${insight.slug}`),
     ...clientCaseStudies.map((study) => `/client-work/${study.slug}`),
     ...projects.map((p) => `/projects/${p.slug}`),
   ].map((path) => ({
     url: path === "/" ? `${site.url}/` : `${site.url}${path}`,
     lastModified: site.updated,
   }));
+
+  return [
+    ...stablePages,
+    ...insights.map((insight) => ({
+      url: `${site.url}/insights/${insight.slug}`,
+      lastModified: insight.updated,
+    })),
+  ];
 }

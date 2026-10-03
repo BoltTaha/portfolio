@@ -45,6 +45,7 @@ export default function RootLayout({
                 "@id": `${site.url}/#website`,
                 url: site.url,
                 name: `${site.name} Portfolio`,
+                alternateName: site.handle,
                 publisher: { "@id": `${site.url}/#person` },
               },
             ],

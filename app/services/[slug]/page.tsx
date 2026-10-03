@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props) {
   const service = getService((await params).slug);
   return service
     ? pageMetadata(
-        service.title,
+        service.metaTitle,
         service.metaDescription,
         `/services/${service.slug}`,
       )
@@ -34,33 +34,15 @@ export default async function ServicePage({ params }: Props) {
     url: `${site.url}/services/${service.slug}`,
     description: service.directAnswer,
     provider: { "@id": `${site.url}/#person` },
+    mainEntityOfPage: `${site.url}/services/${service.slug}`,
+    isPartOf: { "@id": `${site.url}/#website` },
     areaServed: "Worldwide",
     serviceType: service.shortTitle,
     keywords: service.keywords.join(", "),
   };
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: `Who should hire Muhammad Taha for ${service.shortTitle}?`,
-        acceptedAnswer: { "@type": "Answer", text: service.whoItHelps },
-      },
-      {
-        "@type": "Question",
-        name: `What can Muhammad Taha build for ${service.shortTitle}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: service.deliverables.join(" "),
-        },
-      },
-    ],
-  };
   return (
     <main id="main-content" className="page-wrap">
       <JsonLd data={schema} />
-      <JsonLd data={faqSchema} />
       <BreadcrumbJsonLd
         items={[
           { name: "Home", path: "/" },
@@ -140,9 +122,24 @@ export default async function ServicePage({ params }: Props) {
           </ul>
         </section>
         <section>
-          <p className="eyebrow">04 / Keywords</p>
-          <h2>How clients may search for this.</h2>
-          <p>{service.keywords.join(" · ")}</p>
+          <p className="eyebrow">04 / Engineering limits</p>
+          <h2>What has to be validated.</h2>
+          <ul>
+            {service.limitations.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+        <section>
+          <p className="eyebrow">05 / Technical guidance</p>
+          <h2>Read the related engineering notes.</h2>
+          <ul className="source-list">
+            {service.relatedInsights.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href}>{item.label} →</Link>
+              </li>
+            ))}
+          </ul>
         </section>
       </div>
       <aside className="case-cta">

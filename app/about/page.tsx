@@ -19,6 +19,7 @@ export default function AboutPage() {
           "@context": "https://schema.org",
           "@type": "ProfilePage",
           url: `${site.url}/about`,
+          dateModified: site.updated,
           mainEntity: { "@id": `${site.url}/#person` },
         }}
       />
@@ -34,16 +35,17 @@ export default function AboutPage() {
         />
         <p className="eyebrow">About / BoltTaha</p>
         <h1>
-          Software grounded in
+          Muhammad Taha builds
           <br />
-          <em>a useful problem.</em>
+          <em>production-oriented AI systems.</em>
         </h1>
         <p>
           I’m Muhammad Taha, an AI engineer focused on computer vision, document
           AI, document privacy workflows, LLM applications, RAG, backend
           systems, and automation. I build software that works with messy
           real-world inputs: game footage, scanned documents, databases, and
-          operational workflows.
+          operational workflows. I am based in Pakistan and completing a BS in
+          Computer Science at FAST-NUCES.
         </p>
       </header>
       <section className="section pt-0">

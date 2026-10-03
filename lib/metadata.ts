@@ -46,6 +46,10 @@ export const personSchema = {
   description: site.description,
   image: `${site.url}${site.image}`,
   email: site.email,
+  homeLocation: {
+    "@type": "Country",
+    name: "Pakistan",
+  },
   sameAs: [site.github, site.linkedin, site.upwork],
   knowsAbout: [
     "AI engineering",

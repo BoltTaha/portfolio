@@ -14,14 +14,17 @@ export default function InsightsPreview() {
         </Link>
       </div>
       <div className="project-grid">
-        {insights.map((insight) => (
+        {insights.slice(0, 3).map((insight) => (
           <article className="project-card" key={insight.slug}>
             <p className="eyebrow">{insight.category}</p>
             <h3 className="font-serif text-2xl leading-tight">
               <Link href={`/insights/${insight.slug}`}>{insight.title}</Link>
             </h3>
             <p className="text-ink-soft mt-4 mb-5">{insight.description}</p>
-            <Link className="text-link mt-auto" href={`/insights/${insight.slug}`}>
+            <Link
+              className="text-link mt-auto"
+              href={`/insights/${insight.slug}`}
+            >
               Read the article →
             </Link>
           </article>

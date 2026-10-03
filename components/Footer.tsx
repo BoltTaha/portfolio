@@ -14,8 +14,15 @@ export default function Footer() {
         <Link href="/contact">Contact</Link>
         <a href="/resume.pdf">Resume</a>
         <a href={`mailto:${site.email}`}>Email</a>
-        <a href={site.github}>GitHub</a>
-        <a href={site.linkedin}>LinkedIn</a>
+        <a href={site.github} rel="me">
+          GitHub
+        </a>
+        <a href={site.linkedin} rel="me">
+          LinkedIn
+        </a>
+        <a href={site.upwork} rel="me">
+          Upwork
+        </a>
       </nav>
     </footer>
   );

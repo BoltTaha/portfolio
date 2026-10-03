@@ -9,6 +9,8 @@ import sitemap from "@/app/sitemap";
 import robots from "@/app/robots";
 import { GET } from "@/app/llms.txt/route";
 import { clientCaseStudies } from "@/data/client-work";
+import { clientWorkDiscovery, projectDiscovery } from "@/data/discovery";
+import { faqs } from "@/data/faq";
 describe("public discovery contract", () => {
   it("gives every case study a unique canonical and sitemap entry", () => {
     expect(new Set(projects.map((p) => p.slug)).size).toBe(projects.length);
@@ -75,5 +77,43 @@ describe("public discovery contract", () => {
   it("uses the new portrait and does not label a current student as an alumnus", () => {
     expect(personSchema.image).toBe(`${site.url}/profile.jpeg`);
     expect(personSchema).not.toHaveProperty("alumniOf");
+  });
+
+  it("keeps topic-cluster links connected to real public routes", () => {
+    const publicPaths = new Set(
+      sitemap().map(
+        (entry) => new URL(entry.url).pathname.replace(/\/$/, "") || "/",
+      ),
+    );
+    const assertPublicPath = (href: string) => {
+      if (href.startsWith("http") || href.startsWith("/resume.pdf")) return;
+      const path = href.split("#")[0] || "/";
+      expect(publicPaths.has(path), `Missing public route for ${href}`).toBe(
+        true,
+      );
+    };
+
+    projects.forEach((project) => {
+      expect(projectDiscovery[project.slug]?.length).toBeGreaterThan(0);
+      projectDiscovery[project.slug].forEach((item) =>
+        assertPublicPath(item.href),
+      );
+    });
+    clientCaseStudies.forEach((study) => {
+      expect(clientWorkDiscovery[study.slug]?.length).toBeGreaterThan(0);
+      clientWorkDiscovery[study.slug].forEach((item) =>
+        assertPublicPath(item.href),
+      );
+    });
+    services.forEach((service) => {
+      expect(service.limitations.length).toBeGreaterThan(0);
+      expect(service.relatedInsights.length).toBeGreaterThan(0);
+      service.proof.forEach((item) => assertPublicPath(item.href));
+      service.relatedInsights.forEach((item) => assertPublicPath(item.href));
+    });
+    insights.forEach((insight) =>
+      insight.related.forEach((item) => assertPublicPath(item.href)),
+    );
+    faqs.forEach((faq) => assertPublicPath(faq.href));
   });
 });

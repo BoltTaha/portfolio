@@ -2,7 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
+import RelatedDiscovery from "@/components/RelatedDiscovery";
 import { clientCaseStudies, getClientCaseStudy } from "@/data/client-work";
+import { clientWorkDiscovery } from "@/data/discovery";
 import { site } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -20,7 +22,7 @@ export async function generateMetadata({ params }: PageProps) {
   if (!study) return {};
   return pageMetadata(
     `${study.title} client case study`,
-    `${study.directAnswer} Read Muhammad Taha's implementation approach, outcomes, proof points, and limitations.`,
+    study.summary,
     `/client-work/${study.slug}`,
   );
 }
@@ -44,6 +46,8 @@ export default async function ClientWorkPage({ params }: PageProps) {
           publisher: { "@id": `${site.url}/#website` },
           about: study.stack,
           mainEntityOfPage: `${site.url}/client-work/${study.slug}`,
+          dateModified: site.updated,
+          isPartOf: { "@id": `${site.url}/#website` },
         }}
       />
       <BreadcrumbJsonLd
@@ -57,7 +61,10 @@ export default async function ClientWorkPage({ params }: PageProps) {
         ]}
       />
       <header className="page-intro">
-        <Link className="text-link mb-8 inline-block" href="/projects#client-work">
+        <Link
+          className="text-link mb-8 inline-block"
+          href="/projects#client-work"
+        >
           ← All client work
         </Link>
         <p className="eyebrow">{study.category}</p>
@@ -143,6 +150,8 @@ export default async function ClientWorkPage({ params }: PageProps) {
             ))}
           </ul>
         </section>
+
+        <RelatedDiscovery links={clientWorkDiscovery[study.slug] ?? []} />
       </article>
 
       <div className="case-cta">

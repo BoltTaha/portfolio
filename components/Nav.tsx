@@ -28,7 +28,7 @@ export default function Nav() {
         <Link
           href="/"
           className="wordmark"
-          aria-label="Muhammad Taha home"
+          aria-label="bolttaha — Muhammad Taha home"
           onClick={() => setOpen(false)}
         >
           bolt<span>taha</span>

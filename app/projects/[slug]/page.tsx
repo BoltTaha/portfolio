@@ -5,7 +5,9 @@ import { site } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
 import JsonLd from "@/components/JsonLd";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
+import RelatedDiscovery from "@/components/RelatedDiscovery";
 import ProjectVisual from "@/components/ProjectVisual";
+import { projectDiscovery } from "@/data/discovery";
 
 type Props = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
@@ -25,16 +27,22 @@ export default async function ProjectPage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     name: `${project.title} case study`,
+    headline: project.title,
     url: `${site.url}/projects/${project.slug}`,
     description: project.summary,
     author: { "@id": `${site.url}/#person` },
+    creator: { "@id": `${site.url}/#person` },
+    mainEntityOfPage: `${site.url}/projects/${project.slug}`,
+    isPartOf: { "@id": `${site.url}/#website` },
     dateModified: site.updated,
+    keywords: project.stack.join(", "),
     about: {
       "@type": "SoftwareSourceCode",
       name: project.title,
       ...(project.repo ? { codeRepository: repoUrl(project.repo) } : {}),
       description: project.summary,
-      runtimePlatform: project.stack.join(", "),
+      keywords: project.stack.join(", "),
+      creator: { "@id": `${site.url}/#person` },
       maintainer: { "@id": `${site.url}/#person` },
     },
     ...(project.clientReview
@@ -216,6 +224,7 @@ export default async function ProjectPage({ params }: Props) {
             <p>{project.sourceNote}</p>
           )}
         </section>
+        <RelatedDiscovery links={projectDiscovery[project.slug] ?? []} />
       </div>
       <aside className="case-cta">
         <h2>Working on a related problem?</h2>

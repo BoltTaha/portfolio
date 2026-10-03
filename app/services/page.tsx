@@ -29,9 +29,9 @@ export default function ServicesPage() {
       <header className="page-intro">
         <p className="eyebrow">Services / hire Muhammad Taha</p>
         <h1>
-          Searchable offers for
+          AI engineering services
           <br />
-          <em>real AI work.</em>
+          <em>backed by working systems.</em>
         </h1>
         <p>
           These pages map my strongest work to the problems clients actually

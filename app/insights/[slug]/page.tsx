@@ -50,22 +50,14 @@ export default async function InsightPage({ params }: Props) {
     author: { "@id": `${site.url}/#person` },
     publisher: { "@id": `${site.url}/#person` },
     mainEntityOfPage: `${site.url}/insights/${insight.slug}`,
+    isPartOf: { "@id": `${site.url}/#website` },
+    image: `${site.url}/opengraph-image`,
     keywords: insight.keywords.join(", "),
-  };
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: insight.questions.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: { "@type": "Answer", text: item.answer },
-    })),
   };
 
   return (
     <main id="main-content" className="page-wrap">
       <JsonLd data={articleSchema} />
-      <JsonLd data={faqSchema} />
       <BreadcrumbJsonLd
         items={[
           { name: "Home", path: "/" },
