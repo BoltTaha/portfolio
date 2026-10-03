@@ -5,6 +5,8 @@ import { personSchema } from "@/lib/metadata";
 import JsonLd from "@/components/JsonLd";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import AnalyticsEvents from "@/components/AnalyticsEvents";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -54,6 +56,8 @@ export default function RootLayout({
         <Nav />
         {children}
         <Footer />
+        <AnalyticsEvents />
+        <Analytics />
       </body>
     </html>
   );

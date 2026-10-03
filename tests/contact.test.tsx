@@ -1,6 +1,10 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import ContactForm from "@/components/ContactForm";
+
+const { track } = vi.hoisted(() => ({ track: vi.fn() }));
+
+vi.mock("@vercel/analytics", () => ({ track }));
 function submit() {
   fireEvent.change(screen.getByLabelText("Your name"), {
     target: { value: "Test Visitor" },
@@ -16,9 +20,10 @@ function submit() {
   );
 }
 describe("contact submissions", () => {
-  beforeEach(() =>
-    vi.stubEnv("NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY", "test-public-key"),
-  );
+  beforeEach(() => {
+    track.mockClear();
+    vi.stubEnv("NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY", "test-public-key");
+  });
   it("keeps labels unique with two forms on the page", () => {
     render(
       <>
@@ -41,6 +46,15 @@ describe("contact submissions", () => {
     const body = fetch.mock.calls[0][1].body as FormData;
     expect(body.get("email")).toBe("visitor@example.com");
     expect(body.get("access_key")).toBe("test-public-key");
+    expect(track).toHaveBeenCalledTimes(1);
+    expect(track).toHaveBeenCalledWith("submit_contact", {
+      page: "/",
+      location: "contact_page",
+    });
+    expect(JSON.stringify(track.mock.calls)).not.toContain(
+      "visitor@example.com",
+    );
+    expect(JSON.stringify(track.mock.calls)).not.toContain("A test inquiry");
   });
   it.each([
     { ok: true, success: false },
@@ -62,6 +76,7 @@ describe("contact submissions", () => {
       "A test inquiry",
     );
     expect(screen.getByRole("button", { name: "Send message" })).toBeEnabled();
+    expect(track).not.toHaveBeenCalled();
   });
   it("offers email fallback without a configured key", async () => {
     vi.stubEnv("NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY", "");
@@ -71,6 +86,7 @@ describe("contact submissions", () => {
     submit();
     expect(await screen.findByRole("alert")).toBeInTheDocument();
     expect(fetch).not.toHaveBeenCalled();
+    expect(track).not.toHaveBeenCalled();
   });
   it("aborts a stalled request and permits retry", async () => {
     vi.useFakeTimers();
@@ -101,5 +117,6 @@ describe("contact submissions", () => {
     submit();
     await waitFor(() => expect(screen.getByRole("alert")).toBeInTheDocument());
     expect(screen.queryByText(/Message sent/)).not.toBeInTheDocument();
+    expect(track).not.toHaveBeenCalled();
   });
 });

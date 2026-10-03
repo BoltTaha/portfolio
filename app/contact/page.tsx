@@ -38,7 +38,7 @@ export default function ContactPage() {
       </header>
       <div className="contact-grid">
         <section aria-label="Send a message" className="contact-panel">
-          <ContactForm />
+          <ContactForm analyticsLocation="contact_page" />
         </section>
         <aside>
           <h2 className="font-serif text-2xl mb-4">

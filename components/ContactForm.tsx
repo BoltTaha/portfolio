@@ -1,9 +1,17 @@
 "use client";
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { site } from "@/data/site";
+import { trackEvent, type AnalyticsLocation } from "@/lib/analytics";
 
 type Status = "idle" | "submitting" | "success" | "error";
-export default function ContactForm() {
+export default function ContactForm({
+  analyticsLocation = "contact_page",
+}: {
+  analyticsLocation?: Extract<
+    AnalyticsLocation,
+    "contact_page" | "contact_modal"
+  >;
+}) {
   const [status, setStatus] = useState<Status>("idle");
   const id = useId();
   const request = useRef<AbortController | null>(null);
@@ -33,6 +41,7 @@ export default function ContactForm() {
       if (!response.ok || result.success !== true)
         throw new Error("Submission not accepted");
       setStatus("success");
+      trackEvent("submit_contact", analyticsLocation);
     } catch {
       setStatus("error");
     } finally {

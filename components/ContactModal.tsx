@@ -24,6 +24,8 @@ export default function ContactModal() {
         ref={trigger}
         onClick={() => setOpen(true)}
         className="button nav-contact"
+        data-analytics-event="click_contact"
+        data-analytics-location="nav"
       >
         Get in touch
       </button>
@@ -80,7 +82,7 @@ export default function ContactModal() {
                 ×
               </button>
             </div>
-            <ContactForm />
+            <ContactForm analyticsLocation="contact_modal" />
           </>
         )}
       </dialog>
