@@ -43,13 +43,13 @@ export const projects: Project[] = [
     category: "Computer vision · Edge AI",
     summary:
       "A modular road-video perception pipeline combining ONNX object detection, persistent track IDs, lane and drivable-area overlays, structured output, and measured deployment results on a Raspberry Pi 4B.",
-    kind: "Client project",
-    status: "Delivered road-perception system with a 5.0 client review",
-    role: "Computer Vision and Edge AI engineer responsible for architecture, implementation, benchmarking, documentation, and handoff.",
+    kind: "Personal project",
+    status: "Working road-perception system with a measured Raspberry Pi 4B deployment",
+    role: "Computer Vision and Edge AI engineer responsible for architecture, implementation, benchmarking, and documentation.",
     featured: true,
     repo: "edge-road-perception",
     repositoryNote:
-      "The linked GitHub repository is an independent open-source reference implementation built with public footage and reusable components. It contains no client data, credentials, private datasets, or private project assets.",
+      "The linked GitHub repository is an independent open-source implementation built with public footage and reusable components. It contains no private data, credentials, or private datasets.",
     stack: [
       "Python",
       "ONNX Runtime",
@@ -61,7 +61,7 @@ export const projects: Project[] = [
       "Edge AI",
     ],
     problem:
-      "A three-engineer team needed a small, working perception system to test whether road-video detection, multi-object tracking, and lane understanding could form a practical foundation for later edge deployment. The goal was a measurable and transferable vision pipeline, not a complete autonomous-driving stack.",
+      "I wanted to test whether road-video detection, multi-object tracking, and lane understanding could form a practical foundation for later edge deployment. The goal was a small, measurable, and transferable vision pipeline rather than a complete autonomous-driving stack.",
     audience:
       "Engineering teams evaluating an early road-perception architecture before committing to hardware-specific optimization or a larger autonomous-driving program.",
     approach: [
@@ -69,7 +69,7 @@ export const projects: Project[] = [
       "A dependency-light, ByteTrack-style tracker combines a constant-velocity Kalman filter with Hungarian IoU association. High-confidence detections are matched first, followed by a lower-confidence recovery pass, and visible tracks receive persistent IDs while tracking conditions allow.",
       "Lane and drivable-area perception uses grayscale conversion, Gaussian smoothing, Canny edges, a trapezoidal region of interest, probabilistic Hough lines, slope-based grouping, and temporal exponential smoothing. The stage is isolated behind a small interface so a learned segmentation model can replace it later.",
       "The pipeline writes an annotated MP4, one JSONL record per frame with class, confidence, bounding box, track ID, frame, and timestamp, plus a JSON performance report containing mean, p50, p95, and maximum timings for each measured stage.",
-      "Configuration is centralized, and the handoff documents setup, model replacement, edge-platform tradeoffs, ONNX-to-TensorRT or Hailo compilation paths, FP16 and INT8 considerations, and the order in which bottlenecks should be optimized.",
+      "Configuration is centralized, and the documentation covers setup, model replacement, edge-platform tradeoffs, ONNX-to-TensorRT or Hailo compilation paths, FP16 and INT8 considerations, and the order in which bottlenecks should be optimized.",
       "For the hardware follow-up, I moved the same modular pipeline to a 64-bit Raspberry Pi 4B and ran it with ONNX Runtime's CPU execution provider. I kept detection, tracking, lane estimation, visualization, and timing separate so the on-device HUD and benchmark could show where the latency was being spent.",
       "I also compared the FP32 detector with a dynamically quantized INT8 export. The tested INT8 path did not improve throughput on this runtime, so the next iteration starts with software and runtime profiling: lower input resolutions, ONNX Runtime thread settings, and ARM-oriented runtimes such as NCNN or TFLite. A dedicated accelerator becomes the next option only if those measured changes cannot meet the target.",
     ],
@@ -84,7 +84,7 @@ export const projects: Project[] = [
       "Measured Raspberry Pi 4B CPU deployment with FP32 and dynamic-INT8 comparison",
     ],
     outcome:
-      "The delivered system processed all three supplied public clips and generated annotated demonstrations, structured detections, and fresh performance reports. Across 221, 681, and 251-frame runs on a constrained one-logical-CPU development environment, the reports recorded 9.42-9.58 processing FPS, 91.63-92.30 ms mean detector inference, 0.32-0.45 ms mean tracking time, and 3.58-7.54 ms mean lane-processing time. In the later Raspberry Pi 4B CPU deployment, the FP32 pipeline ran at approximately 2.0 FPS with roughly 458 ms detector inference; the dynamically quantized INT8 run measured approximately 1.8 FPS and did not provide a speedup in the tested configuration. The recorded temperature under load was 38.9°C. The client awarded the original delivery 5.0 stars and said the result exceeded expectations.",
+      "The system processed three public clips and generated annotated demonstrations, structured detections, and fresh performance reports. Across 221, 681, and 251-frame runs on a constrained one-logical-CPU development environment, the reports recorded 9.42-9.58 processing FPS, 91.63-92.30 ms mean detector inference, 0.32-0.45 ms mean tracking time, and 3.58-7.54 ms mean lane-processing time. In the later Raspberry Pi 4B CPU deployment, the FP32 pipeline ran at approximately 2.0 FPS with roughly 458 ms detector inference; the dynamically quantized INT8 run measured approximately 1.8 FPS and did not provide a speedup in the tested configuration. The recorded temperature under load was 38.9°C.",
     limitations: [
       "This is a Phase 1 perception proof of concept, not a safety-certified autonomous-driving system. It does not include planning, control, localization, sensor fusion, or vehicle integration.",
       "The supplied demonstrations use public dash-cam clips. Detection and tracking were visually inspected, but no labeled road benchmark or identity metric such as HOTA, MOTA, or IDF1 was reported.",
@@ -103,19 +103,6 @@ export const projects: Project[] = [
       "src/tracker.py",
       "src/lane_detection.py",
     ],
-    clientReview: {
-      quote:
-        "Great experience working with Muhammad Taha. He understood the project well, delivered everything on time, and the final result was even better than I expected. Would definitely work with him again.",
-      rating: 5,
-      source: "Verified Upwork client",
-      endorsements: [
-        "Reliable",
-        "Committed to Quality",
-        "Solution Oriented",
-        "Clear Communicator",
-        "Accountable for Outcomes",
-      ],
-    },
   },
   {
     slug: "local-document-deid",
@@ -533,13 +520,6 @@ export const projects: Project[] = [
 
 // Already-public portfolio history; separate from the source-backed case studies.
 export const clientWork = [
-  {
-    title: "Autonomous-driving edge perception",
-    context: "Computer vision and Edge AI client project",
-    summary:
-      "Delivered a modular road-video perception system with ONNX detection, persistent tracking IDs, lane overlays, structured output, measured stage timings, and edge-deployment guidance.",
-    href: "/projects/autonomous-driving-edge-perception",
-  },
   ...clientCaseStudies.map((study) => ({
     title: study.shortTitle,
     context: study.clientContext,
