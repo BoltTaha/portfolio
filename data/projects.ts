@@ -77,7 +77,7 @@ export const projects: Project[] = [
       "YOLOv8n road-object detection through ONNX Runtime",
       "Kalman-filter and Hungarian-IoU multi-object tracking",
       "Classical computer-vision lane and drivable-area overlay",
-      "Live track count, inference time, frame number, and FPS display",
+      "Per-frame HUD with track count, inference time, frame number, and rolling processing FPS",
       "Annotated video, JSONL detections, and JSON performance reports",
       "Three reproducible public dash-cam demonstrations",
       "Jetson, Raspberry Pi plus Hailo, quantization, and runtime guidance",
@@ -90,7 +90,7 @@ export const projects: Project[] = [
       "The supplied demonstrations use public dash-cam clips. Detection and tracking were visually inspected, but no labeled road benchmark or identity metric such as HOTA, MOTA, or IDF1 was reported.",
       "The performance report measures the detector, tracker, lane stage, and their compute path. It is not a camera-to-display latency measurement because capture, visualization, encoding, and output writes are outside the recorded total.",
       "The ~9.5 FPS result comes from a constrained one-logical-CPU development environment. It is not a claim about Jetson, Raspberry Pi, Hailo, GPU, or production performance.",
-      "The Raspberry Pi numbers describe these specific FP32 and dynamically quantized INT8 runs. They do not establish accuracy after quantization, camera-to-display latency, power consumption, or performance with NCNN, TFLite, Hailo, Coral, Jetson, or TensorRT.",
+      "The Raspberry Pi numbers describe offline processing throughput, not the 25 FPS playback rate of the completed video and not live camera throughput. These runs also do not establish accuracy after quantization, camera-to-display latency, power consumption, or performance with NCNN, TFLite, Hailo, Coral, Jetson, or TensorRT.",
       "Classical lane detection works best with visible lane markings and can degrade under sharp curves, glare, shadows, construction, occlusion, or unmarked roads.",
     ],
     nextSteps:

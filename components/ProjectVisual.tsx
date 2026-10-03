@@ -28,14 +28,14 @@ export default function ProjectVisual({ slug }: { slug: string }) {
             Your browser does not support the embedded demonstration video.
           </video>
           <figcaption className="font-mono text-xs text-ink-soft mt-3">
-            8.8-second H.264 output · public road footage · processed on
-            Raspberry Pi 4B · no audio
+            8.84-second H.264 output · 221 frames · 25 FPS playback · public
+            road footage · processed on Raspberry Pi 4B · no audio
           </figcaption>
         </figure>
         <dl className="grid grid-cols-4 max-[850px]:grid-cols-2 max-[520px]:grid-cols-1 gap-4 mt-7">
           <div>
             <dt className="font-mono text-xs uppercase text-clay-deep">
-              FP32 pipeline
+              FP32 processing
             </dt>
             <dd className="font-serif text-2xl mt-1">~2.0 FPS</dd>
           </div>
@@ -58,6 +58,14 @@ export default function ProjectVisual({ slug }: { slug: string }) {
             <dd className="font-serif text-2xl mt-1">38.9°C</dd>
           </div>
         </dl>
+        <p className="mt-6 rounded-lg border border-line bg-paper/50 p-4 text-sm text-ink-soft">
+          <strong className="text-ink">Playback and processing are different.</strong>{" "}
+          The completed file plays at the source rate of 25 FPS, so motion looks
+          smooth. The ~2.0 FPS figure is the Raspberry Pi&apos;s offline processing
+          throughput: it handled about two source frames each second and needed
+          roughly 110 seconds to process this 221-frame, 8.84-second clip. This
+          result is not a real-time camera-throughput claim.
+        </p>
         <div className="border-t border-line mt-7 pt-6">
           <p className="font-mono text-xs uppercase tracking-[0.06em] text-clay-deep">
             Benchmark finding
