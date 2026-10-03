@@ -8,12 +8,15 @@ import { pageMetadata, personSchema } from "@/lib/metadata";
 import sitemap from "@/app/sitemap";
 import robots from "@/app/robots";
 import { GET } from "@/app/llms.txt/route";
+import { clientCaseStudies } from "@/data/client-work";
 describe("public discovery contract", () => {
   it("gives every case study a unique canonical and sitemap entry", () => {
     expect(new Set(projects.map((p) => p.slug)).size).toBe(projects.length);
     expect(new Set(services.map((s) => s.slug)).size).toBe(services.length);
     expect(new Set(insights.map((i) => i.slug)).size).toBe(insights.length);
     const urls = sitemap().map((entry) => entry.url);
+    expect(new Set(urls).size).toBe(urls.length);
+    expect(urls.every((url) => url.startsWith(`${site.url}/`))).toBe(true);
     for (const project of projects) {
       const path = `/projects/${project.slug}`;
       expect(urls).toContain(site.url + path);
@@ -43,6 +46,13 @@ describe("public discovery contract", () => {
       expect(
         pageMetadata(insight.title, insight.description, path).alternates
           ?.canonical,
+      ).toBe(path);
+    }
+    for (const study of clientCaseStudies) {
+      const path = `/client-work/${study.slug}`;
+      expect(urls).toContain(site.url + path);
+      expect(
+        pageMetadata(study.title, study.summary, path).alternates?.canonical,
       ).toBe(path);
     }
     expect(getProject("does-not-exist")).toBeUndefined();

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { getInsight, insights } from "@/data/insights";
 import { site } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
@@ -65,6 +66,13 @@ export default async function InsightPage({ params }: Props) {
     <main id="main-content" className="page-wrap">
       <JsonLd data={articleSchema} />
       <JsonLd data={faqSchema} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Insights", path: "/insights" },
+          { name: insight.title, path: `/insights/${insight.slug}` },
+        ]}
+      />
       <article>
         <header className="page-intro">
           <Link className="text-link mb-8 inline-block" href="/insights">

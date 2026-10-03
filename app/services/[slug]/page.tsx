@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { getService, services } from "@/data/services";
 import { site } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
@@ -60,6 +61,13 @@ export default async function ServicePage({ params }: Props) {
     <main id="main-content" className="page-wrap">
       <JsonLd data={schema} />
       <JsonLd data={faqSchema} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: service.shortTitle, path: `/services/${service.slug}` },
+        ]}
+      />
       <header className="page-intro">
         <Link className="text-link mb-8 inline-block" href="/services">
           ← All services

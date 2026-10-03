@@ -4,6 +4,7 @@ import { projects, getProject, repoUrl, sourceUrl } from "@/data/projects";
 import { site } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
 import JsonLd from "@/components/JsonLd";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import ProjectVisual from "@/components/ProjectVisual";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -57,6 +58,13 @@ export default async function ProjectPage({ params }: Props) {
   return (
     <main id="main-content" className="page-wrap">
       <JsonLd data={schema} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Projects", path: "/projects" },
+          { name: project.title, path: `/projects/${project.slug}` },
+        ]}
+      />
       <header className="page-intro">
         <Link className="text-link mb-8 inline-block" href="/projects">
           ← All projects

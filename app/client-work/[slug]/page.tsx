@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { clientCaseStudies, getClientCaseStudy } from "@/data/client-work";
 import { site } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
@@ -45,7 +46,20 @@ export default async function ClientWorkPage({ params }: PageProps) {
           mainEntityOfPage: `${site.url}/client-work/${study.slug}`,
         }}
       />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Projects", path: "/projects" },
+          {
+            name: study.title,
+            path: `/client-work/${study.slug}`,
+          },
+        ]}
+      />
       <header className="page-intro">
+        <Link className="text-link mb-8 inline-block" href="/projects#client-work">
+          ← All client work
+        </Link>
         <p className="eyebrow">{study.category}</p>
         <h1>
           {study.title}
