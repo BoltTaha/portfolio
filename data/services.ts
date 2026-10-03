@@ -47,7 +47,7 @@ export const services: ServiceOffer[] = [
     ],
     limitations: [
       "Accuracy and latency targets depend on representative footage, labels, camera placement, and target hardware.",
-      "A CPU reference benchmark or deployment recommendation is not presented as a measured Jetson, Hailo, or TensorRT result.",
+      "The Raspberry Pi 4B CPU benchmark is kept separate from the development baseline and is not presented as a measured Jetson, Hailo, Coral, or TensorRT result.",
       "Safety-critical perception requires additional validation, sensor integration, and system-level controls beyond a portfolio pipeline.",
     ],
     proof: [

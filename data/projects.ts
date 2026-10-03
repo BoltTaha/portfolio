@@ -42,7 +42,7 @@ export const projects: Project[] = [
     title: "Autonomous Driving Edge Perception",
     category: "Computer vision · Edge AI",
     summary:
-      "A modular road-video perception pipeline combining ONNX object detection, persistent track IDs, lane and drivable-area overlays, structured output, and measured stage latency.",
+      "A modular road-video perception pipeline combining ONNX object detection, persistent track IDs, lane and drivable-area overlays, structured output, and measured deployment results on a Raspberry Pi 4B.",
     kind: "Client project",
     status: "Delivered road-perception system with a 5.0 client review",
     role: "Computer Vision and Edge AI engineer responsible for architecture, implementation, benchmarking, documentation, and handoff.",
@@ -70,6 +70,8 @@ export const projects: Project[] = [
       "Lane and drivable-area perception uses grayscale conversion, Gaussian smoothing, Canny edges, a trapezoidal region of interest, probabilistic Hough lines, slope-based grouping, and temporal exponential smoothing. The stage is isolated behind a small interface so a learned segmentation model can replace it later.",
       "The pipeline writes an annotated MP4, one JSONL record per frame with class, confidence, bounding box, track ID, frame, and timestamp, plus a JSON performance report containing mean, p50, p95, and maximum timings for each measured stage.",
       "Configuration is centralized, and the handoff documents setup, model replacement, edge-platform tradeoffs, ONNX-to-TensorRT or Hailo compilation paths, FP16 and INT8 considerations, and the order in which bottlenecks should be optimized.",
+      "For the hardware follow-up, I moved the same modular pipeline to a 64-bit Raspberry Pi 4B and ran it with ONNX Runtime's CPU execution provider. I kept detection, tracking, lane estimation, visualization, and timing separate so the on-device HUD and benchmark could show where the latency was being spent.",
+      "I also compared the FP32 detector with a dynamically quantized INT8 export. The tested INT8 path did not improve throughput on this runtime, so the next iteration starts with software and runtime profiling: lower input resolutions, ONNX Runtime thread settings, and ARM-oriented runtimes such as NCNN or TFLite. A dedicated accelerator becomes the next option only if those measured changes cannot meet the target.",
     ],
     features: [
       "YOLOv8n road-object detection through ONNX Runtime",
@@ -79,18 +81,20 @@ export const projects: Project[] = [
       "Annotated video, JSONL detections, and JSON performance reports",
       "Three reproducible public dash-cam demonstrations",
       "Jetson, Raspberry Pi plus Hailo, quantization, and runtime guidance",
+      "Measured Raspberry Pi 4B CPU deployment with FP32 and dynamic-INT8 comparison",
     ],
     outcome:
-      "The delivered system processed all three supplied public clips and generated annotated demonstrations, structured detections, and fresh performance reports. Across 221, 681, and 251-frame runs on a constrained one-logical-CPU environment, the reports recorded 9.42-9.58 processing FPS, 91.63-92.30 ms mean detector inference, 0.32-0.45 ms mean tracking time, and 3.58-7.54 ms mean lane-processing time. The client awarded the delivery 5.0 stars and said the result exceeded expectations.",
+      "The delivered system processed all three supplied public clips and generated annotated demonstrations, structured detections, and fresh performance reports. Across 221, 681, and 251-frame runs on a constrained one-logical-CPU development environment, the reports recorded 9.42-9.58 processing FPS, 91.63-92.30 ms mean detector inference, 0.32-0.45 ms mean tracking time, and 3.58-7.54 ms mean lane-processing time. In the later Raspberry Pi 4B CPU deployment, the FP32 pipeline ran at approximately 2.0 FPS with roughly 458 ms detector inference; the dynamically quantized INT8 run measured approximately 1.8 FPS and did not provide a speedup in the tested configuration. The recorded temperature under load was 38.9°C. The client awarded the original delivery 5.0 stars and said the result exceeded expectations.",
     limitations: [
       "This is a Phase 1 perception proof of concept, not a safety-certified autonomous-driving system. It does not include planning, control, localization, sensor fusion, or vehicle integration.",
       "The supplied demonstrations use public dash-cam clips. Detection and tracking were visually inspected, but no labeled road benchmark or identity metric such as HOTA, MOTA, or IDF1 was reported.",
       "The performance report measures the detector, tracker, lane stage, and their compute path. It is not a camera-to-display latency measurement because capture, visualization, encoding, and output writes are outside the recorded total.",
       "The ~9.5 FPS result comes from a constrained one-logical-CPU development environment. It is not a claim about Jetson, Raspberry Pi, Hailo, GPU, or production performance.",
+      "The Raspberry Pi numbers describe these specific FP32 and dynamically quantized INT8 runs. They do not establish accuracy after quantization, camera-to-display latency, power consumption, or performance with NCNN, TFLite, Hailo, Coral, Jetson, or TensorRT.",
       "Classical lane detection works best with visible lane markings and can degrade under sharp curves, glare, shadows, construction, occlusion, or unmarked roads.",
     ],
     nextSteps:
-      "Benchmark on the selected Jetson or Raspberry Pi plus Hailo target, convert the detector to FP16 and then calibrated INT8 where useful, measure true end-to-end latency, evaluate detection and identity quality on labeled representative footage, and replace the lane stage with a learned drivable-area model if operating conditions require it.",
+      "Profile the Raspberry Pi path before adding hardware: compare 640, 416, and 320-pixel detector inputs; verify ONNX Runtime thread use; test ARM-oriented NCNN or TFLite kernels; and measure the accuracy cost of each change. If those experiments still miss the required throughput, repeat the same benchmark with a dedicated accelerator such as Hailo-8 or Coral. Later work should measure true end-to-end and p95 latency, memory, power, thermals, detection quality, and identity metrics on labeled representative footage.",
     sourcePaths: [
       "docs/architecture.md",
       "docs/benchmarking.md",
