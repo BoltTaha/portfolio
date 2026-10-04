@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/JsonLd";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
+import ClientWorkVisual from "@/components/ClientWorkVisual";
 import RelatedDiscovery from "@/components/RelatedDiscovery";
 import { clientCaseStudies, getClientCaseStudy } from "@/data/client-work";
 import { clientWorkDiscovery } from "@/data/discovery";
@@ -90,6 +91,8 @@ export default async function ClientWorkPage({ params }: PageProps) {
           <dd>{study.stack.join(" · ")}</dd>
         </div>
       </dl>
+
+      <ClientWorkVisual slug={study.slug} />
 
       <article className="case-body">
         <section>
