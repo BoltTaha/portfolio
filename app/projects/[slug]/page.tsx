@@ -90,8 +90,13 @@ export default async function ProjectPage({ params }: Props) {
         <div className="flex flex-wrap gap-3 mt-8">
           {project.repo ? (
             <>
-              <a className="button solid" href={repoUrl(project.repo)}>
-                View repository ↗
+              <a
+                className="button solid"
+                href={repoUrl(project.repo)}
+                target={project.repositoryNewTab ? "_blank" : undefined}
+                rel={project.repositoryNewTab ? "noreferrer" : undefined}
+              >
+                {project.repositoryLabel ?? "View repository ↗"}
               </a>
               <a className="button" href={sourceUrl(project.repo)}>
                 Read the documentation

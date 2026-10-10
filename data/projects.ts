@@ -16,6 +16,8 @@ export interface Project {
   role?: string;
   stack: string[];
   repo?: Repo;
+  repositoryLabel?: string;
+  repositoryNewTab?: boolean;
   sourceNote?: string;
   featured?: boolean;
   problem: string;
@@ -37,6 +39,75 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    slug: "boardlens-pcb-aoi",
+    title: "BoardLens — PCB Automated Optical Inspection",
+    category: "Computer vision · Industrial AI",
+    summary:
+      "Industrial PCB visual-inspection platform combining anomaly localization, explainable quality decisions, traceable inspection history, and an API-connected dashboard.",
+    kind: "Personal project",
+    status:
+      "Production-oriented proof of concept with a verified PCB1 PatchCore baseline",
+    role: "Computer Vision and full-stack engineer responsible for data validation, anomaly modeling, inspection logic, APIs, dashboard, testing, and documentation.",
+    featured: true,
+    repo: "boardlens-pcb-aoi",
+    repositoryLabel: "View on GitHub ↗",
+    repositoryNewTab: true,
+    repositoryNote:
+      "The public repository records the exact implementation and evidence used for this case study. The official VisA archive and fitted model artifacts are excluded from Git; results are linked to the reviewed source revision.",
+    stack: [
+      "Python",
+      "Computer Vision",
+      "PatchCore",
+      "Anomalib",
+      "PyTorch",
+      "FastAPI",
+      "React",
+      "TypeScript",
+      "PostgreSQL",
+      "Docker",
+      "VisA Dataset",
+      "Machine Learning",
+      "Industrial AI",
+    ],
+    problem:
+      "PCB inspection needs more than a binary model score. An operator needs localized visual evidence, a conservative decision when a model is missing or uncertain, and a traceable record of which model and threshold produced each result. BoardLens explores that complete workflow without presenting the current baseline as a certified manufacturing system.",
+    audience:
+      "Computer-vision and manufacturing teams evaluating how product-specific anomaly detection could support a reviewed PCB quality-inspection workflow before line-specific data collection, calibration, integration, and certification.",
+    approach: [
+      "The data workflow validates the official VisA PCB archive, preserves its published one-class split, verifies image and mask integrity, and records dataset provenance. The current fitted baseline is product-specific: PCB1 uses Anomalib PatchCore with ResNet-18 features, 224×224 inputs, and a memory-bank coreset built from normal training images.",
+      "PatchCore produces an anomaly score and pixel-level model heatmap. That heatmap is model-generated evidence and is kept distinct from the VisA ground-truth mask, which is a dataset label used for evaluation. BoardLens does not convert binary anomaly masks into unsupported semantic defect classes.",
+      "A versioned decision layer turns available evidence into explainable PASS, FAIL, or REVIEW results. Missing or unloadable models return REVIEW instead of a fabricated score, while every persisted inspection records its model identifier, threshold version, decision reasons, artifacts, and timestamps.",
+      "The architecture separates offline fitting and evaluation from a FastAPI inspection service and React/TypeScript dashboard. Development uses SQLite; the Docker Compose topology includes PostgreSQL, backend and frontend containers, migrations, and persistent volumes, although the complete PostgreSQL Compose stack has not yet been validated on the development host.",
+    ],
+    features: [
+      "Genuine PCB1 PatchCore anomaly-detection baseline",
+      "Pixel-level model heatmaps and separate ground-truth mask comparisons",
+      "Explainable PASS, FAIL, and REVIEW decisions",
+      "FastAPI inspection service and React dashboard",
+      "Persistent inspection history, analytics, and versioned evidence",
+      "Reproducible dataset validation, evaluation, tests, and Docker workflows",
+    ],
+    outcome:
+      "The verified PCB1 run fitted PatchCore on 904 normal training images. On the documented 100-image held-out half, it recorded 0.8584 image AUROC, 0.9776 pixel AUROC, 0.8164 pixel average precision, and 0.92 defect recall. The same validation-selected threshold produced a 0.64 false-positive rate, so the operating point is not suitable for factory acceptance. Warm in-process API measurements on an Intel i5-7300U recorded 385 ms p50 and 495 ms p95 over 20 requests after three warm-ups. These results establish an engineering baseline and expose the next optimization work; they do not establish production readiness.",
+    limitations: [
+      "PCB1 is the only fitted and calibrated product model. PCB2–PCB4 remain unavailable and correctly return REVIEW until separate product-specific models are fitted and evaluated.",
+      "The 0.64 held-out false-positive rate is too high for unattended factory decisions. Alignment, resolution, coreset size, and threshold policy require further experiments.",
+      "VisA cannot validate production illumination, optics, fixtures, conveyor motion, contamination, drift, throughput, or real manufacturing defect prevalence.",
+      "The supplied ground-truth masks are dataset labels. They are not model heatmaps, semantic defect classifications, or evidence of manufacturing certification.",
+      "PostgreSQL is configured in Docker Compose, but the full container stack was not launched on the development host; local tests and measured API runs used SQLite.",
+      "BoardLens is a production-oriented proof of concept, not a certified production system or an unattended rejection mechanism.",
+    ],
+    nextSteps:
+      "Improve PCB1 alignment and operating-point calibration, validate higher-resolution and coreset settings, fit PCB2–PCB4 independently, introduce separately governed validation data, and test the complete PostgreSQL/Docker deployment. A supervised defect detector should be added only after suitable semantic annotations and evaluation data exist.",
+    sourcePaths: [
+      "docs/architecture.md",
+      "docs/model-card-patchcore.md",
+      "docs/benchmark-report.md",
+      "backend/boardlens/api/routes.py",
+      "frontend/src/App.tsx",
+    ],
+  },
   {
     slug: "autonomous-driving-edge-perception",
     title: "Autonomous Driving Edge Perception",

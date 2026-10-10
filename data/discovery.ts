@@ -5,6 +5,18 @@ export interface DiscoveryLink {
 }
 
 export const projectDiscovery: Record<string, DiscoveryLink[]> = {
+  "boardlens-pcb-aoi": [
+    {
+      kind: "Service",
+      label: "Computer Vision and Edge AI engineering",
+      href: "/services/computer-vision-engineer",
+    },
+    {
+      kind: "Case study",
+      label: "Road-video perception and measured edge inference",
+      href: "/projects/autonomous-driving-edge-perception",
+    },
+  ],
   "autonomous-driving-edge-perception": [
     {
       kind: "Service",

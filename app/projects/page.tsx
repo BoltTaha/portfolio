@@ -33,10 +33,10 @@ export default function ProjectsPage() {
           <em>How it works.</em>
         </h1>
         <p>
-          Curated case studies across Computer Vision, Edge AI, Graph-RAG,
-          backend systems, document processing, document privacy, and data
-          projects. Each one connects the explanation to implementation evidence
-          or a clear source-status note.
+          Curated case studies across Computer Vision, industrial AI, Edge AI,
+          Graph-RAG, backend systems, document processing, document privacy,
+          and data projects. Each one connects the explanation to implementation
+          evidence or a clear source-status note.
         </p>
       </header>
       <section aria-labelledby="public-projects-title">
@@ -61,9 +61,9 @@ export default function ProjectsPage() {
           <article>
             <h3>Featured here</h3>
             <p>
-              Local Document De-ID, Rabt, MCP Data Analyst, QR Payment
-              Verification, SnapTeX, Context Window Compressor, imaging tools,
-              data systems, and client AI case studies.
+              BoardLens, Local Document De-ID, Rabt, MCP Data Analyst, QR
+              Payment Verification, SnapTeX, Context Window Compressor,
+              imaging tools, data systems, and client AI case studies.
             </p>
           </article>
           <article>
