@@ -5,8 +5,8 @@ import { projects, clientWork } from "@/data/projects";
 import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/data/site";
 export const metadata = pageMetadata(
-  "Projects & case studies",
-  "Explore Muhammad Taha’s Computer Vision, Edge AI, Graph-RAG, backend, document-processing, and data-engineering projects with implementation notes and evidence.",
+  "Computer Vision & AI Engineering Projects",
+  "Explore Muhammad Taha’s video analytics, edge computer vision, PCB inspection, Graph-RAG, and document AI case studies with measured evidence and source code.",
   "/projects",
 );
 export default function ProjectsPage() {
@@ -28,15 +28,15 @@ export default function ProjectsPage() {
       <header className="page-intro">
         <p className="eyebrow">The work / curated case studies</p>
         <h1>
-          What I built.
+          Computer vision and AI projects.
           <br />
-          <em>How it works.</em>
+          <em>Explained with evidence.</em>
         </h1>
         <p>
-          Curated case studies across Computer Vision, industrial AI, Edge AI,
-          Graph-RAG, backend systems, document processing, document privacy,
-          and data projects. Each one connects the explanation to implementation
-          evidence or a clear source-status note.
+          Explore working systems for video analytics, object tracking, edge
+          inference, PCB anomaly detection, Graph-RAG, and document AI. Each
+          case study connects the engineering explanation to measured results,
+          source code, or a clear evidence-status note.
         </p>
       </header>
       <section aria-labelledby="public-projects-title">

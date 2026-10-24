@@ -10,8 +10,8 @@ import FAQ from "@/components/FAQ";
 import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/data/site";
 export const metadata = pageMetadata(
-  `${site.name} | Computer Vision, Edge AI & RAG Engineer`,
-  "Hire Muhammad Taha to build computer vision, Edge AI, document AI, RAG, AI-agent, and text-to-SQL systems for real business workflows.",
+  `${site.name} | Computer Vision & Video Intelligence Engineer`,
+  "Muhammad Taha builds video analytics, object detection, tracking, event detection, industrial inspection, and edge AI systems using Python and OpenCV.",
   "/",
 );
 export default function Home() {

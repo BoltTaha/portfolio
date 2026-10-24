@@ -5,6 +5,8 @@ type Repo = keyof typeof evidence;
 export interface Project {
   slug: string;
   title: string;
+  metaTitle?: string;
+  metaDescription?: string;
   category: string;
   summary: string;
   kind:
@@ -42,6 +44,9 @@ export const projects: Project[] = [
   {
     slug: "boardlens-pcb-aoi",
     title: "BoardLens — PCB Automated Optical Inspection",
+    metaTitle: "PCB Anomaly Detection with PatchCore | BoardLens",
+    metaDescription:
+      "BoardLens is a PCB anomaly-inspection system using PatchCore heatmaps, explainable PASS, FAIL, and REVIEW decisions, FastAPI, and a React dashboard.",
     category: "Computer vision · Industrial AI",
     summary:
       "Industrial PCB visual-inspection platform combining anomaly localization, explainable quality decisions, traceable inspection history, and an API-connected dashboard.",
@@ -111,6 +116,9 @@ export const projects: Project[] = [
   {
     slug: "autonomous-driving-edge-perception",
     title: "Autonomous Driving Edge Perception",
+    metaTitle: "Raspberry Pi Computer Vision | Road Perception",
+    metaDescription:
+      "A measured edge computer vision pipeline with YOLO ONNX detection, persistent object tracking, lane estimation, and Raspberry Pi 4B benchmarks.",
     category: "Computer vision · Edge AI",
     summary:
       "A modular road-video perception pipeline combining ONNX object detection, persistent track IDs, lane and drivable-area overlays, structured output, and measured deployment results on a Raspberry Pi 4B.",
@@ -222,6 +230,9 @@ export const projects: Project[] = [
   {
     slug: "rabt-codebase-graphrag",
     title: "Rabt Codebase Graph-RAG",
+    metaTitle: "Graph-RAG for Codebase Context | Rabt",
+    metaDescription:
+      "Rabt uses AST parsing and graph retrieval to select smaller, inspectable code context for LLM agents, with reproducible repository-level evaluations.",
     category: "LLM infrastructure · code intelligence",
     summary:
       "A codebase-context system that uses AST and graph analysis to give LLM workflows smaller, more relevant code context instead of dumping whole repositories into prompts.",
@@ -307,6 +318,9 @@ export const projects: Project[] = [
   {
     slug: "qr-payment-verification",
     title: "QR Payment Verification",
+    metaTitle: "AI Receipt Verification & Fraud Review",
+    metaDescription:
+      "An AI-assisted receipt review workflow combining structured extraction, duplicate detection, deterministic checks, risk signals, and human review.",
     category: "Document AI · full stack",
     summary:
       "A receipt-review workflow combining Gemini extraction, duplicate detection, weighted risk signals, and an administrative review interface.",

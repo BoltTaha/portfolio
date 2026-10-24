@@ -1,6 +1,8 @@
 export interface ClientCaseStudy {
   slug: string;
   title: string;
+  metaTitle?: string;
+  metaDescription?: string;
   shortTitle: string;
   category: string;
   clientContext: string;
@@ -22,6 +24,9 @@ export const clientCaseStudies: ClientCaseStudy[] = [
   {
     slug: "basketball-clip-finder",
     title: "Basketball Clip Finder",
+    metaTitle: "Basketball Video Analysis & Highlight Detection",
+    metaDescription:
+      "See how Muhammad Taha built a basketball video-analysis system that detects made baskets, verifies difficult events, and exports timestamped highlight clips.",
     shortTitle: "Basketball video analysis",
     category: "Computer vision · sports video AI",
     clientContext: "US sports analytics client on Upwork",

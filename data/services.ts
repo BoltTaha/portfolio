@@ -22,15 +22,15 @@ const clientHref = (slug: string) => `/client-work/${slug}`;
 export const services: ServiceOffer[] = [
   {
     slug: "computer-vision-engineer",
-    title: "Computer Vision and Edge AI Engineer for Visual Systems",
-    metaTitle: "Computer Vision & Edge AI Engineer",
-    shortTitle: "Computer Vision & Edge AI",
+    title: "Video Intelligence and Edge Computer Vision Engineer",
+    metaTitle: "Video Analytics & Edge Computer Vision Engineer",
+    shortTitle: "Video Intelligence & Edge AI",
     searchIntent:
-      "Hire a computer vision and Edge AI freelancer for video analysis, object detection, tracking, inference, image processing, and deployment-oriented workflows.",
+      "Hire a video analytics and edge computer vision engineer for object detection, tracking, event extraction, industrial inspection, and deployment-oriented workflows.",
     metaDescription:
-      "Hire Muhammad Taha for Computer Vision and Edge AI systems using Python, OpenCV, YOLOv8, ONNX Runtime, video analysis, tracking, inference, and review workflows.",
+      "Hire Muhammad Taha for video analytics, object tracking, event detection, OpenCV, YOLO, ONNX Runtime, Raspberry Pi deployment, and review workflows.",
     directAnswer:
-      "Muhammad Taha builds Computer Vision and Edge AI systems for real-world video and image workflows, including road perception, sports analysis, object detection, tracking, ONNX inference, image processing, and human-review interfaces.",
+      "Muhammad Taha builds video intelligence and edge computer vision systems for real footage, including sports analytics, object detection, persistent tracking, event extraction, ONNX inference, industrial inspection, and human-review interfaces.",
     whoItHelps:
       "Teams with footage, images, scans, or visual review workflows that need a working detection or processing system instead of a model demo.",
     problems: [
@@ -60,6 +60,10 @@ export const services: ServiceOffer[] = [
         href: clientHref("basketball-clip-finder"),
       },
       {
+        label: "BoardLens PCB anomaly inspection",
+        href: projectHref("boardlens-pcb-aoi"),
+      },
+      {
         label: "Automated Color Grading",
         href: projectHref("automated-color-grading"),
       },
@@ -80,6 +84,8 @@ export const services: ServiceOffer[] = [
       "YOLO developer",
       "OpenCV engineer",
       "video analysis developer",
+      "video analytics engineer",
+      "object tracking engineer",
       "object detection freelancer",
       "Edge AI engineer",
       "ONNX deployment engineer",

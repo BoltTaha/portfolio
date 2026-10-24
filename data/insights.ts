@@ -7,6 +7,7 @@ export interface InsightSection {
 export interface Insight {
   slug: string;
   title: string;
+  metaTitle?: string;
   description: string;
   directAnswer: string;
   category: string;
@@ -23,6 +24,7 @@ export const insights: Insight[] = [
   {
     slug: "basketball-highlight-detection",
     title: "How to Build a Basketball Highlight Detector for Real Game Footage",
+    metaTitle: "Basketball Highlight Detection with Computer Vision",
     description:
       "A practical architecture for detecting made baskets, reducing false positives, exporting highlight clips, and keeping a human review step for variable game footage.",
     directAnswer:

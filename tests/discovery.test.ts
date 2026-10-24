@@ -61,6 +61,36 @@ describe("public discovery contract", () => {
     expect(getService("does-not-exist")).toBeUndefined();
     expect(getInsight("does-not-exist")).toBeUndefined();
   });
+
+  it("keeps priority search titles concise, distinct, and page-specific", () => {
+    const priorityProjects = [
+      "boardlens-pcb-aoi",
+      "autonomous-driving-edge-perception",
+      "rabt-codebase-graphrag",
+      "qr-payment-verification",
+    ].map((slug) => getProject(slug)!);
+
+    for (const project of priorityProjects) {
+      expect(project.metaTitle).toBeTruthy();
+      expect(project.metaDescription).toBeTruthy();
+      expect(`${project.metaTitle} | ${site.name}`.length).toBeLessThanOrEqual(70);
+    }
+
+    expect(new Set(priorityProjects.map((project) => project.metaTitle)).size).toBe(
+      priorityProjects.length,
+    );
+
+    const basketballInsight = getInsight("basketball-highlight-detection")!;
+    const basketballClientWork = clientCaseStudies.find(
+      (study) => study.slug === "basketball-clip-finder",
+    )!;
+    expect(`${basketballInsight.metaTitle} | ${site.name}`.length).toBeLessThanOrEqual(
+      70,
+    );
+    expect(
+      `${basketballClientWork.metaTitle} | ${site.name}`.length,
+    ).toBeLessThanOrEqual(70);
+  });
   it("keeps the optional discovery text aligned with the public cases", async () => {
     const text = await GET().text();
     projects.forEach((project) =>

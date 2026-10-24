@@ -17,7 +17,11 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const project = getProject((await params).slug);
   return project
-    ? pageMetadata(project.title, project.summary, `/projects/${project.slug}`)
+    ? pageMetadata(
+        project.metaTitle ?? project.title,
+        project.metaDescription ?? project.summary,
+        `/projects/${project.slug}`,
+      )
     : {};
 }
 export default async function ProjectPage({ params }: Props) {

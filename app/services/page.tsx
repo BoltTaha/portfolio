@@ -5,8 +5,8 @@ import { site } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata(
-  "AI engineering services",
-  "Hire Muhammad Taha for computer vision, Document AI, RAG, AI agents, Text-to-SQL, FastAPI backends, and local document privacy workflows.",
+  "Computer Vision & AI Engineering Services",
+  "Hire Muhammad Taha for video analytics, object tracking, edge computer vision, industrial inspection, Document AI, RAG, and production AI engineering.",
   "/services",
 );
 
@@ -29,14 +29,14 @@ export default function ServicesPage() {
       <header className="page-intro">
         <p className="eyebrow">Services / hire Muhammad Taha</p>
         <h1>
-          AI engineering services
+          Computer vision and AI engineering
           <br />
           <em>backed by working systems.</em>
         </h1>
         <p>
-          These pages map my strongest work to the problems clients actually
-          search for: computer vision, Document AI, RAG, AI agents, Text-to-SQL,
-          and local document privacy workflows.
+          Start with video analytics, object tracking, edge deployment, and
+          industrial inspection. Supporting services cover Document AI, RAG,
+          AI agents, Text-to-SQL, and local document privacy workflows.
         </p>
       </header>
       <section className="project-grid" aria-label="AI engineering services">

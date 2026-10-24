@@ -6,8 +6,8 @@ import { stackChips } from "@/data/stack";
 import { site } from "@/data/site";
 import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata(
-  "About",
-  "Meet Muhammad Taha (BoltTaha), an AI engineer building computer vision, document AI, document privacy, LLM, RAG, backend, and automation systems for client workflows.",
+  "About Muhammad Taha, Computer Vision Engineer",
+  "Meet Muhammad Taha (BoltTaha), a computer vision and video intelligence engineer building tracking, event-detection, industrial-inspection, and edge AI systems.",
   "/about",
 );
 export default function AboutPage() {
@@ -35,17 +35,17 @@ export default function AboutPage() {
         />
         <p className="eyebrow">About / BoltTaha</p>
         <h1>
-          Muhammad Taha builds
+          Muhammad Taha builds video intelligence
           <br />
-          <em>production-oriented AI systems.</em>
+          <em>and edge computer vision systems.</em>
         </h1>
         <p>
-          I’m Muhammad Taha, an AI engineer focused on computer vision, document
-          AI, document privacy workflows, LLM applications, RAG, backend
-          systems, and automation. I build software that works with messy
-          real-world inputs: game footage, scanned documents, databases, and
-          operational workflows. I am based in Pakistan and completing a BS in
-          Computer Science at FAST-NUCES.
+          I’m Muhammad Taha, a computer vision and video intelligence engineer
+          focused on object detection, tracking, event verification, industrial
+          inspection, and edge deployment. I build systems for messy real-world
+          inputs such as game footage, road video, manufacturing images, and
+          large document collections. I am based in Pakistan and completing a
+          BS in Computer Science at FAST-NUCES.
         </p>
       </header>
       <section className="section pt-0">

@@ -22,8 +22,8 @@ export async function generateMetadata({ params }: PageProps) {
   const study = getClientCaseStudy(slug);
   if (!study) return {};
   return pageMetadata(
-    `${study.title} client case study`,
-    study.summary,
+    study.metaTitle ?? `${study.title} client case study`,
+    study.metaDescription ?? study.summary,
     `/client-work/${study.slug}`,
   );
 }

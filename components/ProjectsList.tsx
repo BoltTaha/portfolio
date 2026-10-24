@@ -61,9 +61,9 @@ export default function ProjectsList() {
         </Link>
       </div>
       <p className="section-intro">
-        AI tools, code intelligence, document workflows, and data systems. Each
-        case study explains the implementation, its current limits, and the
-        evidence behind it.
+        Video analytics, edge computer vision, industrial inspection, code
+        intelligence, and document workflows. Each case study explains the
+        implementation, measured evidence, and current limitations.
       </p>
       <ProjectCards items={projects.filter((p) => p.featured).slice(0, 6)} />
     </section>
