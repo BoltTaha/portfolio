@@ -79,6 +79,13 @@ describe("public discovery contract", () => {
     expect(personSchema).not.toHaveProperty("alumniOf");
   });
 
+  it("publishes a timezone-aware ISO datetime for structured data", () => {
+    expect(site.updated).toMatch(
+      /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})$/,
+    );
+    expect(Number.isNaN(Date.parse(site.updated))).toBe(false);
+  });
+
   it("keeps topic-cluster links connected to real public routes", () => {
     const publicPaths = new Set(
       sitemap().map(

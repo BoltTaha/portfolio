@@ -10,5 +10,5 @@ export const site = {
   github: "https://github.com/BoltTaha",
   linkedin: "https://www.linkedin.com/in/bolttaha/",
   upwork: "https://www.upwork.com/freelancers/~01841c07c5ecaeebaf",
-  updated: "2026-10-10",
+  updated: "2026-10-24T22:02:44+05:00",
 } as const;
