@@ -5,6 +5,23 @@ export interface DiscoveryLink {
 }
 
 export const projectDiscovery: Record<string, DiscoveryLink[]> = {
+  "safesight-ppe-monitoring": [
+    {
+      kind: "Service",
+      label: "Computer Vision and Edge AI engineering",
+      href: "/services/computer-vision-engineer",
+    },
+    {
+      kind: "Case study",
+      label: "PCB anomaly detection and reviewed industrial inspection",
+      href: "/projects/boardlens-pcb-aoi",
+    },
+    {
+      kind: "Case study",
+      label: "Road-video tracking and measured edge inference",
+      href: "/projects/autonomous-driving-edge-perception",
+    },
+  ],
   "boardlens-pcb-aoi": [
     {
       kind: "Service",

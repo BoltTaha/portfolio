@@ -42,6 +42,67 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "safesight-ppe-monitoring",
+    title: "SafeSight — PPE Compliance Monitoring",
+    metaTitle: "PPE Detection and Safety Monitoring | SafeSight",
+    metaDescription:
+      "SafeSight is an in-progress industrial computer-vision system for worker-level helmet and safety-vest monitoring, temporal verification, evidence capture, and local review.",
+    category: "Computer vision · Industrial safety",
+    summary:
+      "An in-progress PPE monitoring system that connects person detection, anonymous tracking, worker-level helmet and vest reasoning, temporal confirmation, evidence capture, and local safety review.",
+    kind: "Personal project",
+    status:
+      "Working FYP-1 pipeline on laptop hardware; final hard-test and Raspberry Pi evaluation remain in progress",
+    role: "Academic team project with Haris Shahzad and Malik Qousain Raza. My documented work includes continuing and fine-tuning the detector on a second PPE dataset, integrating the current pipeline, evaluating results, and preparing the case-study evidence.",
+    featured: true,
+    sourceNote:
+      "The implementation is part of an active academic team project. The public case study shares real annotated outputs and measured findings while keeping the working repository and university report private.",
+    stack: [
+      "Python",
+      "Computer Vision",
+      "YOLO",
+      "ONNX Runtime",
+      "OpenVINO",
+      "ByteTrack",
+      "OpenCV",
+      "SQLite",
+      "Edge AI",
+      "Raspberry Pi",
+    ],
+    problem:
+      "Construction and industrial sites need continuous PPE checks, but manual camera review does not scale and one-frame detections create noisy alerts. SafeSight explores an on-site workflow that follows each visible worker, associates helmets and vests with the correct person, reasons across time, and stores reviewable evidence without using face recognition.",
+    audience:
+      "HSE teams, industrial operators, and computer-vision engineers evaluating how local video analytics could support reviewed helmet and safety-vest compliance workflows before site-specific validation and operational deployment.",
+    approach: [
+      "The modular pipeline separates frame input, detection, tracking, decision logic, storage, and reporting. It accepts saved video or a camera feed, uses a five-class detector for people and positive or negative PPE evidence, and can run through PyTorch or ONNX backends depending on the target profile.",
+      "PPE observations are assigned at worker level: helmet evidence must overlap the upper head region, while vest evidence is matched to the body region. An item can be present, missing, or uncertain; uncertainty is never treated as a violation.",
+      "A five-frame vote reduces frame-level noise, and missing PPE must persist for two seconds of video time before an event is confirmed. A five-second recovery period prevents the same condition from being logged repeatedly while the worker remains in view.",
+      "The tracker keeps anonymous internal identities so PPE evidence from different people is not mixed. Motion compensation and recovery-aware matching reduced identity fragmentation on one crowded 1,111-frame clip from 28 tracks to 16 in the documented comparison.",
+      "Each confirmed event can produce a timestamped SQLite record, annotated snapshot, CSV data, annotated video, and an HTML or Streamlit review report. The videos on this page are real outputs from the current pipeline, including a three-camera workflow demonstration and three construction-footage audits.",
+    ],
+    features: [
+      "Worker, helmet, no-helmet, safety-vest, and no-vest detection",
+      "Anonymous multi-object tracking with camera-motion compensation",
+      "Worker-level head and body association for PPE evidence",
+      "Three-state present, missing, or uncertain decisions",
+      "Five-frame voting and two-second temporal confirmation",
+      "Deduplicated SQLite events, snapshots, CSV, annotated video, and local reports",
+      "CPU-oriented ONNX Runtime profiles and a planned Raspberry Pi 4 deployment path",
+    ],
+    outcome:
+      "The first phase demonstrates a complete worker-level PPE pipeline rather than a bounding-box demo. The baseline reached 0.796 mAP50 on its public test split but 0.499 mAP50 on a small 119-frame real-footage hard test, exposing the generalisation gap. Continuing the same checkpoint on a second PPE dataset raised mAP50 from 0.5655 to 0.8060 on that dataset's 200-image validation split. On the development laptop, the documented whole-pipeline runs measured 111.4 FPS with GPU FP32, 53.9 FPS with four-thread CPU INT8, and 34.4 FPS with four-thread CPU FP32. These measurements are separate evaluations and do not establish site readiness or Raspberry Pi performance.",
+    limitations: [
+      "SafeSight is an in-progress academic system, not a certified safety product or a replacement for HSE procedures and human review.",
+      "The 119-frame hard test is small, its labels were AI-assisted, and a second-person label check is still planned.",
+      "The fine-tuned checkpoint has not yet been measured on the independent hard test, and its 200-image validation split includes generated images; its 0.8060 mAP50 should be read only in that context.",
+      "Safety-vest detection remains the weakest part of the baseline on real footage, and the negative PPE classes are underrepresented in the fine-tuning data.",
+      "The reported speed comes from laptop hardware. Raspberry Pi 4 throughput, latency, memory, temperature, and accuracy have not yet been measured.",
+      "The demonstration videos use third-party footage for non-commercial academic testing and do not represent a deployed customer site.",
+    ],
+    nextSteps:
+      "Measure the final checkpoint on the independent hard test, complete a second-person label review, export and verify the final FP32 and INT8 ONNX models, benchmark the full pipeline on Raspberry Pi 4, collect more representative negative-PPE footage, and validate thresholds and failure cases on camera views that match the intended environment.",
+  },
+  {
     slug: "boardlens-pcb-aoi",
     title: "BoardLens — PCB Automated Optical Inspection",
     metaTitle: "PCB Anomaly Detection with PatchCore | BoardLens",
@@ -123,7 +184,8 @@ export const projects: Project[] = [
     summary:
       "A modular road-video perception pipeline combining ONNX object detection, persistent track IDs, lane and drivable-area overlays, structured output, and measured deployment results on a Raspberry Pi 4B.",
     kind: "Personal project",
-    status: "Working road-perception system with a measured Raspberry Pi 4B deployment",
+    status:
+      "Working road-perception system with a measured Raspberry Pi 4B deployment",
     role: "Computer Vision and Edge AI engineer responsible for architecture, implementation, benchmarking, and documentation.",
     featured: true,
     repo: "edge-road-perception",

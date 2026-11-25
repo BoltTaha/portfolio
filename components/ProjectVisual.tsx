@@ -1,6 +1,135 @@
 import Image from "next/image";
 import { sourceUrl } from "@/data/projects";
 export default function ProjectVisual({ slug }: { slug: string }) {
+  if (slug === "safesight-ppe-monitoring") {
+    const auditVideos = [
+      {
+        src: "/projects/safesight/safesight-ppe-audit-01.mp4",
+        poster: "/projects/safesight/safesight-ppe-audit-01-poster.webp",
+        title: "Fixed-site PPE audit",
+        caption:
+          "Worker-level helmet and vest status on construction footage. The overlay includes visible-worker and confirmed-violation counts.",
+      },
+      {
+        src: "/projects/safesight/safesight-ppe-audit-02.mp4",
+        poster: "/projects/safesight/safesight-ppe-audit-02-poster.webp",
+        title: "Distant-worker evaluation",
+        caption:
+          "A harder view with smaller workers, occlusion, structural clutter, and long camera distance.",
+      },
+      {
+        src: "/projects/safesight/safesight-ppe-audit-03.mp4",
+        poster: "/projects/safesight/safesight-ppe-audit-03-poster.webp",
+        title: "Crowded construction audit",
+        caption:
+          "Multiple workers with present or uncertain PPE evidence. Uncertain observations remain distinct from confirmed violations.",
+      },
+    ];
+
+    return (
+      <aside className="example-note">
+        <p className="eyebrow">Current system evidence</p>
+        <h2>From camera streams to reviewable safety events.</h2>
+        <p>
+          This is an active academic project, not a certified safety product.
+          The first video shows the current multi-camera workflow concept. The
+          three audit videos below are real annotated outputs from the present
+          detection, tracking, and worker-level PPE pipeline.
+        </p>
+        <figure className="mt-6">
+          <video
+            className="w-full h-auto rounded-lg border border-line bg-ink"
+            controls
+            playsInline
+            preload="metadata"
+            poster="/projects/safesight/safesight-multi-camera-poster.webp"
+            aria-label="SafeSight multi-camera industrial safety monitoring demonstration"
+          >
+            <source
+              src="/projects/safesight/safesight-multi-camera-demo.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the embedded demonstration video.
+          </video>
+          <figcaption className="font-mono text-xs text-ink-soft mt-3">
+            Multi-camera workflow demonstration · annotated safety states,
+            monitored zones, event confirmation, and operator-facing evidence
+          </figcaption>
+        </figure>
+
+        <dl className="grid grid-cols-4 max-[850px]:grid-cols-2 max-[520px]:grid-cols-1 gap-4 mt-7">
+          <div>
+            <dt className="font-mono text-xs uppercase text-clay-deep">
+              Temporal rule
+            </dt>
+            <dd className="font-serif text-2xl mt-1">2 seconds</dd>
+          </div>
+          <div>
+            <dt className="font-mono text-xs uppercase text-clay-deep">
+              Hard-test frames
+            </dt>
+            <dd className="font-serif text-2xl mt-1">119</dd>
+          </div>
+          <div>
+            <dt className="font-mono text-xs uppercase text-clay-deep">
+              CPU INT8 pipeline
+            </dt>
+            <dd className="font-serif text-2xl mt-1">53.9 FPS</dd>
+          </div>
+          <div>
+            <dt className="font-mono text-xs uppercase text-clay-deep">
+              Track fragmentation
+            </dt>
+            <dd className="font-serif text-2xl mt-1">28 → 16</dd>
+          </div>
+        </dl>
+        <p className="mt-5 font-mono text-xs text-ink-mute">
+          Measurements come from separate documented laptop experiments. They
+          are not Raspberry Pi results or claims of deployment readiness.
+        </p>
+
+        <div className="border-t border-line mt-8 pt-7">
+          <p className="eyebrow">Annotated pipeline outputs</p>
+          <h3 className="font-serif text-2xl mt-2">
+            Three representative construction scenes.
+          </h3>
+          <div className="grid grid-cols-2 max-[700px]:grid-cols-1 gap-6 mt-6">
+            {auditVideos.map((video) => (
+              <figure key={video.src}>
+                <video
+                  className="w-full h-auto rounded-lg border border-line bg-ink"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  poster={video.poster}
+                  aria-label={video.title}
+                >
+                  <source src={video.src} type="video/mp4" />
+                  Your browser does not support the embedded demonstration
+                  video.
+                </video>
+                <figcaption className="mt-3">
+                  <span className="block font-medium text-ink">
+                    {video.title}
+                  </span>
+                  <span className="block font-mono text-xs text-ink-soft mt-1">
+                    {video.caption}
+                  </span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <p className="mt-6 rounded-lg border border-line bg-paper/50 p-4 text-sm text-ink-soft">
+            <strong className="text-ink">Evidence note.</strong> These are
+            demonstration outputs on third-party footage used for non-commercial
+            academic testing. They show current behavior and failure conditions;
+            they do not establish performance on a customer site.
+          </p>
+        </div>
+      </aside>
+    );
+  }
+
   if (slug === "boardlens-pcb-aoi") {
     return (
       <aside className="example-note">
@@ -34,8 +163,8 @@ export default function ProjectVisual({ slug }: { slug: string }) {
             In the PCB1 row below, the orange model heatmap is generated by the
             fitted PatchCore baseline. The black-and-white ground-truth mask is
             the independent VisA label. PCB2 and PCB3 are included only as
-            dataset evidence because their product-specific models have not
-            been fitted.
+            dataset evidence because their product-specific models have not been
+            fitted.
           </p>
           <figure className="mt-6">
             <Image
@@ -113,12 +242,14 @@ export default function ProjectVisual({ slug }: { slug: string }) {
           </div>
         </dl>
         <p className="mt-6 rounded-lg border border-line bg-paper/50 p-4 text-sm text-ink-soft">
-          <strong className="text-ink">Playback and processing are different.</strong>{" "}
+          <strong className="text-ink">
+            Playback and processing are different.
+          </strong>{" "}
           The completed file plays at the source rate of 25 FPS, so motion looks
-          smooth. The ~2.0 FPS figure is the Raspberry Pi&apos;s offline processing
-          throughput: it handled about two source frames each second and needed
-          roughly 110 seconds to process this 221-frame, 8.84-second clip. This
-          result is not a real-time camera-throughput claim.
+          smooth. The ~2.0 FPS figure is the Raspberry Pi&apos;s offline
+          processing throughput: it handled about two source frames each second
+          and needed roughly 110 seconds to process this 221-frame, 8.84-second
+          clip. This result is not a real-time camera-throughput claim.
         </p>
         <div className="border-t border-line mt-7 pt-6">
           <p className="font-mono text-xs uppercase tracking-[0.06em] text-clay-deep">
@@ -132,8 +263,8 @@ export default function ProjectVisual({ slug }: { slug: string }) {
             hardware-and-runtime decision, not an automatic speed claim.
           </p>
           <p className="font-mono text-xs text-ink-mute mt-4">
-            The earlier development baseline remains separate: 9.42–9.58 FPS
-            and 91.63–92.30 ms mean detector inference on a constrained
+            The earlier development baseline remains separate: 9.42–9.58 FPS and
+            91.63–92.30 ms mean detector inference on a constrained
             one-logical-CPU x86 environment.
           </p>
         </div>

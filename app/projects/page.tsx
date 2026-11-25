@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/data/site";
 export const metadata = pageMetadata(
   "Computer Vision & AI Engineering Projects",
-  "Explore Muhammad Taha’s video analytics, edge computer vision, PCB inspection, Graph-RAG, and document AI case studies with measured evidence and source code.",
+  "Explore Muhammad Taha’s industrial safety vision, video analytics, edge computer vision, PCB inspection, Graph-RAG, and document AI case studies with measured evidence.",
   "/projects",
 );
 export default function ProjectsPage() {
@@ -33,10 +33,11 @@ export default function ProjectsPage() {
           <em>Explained with evidence.</em>
         </h1>
         <p>
-          Explore working systems for video analytics, object tracking, edge
-          inference, PCB anomaly detection, Graph-RAG, and document AI. Each
-          case study connects the engineering explanation to measured results,
-          source code, or a clear evidence-status note.
+          Explore working systems for industrial safety monitoring, video
+          analytics, object tracking, edge inference, PCB anomaly detection,
+          Graph-RAG, and document AI. Each case study connects the engineering
+          explanation to measured results, source code, or a clear
+          evidence-status note.
         </p>
       </header>
       <section aria-labelledby="public-projects-title">
@@ -61,9 +62,10 @@ export default function ProjectsPage() {
           <article>
             <h3>Featured here</h3>
             <p>
-              BoardLens, Local Document De-ID, Rabt, MCP Data Analyst, QR
-              Payment Verification, SnapTeX, Context Window Compressor,
-              imaging tools, data systems, and client AI case studies.
+              SafeSight, BoardLens, Local Document De-ID, Rabt, MCP Data
+              Analyst, QR Payment Verification, SnapTeX, Context Window
+              Compressor, imaging tools, data systems, and client AI case
+              studies.
             </p>
           </article>
           <article>
