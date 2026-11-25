@@ -31,10 +31,11 @@ export default function ProjectVisual({ slug }: { slug: string }) {
         <p className="eyebrow">Current system evidence</p>
         <h2>From camera streams to reviewable safety events.</h2>
         <p>
-          This is an active academic project, not a certified safety product.
-          The first video shows the current multi-camera workflow concept. The
-          three audit videos below are real annotated outputs from the present
-          detection, tracking, and worker-level PPE pipeline.
+          SafeSight is an active personal computer-vision project, not a
+          certified safety product. The first video shows the current
+          multi-camera workflow concept. The three audit videos below are real
+          annotated outputs from the present detection, tracking, and
+          worker-level PPE pipeline.
         </p>
         <figure className="mt-6">
           <video
@@ -66,9 +67,9 @@ export default function ProjectVisual({ slug }: { slug: string }) {
           </div>
           <div>
             <dt className="font-mono text-xs uppercase text-clay-deep">
-              Hard-test frames
+              Decision states
             </dt>
-            <dd className="font-serif text-2xl mt-1">119</dd>
+            <dd className="font-serif text-2xl mt-1">3 states</dd>
           </div>
           <div>
             <dt className="font-mono text-xs uppercase text-clay-deep">
@@ -121,9 +122,9 @@ export default function ProjectVisual({ slug }: { slug: string }) {
           </div>
           <p className="mt-6 rounded-lg border border-line bg-paper/50 p-4 text-sm text-ink-soft">
             <strong className="text-ink">Evidence note.</strong> These are
-            demonstration outputs on third-party footage used for non-commercial
-            academic testing. They show current behavior and failure conditions;
-            they do not establish performance on a customer site.
+            demonstration outputs on evaluation footage. They show current
+            behavior and failure conditions; they do not establish performance
+            on a customer site.
           </p>
         </div>
       </aside>

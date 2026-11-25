@@ -52,11 +52,11 @@ export const projects: Project[] = [
       "An in-progress PPE monitoring system that connects person detection, anonymous tracking, worker-level helmet and vest reasoning, temporal confirmation, evidence capture, and local safety review.",
     kind: "Personal project",
     status:
-      "Working FYP-1 pipeline on laptop hardware; final hard-test and Raspberry Pi evaluation remain in progress",
-    role: "Academic team project with Haris Shahzad and Malik Qousain Raza. My documented work includes continuing and fine-tuning the detector on a second PPE dataset, integrating the current pipeline, evaluating results, and preparing the case-study evidence.",
+      "Working pipeline on laptop hardware; site-specific and Raspberry Pi evaluation remain in progress",
+    role: "My work so far covers detector fine-tuning, pipeline integration, anonymous worker tracking, temporal PPE decisions, evidence generation, evaluation, and performance measurement.",
     featured: true,
     sourceNote:
-      "The implementation is part of an active academic team project. The public case study shares real annotated outputs and measured findings while keeping the working repository and university report private.",
+      "SafeSight is active personal R&D. This case study shares real annotated outputs, the implemented workflow, and measured findings while the working repository remains private.",
     stack: [
       "Python",
       "Computer Vision",
@@ -90,17 +90,16 @@ export const projects: Project[] = [
       "CPU-oriented ONNX Runtime profiles and a planned Raspberry Pi 4 deployment path",
     ],
     outcome:
-      "The first phase demonstrates a complete worker-level PPE pipeline rather than a bounding-box demo. The baseline reached 0.796 mAP50 on its public test split but 0.499 mAP50 on a small 119-frame real-footage hard test, exposing the generalisation gap. Continuing the same checkpoint on a second PPE dataset raised mAP50 from 0.5655 to 0.8060 on that dataset's 200-image validation split. On the development laptop, the documented whole-pipeline runs measured 111.4 FPS with GPU FP32, 53.9 FPS with four-thread CPU INT8, and 34.4 FPS with four-thread CPU FP32. These measurements are separate evaluations and do not establish site readiness or Raspberry Pi performance.",
+      "The current system demonstrates a complete worker-level PPE pipeline rather than a bounding-box demo. Continuing the detector checkpoint on a second PPE dataset raised mAP50 from 0.5655 to 0.8060 on that dataset's 200-image validation split. On the development laptop, the documented whole-pipeline runs measured 111.4 FPS with GPU FP32, 53.9 FPS with four-thread CPU INT8, and 34.4 FPS with four-thread CPU FP32. These measurements show the current engineering baseline; they do not establish performance on a customer site or Raspberry Pi hardware.",
     limitations: [
-      "SafeSight is an in-progress academic system, not a certified safety product or a replacement for HSE procedures and human review.",
-      "The 119-frame hard test is small, its labels were AI-assisted, and a second-person label check is still planned.",
-      "The fine-tuned checkpoint has not yet been measured on the independent hard test, and its 200-image validation split includes generated images; its 0.8060 mAP50 should be read only in that context.",
+      "SafeSight is an in-progress engineering system, not a certified safety product or a replacement for HSE procedures and human review.",
+      "The reported model result comes from a defined validation split. Site-specific accuracy, thresholds, camera placement, and operating conditions still require representative evaluation.",
       "Safety-vest detection remains the weakest part of the baseline on real footage, and the negative PPE classes are underrepresented in the fine-tuning data.",
       "The reported speed comes from laptop hardware. Raspberry Pi 4 throughput, latency, memory, temperature, and accuracy have not yet been measured.",
-      "The demonstration videos use third-party footage for non-commercial academic testing and do not represent a deployed customer site.",
+      "The demonstration videos are evaluation footage and do not represent a deployed customer site.",
     ],
     nextSteps:
-      "Measure the final checkpoint on the independent hard test, complete a second-person label review, export and verify the final FP32 and INT8 ONNX models, benchmark the full pipeline on Raspberry Pi 4, collect more representative negative-PPE footage, and validate thresholds and failure cases on camera views that match the intended environment.",
+      "Export and verify the final FP32 and INT8 ONNX models, benchmark the full pipeline on Raspberry Pi 4, collect more representative negative-PPE footage, and validate accuracy, thresholds, latency, and failure cases on camera views that match the intended environment.",
   },
   {
     slug: "boardlens-pcb-aoi",
